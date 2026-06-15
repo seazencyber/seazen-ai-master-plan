@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaZen MS Ecosystem Technical Guideline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ 
+                startOnLoad: true, 
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: '#FFF8D6',
+                    primaryTextColor: '#1E293B',
+                    primaryBorderColor: '#FFCC00',
+                    lineColor: '#9E9FA4',
+                    secondaryColor: '#F8FAFC',
+                    tertiaryColor: '#FFFFFF'
+                }
+            });
+        });
+    </script>
+    <style>
+        :root {
+            /* SeaZen Color Palette from User Image */
+            --sz-yellow: #FFCC00;
+            --sz-dark-yellow: #ECA811;
+            --sz-light-yellow: #FDF3C8; /* Muted yellow for backgrounds */
+            --sz-dark: #242730; /* Dark navy/gray */
+            --sz-gray: #8C8F96;
+            --sz-light-gray: #F2F4F7;
+            
+            --bg-body: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --border-color: #E2E8F0;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --success: #10B981;
+            --danger: #EF4444;
+            --info: #3B82F6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-bottom: 50px; }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 3px solid var(--sz-yellow);
+            padding: 24px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .logo-area h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--sz-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-area h1 span { color: var(--sz-yellow); }
+        .logo-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 48px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: max-content;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--sz-light-yellow);
+            color: var(--sz-dark-yellow);
+            border-left: 3px solid var(--sz-yellow);
+        }
+
+        /* Main Content */
+        .content-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--sz-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title i { color: var(--sz-yellow); }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Cards & Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+        .info-card {
+            background: var(--sz-light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .info-card h4 {
+            font-size: 16px;
+            color: var(--sz-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-main);
+            display: flex;
+            gap: 8px;
+        }
+
+        .info-card ul li i { color: var(--sz-yellow); margin-top: 4px; font-size: 12px; }
+
+        /* Tables */
+        .table-responsive { overflow-x: auto; margin-top: 24px; }
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table th { background: var(--sz-light-gray); padding: 16px; text-align: left; font-size: 13px; font-weight: 700; color: var(--sz-dark); text-transform: uppercase; border-bottom: 2px solid var(--border-color); }
+        .data-table td { padding: 16px; border-bottom: 1px solid var(--border-color); font-size: 14px; color: var(--text-main); }
+        .data-table tr:hover { background-color: #F8FAFC; }
+
+        /* Tags */
+        .tag { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+        .tag-sp { background: #E0F2FE; color: #0284C7; border: 1px solid #BAE6FD; } /* SharePoint */
+        .tag-pa { background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; } /* Power Automate */
+        .tag-papp { background: #FAF5FF; color: #9333EA; border: 1px solid #E9D5FF; } /* Power App */
+        .tag-pbi { background: #FEFCE8; color: #CA8A04; border: 1px solid #FEF08A; } /* Power BI */
+
+        /* To-do List */
+        .todo-list { margin-top: 24px; }
+        .todo-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+        }
+        .todo-item:hover { border-color: var(--sz-yellow); transform: translateX(4px); }
+        .todo-checkbox { width: 24px; height: 24px; border-radius: 4px; border: 2px solid var(--sz-gray); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+        .todo-content h5 { font-size: 15px; color: var(--sz-dark); margin-bottom: 4px; }
+        .todo-content p { font-size: 13px; color: var(--text-muted); }
+
+        /* Mail Template */
+        .mail-template {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+            position: relative;
+        }
+        .mail-template::before {
+            content: "EMAIL TEMPLATE";
+            position: absolute;
+            top: -10px;
+            left: 24px;
+            background: var(--sz-dark);
+            color: #FFF;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+        .mail-header { border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px; }
+        .mail-row { display: flex; margin-bottom: 8px; font-size: 14px; }
+        .mail-label { width: 80px; font-weight: 600; color: var(--text-muted); }
+        .mail-value { flex: 1; color: var(--text-main); font-weight: 500; }
+        .mail-body { font-size: 14px; color: var(--text-main); font-family: monospace; line-height: 1.8; background: var(--sz-light-gray); padding: 16px; border-radius: 6px; }
+
+        /* Flowchart Container */
+        .mermaid-wrapper {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--sz-yellow);
+            color: var(--sz-dark);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 16px;
+        }
+        .btn-action:hover { background: var(--sz-dark-yellow); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1><span>SeaZen</span> MS Ecosystem</h1>
+            <div class="logo-subtitle">Technical Architecture & Employee Guidelines</div>
+        </div>
+        <div>
+            <span class="tag tag-sp"><i class="fa-brands fa-microsoft"></i> Built for Microsoft 365</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <a href="#architecture" class="nav-link active">1. Database Architecture</a>
+                <a href="#workflows" class="nav-link">2. Power Automate Flows</a>
+                <a href="#phase1-guide" class="nav-link">3. GĐ 1: Guideline Khảo sát</a>
+                <a href="#phase2-guide" class="nav-link">4. GĐ 2: Guideline Deal Review</a>
+                <a href="#dashboards" class="nav-link">5. Power BI Dashboards</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <!-- SECTION 1: ARCHITECTURE -->
+            <section id="architecture" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-database"></i> 1. SharePoint Lists Architecture (Data Model)</h2>
+                <p class="section-desc">Danh sách các Database tables (SharePoint Lists) cần tạo và mối quan hệ giữa chúng. Team IT Hệ thống cần thiết lập các cột này làm nền tảng.</p>
+                
+                <div class="mermaid-wrapper">
+                    <div class="mermaid">
+                        erDiagram
+                            L01_CUSTOMERS ||--o{ L02_SURVEYS : "Yêu cầu KS"
+                            L01_CUSTOMERS ||--o{ L03_CONTRACTS : "Ký kết"
+                            L02_SURVEYS ||--o| L03_CONTRACTS : "Cơ sở Hợp đồng"
+                            L03_CONTRACTS ||--o{ L04_INCIDENTS : "Cam kết SLA"
+                            
+                            L01_CUSTOMERS {
+                                string Title "Tên Khách hàng"
+                                string KH_Code "Mã KH (Primary)"
+                                choice Status "Active/Lead"
+                            }
+                            L02_SURVEYS {
+                                string Title "Tên Mục tiêu"
+                                string KH_Code "Lookup L01"
+                                choice LoaiHinh "Nhà máy/Tòa nhà"
+                                choice Risk_Level "Cao/Trung bình/Thấp"
+                            }
+                            L03_CONTRACTS {
+                                string Title "Mã Hợp đồng"
+                                string KH_Code "Lookup L01"
+                                number GiaTri "Giá trị HĐ"
+                                string TinhTrang "Draft/Deal Review/Signed"
+                            }
+                            L04_INCIDENTS {
+                                string Incident_ID "Mã Sự cố"
+                                string HD_Code "Lookup L03"
+                                choice MucDo "L1/L2/L3/L4"
+                            }
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 32px;">
+                    <div class="info-card">
+                        <h4><i class="fa-solid fa-table-list"></i> L01_KhachHang (Master Data)</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Lưu trữ thông tin định danh KH.</li>
+                            <li><i class="fa-solid fa-check"></i> Nguồn dữ liệu cho CRM và Power BI.</li>
+                            <li><i class="fa-solid fa-check"></i> App sử dụng: PowerApp GĐ1.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fa-solid fa-table-list"></i> L02_KhaoSat (Giai đoạn 1)</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Chứa dữ liệu của Form khảo sát hiện trường.</li>
+                            <li><i class="fa-solid fa-check"></i> Kích hoạt Flow báo giá tự động khi Approved.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: WORKFLOWS -->
+            <section id="workflows" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-gears"></i> 2. Power Automate Flows</h2>
+                <p class="section-desc">Danh sách các luồng tự động hóa cần code trên Power Automate để liên kết các phòng ban thay cho việc gửi file thủ công.</p>
+                
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tên Flow</th>
+                                <th>Trigger (Kích hoạt)</th>
+                                <th>Logic xử lý chính (Actions)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>FL_01: Xin duyệt Khảo sát</strong></td>
+                                <td>Item created in <code>L02_KhaoSat</code></td>
+                                <td>Send Approval to Trưởng khối Vận hành. Nếu Approve -> Đổi status thành "Approved".</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FL_02: Trình duyệt Deal Review</strong></td>
+                                <td>Item modified in <code>L03_Contracts</code> (Status = "Deal Review")</td>
+                                <td>Start parallel approval (Tài chính & Vận hành). Đính kèm file Báo giá PDF.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FL_03: Cảnh báo Sự cố L3/L4</strong></td>
+                                <td>Item created in <code>L04_Incidents</code> (MucDo = "L3" or "L4")</td>
+                                <td>Send High Priority Email to BOD. Gửi Notification qua Teams cho Đội SRT.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mermaid-wrapper">
+                    <h4>Flowchart Logic: FL_02 Deal Review (Giai đoạn 2)</h4>
+                    <div class="mermaid">
+                        graph TD
+                            A[Sales đổi Status = Deal Review] --> B{Điều kiện: Lợi nhuận < Sàn?}
+                            B -- Yes --> C[Gửi Approval Request đến GĐ Tài chính]
+                            B -- No --> D[Gửi Approval Request đến GĐ Vận hành]
+                            C --> E{GĐ TC Duyệt?}
+                            D --> F{GĐ VH Duyệt?}
+                            E -- Yes --> F
+                            E -- No --> G[Trả về Status = Draft, Gửi Mail Reject cho Sales]
+                            F -- Yes --> H[Đổi Status = Approved, Tự động Generate PDF Hợp đồng]
+                            F -- No --> G
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: PHASE 1 GUIDELINE -->
+            <section id="phase1-guide" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-clipboard-user"></i> 3. Employee Guideline GĐ1: Khảo Sát</h2>
+                <p class="section-desc">Hướng dẫn chi tiết dành cho Sales / Quản lý khu vực (QLKV) khi đi gặp khách hàng và khảo sát mục tiêu.</p>
+
+                <div class="todo-list">
+                    <div class="todo-item">
+                        <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: var(--sz-gray); opacity: 0.3;"></i></div>
+                        <div class="todo-content">
+                            <h5>Bước 1: Mở Power App "SeaZen Khảo Sát" trên điện thoại</h5>
+                            <p>Tạo mới Record Khách hàng nếu chưa có trong hệ thống (L01_KhachHang).</p>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: var(--sz-gray); opacity: 0.3;"></i></div>
+                        <div class="todo-content">
+                            <h5>Bước 2: Điền form SZ-FRM-OPS-01 trực tiếp trên App</h5>
+                            <p>Chụp ảnh hiện trường bằng App (Hệ thống tự động gắn GPS và Timestamp). Đánh giá sơ bộ Risk Checklist.</p>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: var(--sz-gray); opacity: 0.3;"></i></div>
+                        <div class="todo-content">
+                            <h5>Bước 3: Bấm nút "Submit & Yêu cầu duyệt"</h5>
+                            <p>App sẽ đổi trạng thái thành "Pending QA". Hệ thống (FL_01) tự động gửi mail xin duyệt cho Trưởng khối Vận hành.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mail-template">
+                    <div class="mail-header">
+                        <div class="mail-row">
+                            <div class="mail-label">To:</div>
+                            <div class="mail-value">Trưởng Khối Vận Hành</div>
+                        </div>
+                        <div class="mail-row">
+                            <div class="mail-label">Subject:</div>
+                            <div class="mail-value">[ACTION REQUIRED] Trình duyệt Khảo sát Mục tiêu - [Tên Khách Hàng]</div>
+                        </div>
+                    </div>
+                    <div class="mail-body">
+                        Kính gửi Khối Vận hành,<br><br>
+                        Nhân viên [Tên Sales/QLKV] vừa hoàn tất khảo sát thực địa cho mục tiêu [Tên Mục Tiêu].<br><br>
+                        - Loại hình: [Nhà máy/Tòa nhà]<br>
+                        - Đánh giá Rủi ro sơ bộ: [Mức độ]<br>
+                        - Link chi tiết Form & Ảnh đính kèm: [Link SharePoint Item]<br><br>
+                        Vui lòng click vào nút bên dưới để xem xét và Phê duyệt (Approve) hoặc Từ chối (Reject) trên hệ thống.<br><br>
+                        <a href="#" class="btn-action" style="margin-top: 12px; font-size: 12px; padding: 6px 12px;">Approve in Power Automate</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: PHASE 2 GUIDELINE -->
+            <section id="phase2-guide" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-file-signature"></i> 4. Employee Guideline GĐ2: Deal Review</h2>
+                <p class="section-desc">Hướng dẫn dành cho Khối Kinh doanh khi trình duyệt Hợp đồng có rủi ro vượt khung (Deal Review).</p>
+
+                <div class="todo-list">
+                    <div class="todo-item">
+                        <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: var(--sz-gray); opacity: 0.3;"></i></div>
+                        <div class="todo-content">
+                            <h5>Bước 1: Truy cập SharePoint List "L03_Contracts"</h5>
+                            <p>Tạo mới hoặc Mở hợp đồng đang Draft. Hệ thống tự động tính toán Biên lợi nhuận dựa trên Giá chốt.</p>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: var(--sz-gray); opacity: 0.3;"></i></div>
+                        <div class="todo-content">
+                            <h5>Bước 2: Cập nhật Status thành "Deal Review"</h5>
+                            <p>Nếu Giá < Giá Sàn quy định tại Phụ lục 01 QC Thương mại, hệ thống chặn việc xuất Hợp đồng và yêu cầu trình Deal Review.</p>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: var(--sz-gray); opacity: 0.3;"></i></div>
+                        <div class="todo-content">
+                            <h5>Bước 3: Chờ phản hồi từ Ban Giám đốc (Tài chính & Vận hành)</h5>
+                            <p>Theo dõi tiến độ duyệt trên Teams. Khi nhận được thông báo "Approved", nút "Generate PDF" sẽ hiện ra để in hợp đồng ký với KH.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mail-template">
+                    <div class="mail-header">
+                        <div class="mail-row">
+                            <div class="mail-label">To:</div>
+                            <div class="mail-value">GĐ Tài chính, GĐ Vận hành</div>
+                        </div>
+                        <div class="mail-row">
+                            <div class="mail-label">Subject:</div>
+                            <div class="mail-value">[DEAL REVIEW] Yêu cầu phê duyệt ngoại lệ Hợp đồng - [Tên Khách Hàng]</div>
+                        </div>
+                    </div>
+                    <div class="mail-body">
+                        Kính gửi Ban Giám đốc,<br><br>
+                        Hợp đồng [Mã Hợp Đồng] đang chờ phê duyệt Deal Review do vi phạm điều kiện tiêu chuẩn:<br>
+                        - Lý do ngoại lệ: Giá bán đề xuất thấp hơn Giá sàn quy định (Phụ lục 01 QC TM).<br>
+                        - Biên lợi nhuận ước tính: [X]%<br>
+                        - Giải trình từ Sales: [Lý do nhập từ PowerApp]<br><br>
+                        Vui lòng kiểm tra chi tiết P&L dự kiến tại link dưới và phản hồi kết quả:<br>
+                        [Link tới Power BI Báo cáo P&L Draft]<br><br>
+                        Trân trọng,<br>Hệ thống SeaZen AI.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: DASHBOARDS -->
+            <section id="dashboards" class="content-section">
+                <h2 class="section-title"><i class="fa-solid fa-chart-pie"></i> 5. Power BI Dashboards Requirements</h2>
+                <p class="section-desc">Cấu trúc hiển thị dữ liệu quản trị dành cho Ban Giám Đốc (BOD) lấy từ SharePoint Lists.</p>
+
+                <div class="grid-3">
+                    <div class="info-card">
+                        <h4><i class="fa-solid fa-sack-dollar"></i> P&L Dashboard</h4>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Đo lường sức khỏe tài chính.</p>
+                        <ul>
+                            <li><i class="fa-solid fa-arrow-right"></i> Nguồn: <code>L03_Contracts</code> & Data Lương</li>
+                            <li><i class="fa-solid fa-arrow-right"></i> Doanh thu vs Chi phí (Thực tế)</li>
+                            <li><i class="fa-solid fa-arrow-right"></i> Cảnh báo đỏ: Biên LN < 10%</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> SLA & Incident Dashboard</h4>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Chất lượng vận hành GĐ3-5.</p>
+                        <ul>
+                            <li><i class="fa-solid fa-arrow-right"></i> Nguồn: <code>L04_Incidents</code></li>
+                            <li><i class="fa-solid fa-arrow-right"></i> Heatmap số lượng sự cố</li>
+                            <li><i class="fa-solid fa-arrow-right"></i> Thời gian phản hồi sự cố (SLA)</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fa-solid fa-users"></i> Manpower Dashboard</h4>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Quản trị nhân sự & Roster.</p>
+                        <ul>
+                            <li><i class="fa-solid fa-arrow-right"></i> Nguồn: Data Chấm công / App</li>
+                            <li><i class="fa-solid fa-arrow-right"></i> Tỷ lệ Zero-Gap (Lỗ hổng ca)</li>
+                            <li><i class="fa-solid fa-arrow-right"></i> Tỷ lệ Tăng ca (OT) / Định biên</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Smooth scrolling for sidebar navigation
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

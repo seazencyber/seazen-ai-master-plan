@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SeaZen - Kế Hoạch Chuyển Đổi Số AI (Lifecycle)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --gold: #E6AC00;
+            --gold2: #D4A000;
+            --bg: #f5f5f5;
+            --card: #fff;
+            --card2: #f0f0f0;
+            --border: #e0e0e0;
+            --text: #444;
+            --white: #1a1a1a
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 80%, rgba(230, 172, 0, .1) 0%, transparent 50%);
+            pointer-events: none
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -.5px;
+            margin-bottom: 8px
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            display: block;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            text-transform: uppercase
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .hero .tag {
+            display: inline-block;
+            background: rgba(230, 172, 0, .1);
+            color: var(--gold);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 600;
+            margin-top: 18px;
+            border: 1px solid rgba(230, 172, 0, .25)
+        }
+
+        /* SECTIONS */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        section {
+            margin-bottom: 60px
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px
+        }
+
+        .section-title .num {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: #000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 700
+        }
+
+        /* PHASE CARDS */
+        .phases {
+            display: grid;
+            gap: 16px
+        }
+
+        .phase {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            align-items: center;
+            gap: 20px;
+            transition: all .3s
+        }
+
+        .phase:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08)
+        }
+
+        .phase-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem
+        }
+
+        .phase h3 {
+            font-size: 1.05rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 2px
+        }
+
+        .phase p {
+            font-size: .85rem;
+            color: #666
+        }
+
+        .phase .week {
+            background: var(--card2);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--gold);
+            white-space: nowrap
+        }
+
+        /* GANTT */
+        .gantt-wrap {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            overflow-x: auto
+        }
+
+        .gantt-header {
+            display: grid;
+            grid-template-columns: 140px repeat(13, 1fr);
+            gap: 3px;
+            margin-bottom: 8px
+        }
+
+        .gantt-header div {
+            text-align: center;
+            font-size: .7rem;
+            color: #888;
+            font-weight: 600
+        }
+
+        .gantt-row {
+            display: grid;
+            grid-template-columns: 140px repeat(13, 1fr);
+            gap: 3px;
+            margin: 5px 0;
+            align-items: center
+        }
+
+        .gantt-row .label {
+            font-size: .78rem;
+            color: #555;
+            text-align: right;
+            padding-right: 10px;
+            font-weight: 500
+        }
+
+        .gantt-cell {
+            height: 30px;
+            border-radius: 6px
+        }
+
+        /* PRINCIPLES */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px
+        }
+
+        .principle {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            transition: all .3s
+        }
+
+        .principle:hover {
+            border-color: var(--gold)
+        }
+
+        .principle .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block
+        }
+
+        .principle h4 {
+            color: var(--white);
+            font-size: .95rem;
+            margin-bottom: 6px
+        }
+
+        .principle p {
+            font-size: .82rem;
+            color: #666
+        }
+
+        /* USE CASES */
+        .usecases {
+            display: grid;
+            gap: 10px
+        }
+
+        .usecase {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            transition: all .3s
+        }
+
+        .usecase:hover {
+            border-color: var(--gold)
+        }
+
+        .usecase .left {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .usecase .rank {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: .85rem;
+            color: #000;
+            flex-shrink: 0
+        }
+
+        .usecase .info h4 {
+            font-size: .92rem;
+            color: var(--white);
+            font-weight: 600
+        }
+
+        .usecase .info p {
+            font-size: .78rem;
+            color: #888
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .5px
+        }
+
+        .b-high {
+            background: rgba(220, 53, 69, .1);
+            color: #c0392b;
+            border: 1px solid rgba(220, 53, 69, .3)
+        }
+
+        .b-med {
+            background: rgba(230, 172, 0, .1);
+            color: #b8860b;
+            border: 1px solid rgba(230, 172, 0, .3)
+        }
+
+        .b-low {
+            background: rgba(40, 167, 69, .1);
+            color: #27863a;
+            border: 1px solid rgba(40, 167, 69, .3)
+        }
+
+        /* FLOW */
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 10px 0
+        }
+
+        .flow-step {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 20px;
+            text-align: center;
+            min-width: 140px;
+            transition: all .3s
+        }
+
+        .flow-step:hover {
+            border-color: var(--gold)
+        }
+
+        .flow-step .emoji {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .flow-step h4 {
+            font-size: .82rem;
+            color: var(--white);
+            font-weight: 600
+        }
+
+        .flow-step p {
+            font-size: .7rem;
+            color: #888
+        }
+
+        .flow-arrow {
+            color: #bbb;
+            font-size: 1.2rem;
+            margin: 0 6px;
+            flex-shrink: 0
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: .78rem;
+            border-top: 1px solid var(--border)
+        }
+
+        @media(max-width:640px) {
+            .phase {
+                grid-template-columns: 44px 1fr;
+                gap: 12px
+            }
+
+            .phase .week {
+                grid-column: 1/-1;
+                text-align: center
+            }
+
+            .flow {
+                flex-direction: column
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg)
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #333
+            }
+
+            .hero {
+                padding: 40px 20px
+            }
+
+            .phase,
+            .card,
+            .usecase,
+            .principle {
+                border-color: #ddd;
+                background: #fff
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1><span>SeaZen AI Department</span>Quản Trị Vòng Đời<br>Dự Án & Khách Hàng</h1>
+        <p>Quản lý tập trung xuyên suốt từ lúc khảo sát mục tiêu đến khi đóng dự án. Các phòng ban không hoạt động rời
+            rạc mà cùng cộng tác trên một luồng dữ liệu duy nhất.</p>
+        <div class="tag">🔄 Customer-Centric | 🏢 Xóa bỏ Silo phòng ban | 🎯 Single Source of Truth</div>
+    </div>
+
+    <div class="container">
+
+        <section>
+            <div class="section-title">
+                <div class="num">01</div>
+                <h2>Nguyên Tắc Chiến Lược</h2>
+            </div>
+            <div class="principles">
+                <div class="principle"><span class="emoji">🔗</span>
+                    <h4>Dữ Liệu Xuyên Suốt</h4>
+                    <p>Mọi thông tin từ khâu khảo sát, báo giá, đến phân ca trực đều kế thừa liền mạch, không nhập liệu
+                        lại.</p>
+                </div>
+                <div class="principle"><span class="emoji">🤝</span>
+                    <h4>Cộng Tác Tập Trung</h4>
+                    <p>Các phòng ban (Kinh doanh, Nghiệp vụ, C&B) cùng tương tác trên 1 hồ sơ dự án duy nhất.</p>
+                </div>
+                <div class="principle"><span class="emoji">⚙️</span>
+                    <h4>Tự Động Hóa Chuyển Bước</h4>
+                    <p>Hệ thống tự động kích hoạt task cho phòng ban tiếp theo khi một giai đoạn hoàn tất.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <div class="num">02</div>
+                <h2>Vòng Đời Dự Án (Project Lifecycle)</h2>
+            </div>
+            <div class="flow">
+                <div class="flow-step"><span class="emoji">📍</span>
+                    <h4>1. Khảo Sát & Lead</h4>
+                    <p>Đánh giá mục tiêu</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step"><span class="emoji">📝</span>
+                    <h4>2. Báo Giá & HĐ</h4>
+                    <p>Chốt phương án</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step"><span class="emoji">🚀</span>
+                    <h4>3. Mở Dự Án</h4>
+                    <p>Setup & Phân ca</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step"><span class="emoji">🛡️</span>
+                    <h4>4. Vận Hành</h4>
+                    <p>CSKH & Xử lý sự cố</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step"><span class="emoji">🔄</span>
+                    <h4>5. Tái Ký / Đóng</h4>
+                    <p>Gia hạn hoặc thanh lý</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <div class="num">03</div>
+                <h2>Lộ Trình Xây Dựng Hệ Thống</h2>
+            </div>
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-icon" style="background:rgba(255,214,0,.15)">🏗️</div>
+                    <div>
+                        <h3>Giai đoạn 1: Nền tảng Core & Đầu vào</h3>
+                        <p>Số hóa form khảo sát mục tiêu thực địa. Thiết lập cấu trúc dữ liệu dự án chuẩn (Master Data)
+                            làm gốc cho toàn bộ luồng.</p>
+                    </div>
+                    <div class="week">Tuần 1–3</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-icon" style="background:rgba(255,152,0,.15)">⚡</div>
+                    <div>
+                        <h3>Giai đoạn 2: Tự động hóa Giao dịch</h3>
+                        <p>Tự động xuất file Báo giá, Phương án an ninh, Hợp đồng từ dữ liệu khảo sát. Kích hoạt thông
+                            báo mở mục tiêu mới.</p>
+                    </div>
+                    <div class="week">Tuần 4–5</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-icon" style="background:rgba(76,175,80,.15)">👥</div>
+                    <div>
+                        <h3>Giai đoạn 3: Vận hành & Phân ca</h3>
+                        <p>Đưa phòng Vận hành/Nghiệp vụ vào hệ thống: Tự động lên lịch, phân bổ định biên nhân sự theo
+                            đúng hợp đồng đã chốt.</p>
+                    </div>
+                    <div class="week">Tuần 6–9</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-icon" style="background:rgba(33,150,243,.15)">💰</div>
+                    <div>
+                        <h3>Giai đoạn 4: Tích hợp C&B & Tài chính</h3>
+                        <p>Đối soát công - lương, xuất hóa đơn dựa trên dữ liệu nghiệm thu ca trực thực tế của hệ thống.
+                            Chuẩn hóa doanh thu.</p>
+                    </div>
+                    <div class="week">Tuần 10–11</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-icon" style="background:rgba(156,39,176,.15)">📈</div>
+                    <div>
+                        <h3>Giai đoạn 5: CSKH & Phân tích 360°</h3>
+                        <p>Hệ thống auto nhắc gia hạn hợp đồng, cảnh báo rủi ro sự cố, cung cấp Dashboard toàn cảnh sức
+                            khỏe dự án cho BGĐ.</p>
+                    </div>
+                    <div class="week">Tuần 12+</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <div class="num">04</div>
+                <h2>Timeline Triển Khai</h2>
+            </div>
+            <div class="gantt-wrap">
+                <div class="gantt-header">
+                    <div></div>
+                    <div>T1</div>
+                    <div>T2</div>
+                    <div>T3</div>
+                    <div>T4</div>
+                    <div>T5</div>
+                    <div>T6</div>
+                    <div>T7</div>
+                    <div>T8</div>
+                    <div>T9</div>
+                    <div>T10</div>
+                    <div>T11</div>
+                    <div>T12</div>
+                    <div>T13</div>
+                </div>
+                <div class="gantt-row">
+                    <div class="label">Core & Đầu vào</div>
+                    <div class="gantt-cell" style="background:#FFD600;border-radius:6px 0 0 6px"></div>
+                    <div class="gantt-cell" style="background:#FFD600"></div>
+                    <div class="gantt-cell" style="background:#FFD600;border-radius:0 6px 6px 0"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="gantt-row">
+                    <div class="label">Auto Giao dịch</div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="gantt-cell" style="background:#FF9800;border-radius:6px 0 0 6px"></div>
+                    <div class="gantt-cell" style="background:#FF9800;border-radius:0 6px 6px 0"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="gantt-row">
+                    <div class="label">Vận hành & Phân ca</div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="gantt-cell" style="background:#4CAF50;border-radius:6px 0 0 6px"></div>
+                    <div class="gantt-cell" style="background:#4CAF50"></div>
+                    <div class="gantt-cell" style="background:#4CAF50"></div>
+                    <div class="gantt-cell" style="background:#4CAF50;border-radius:0 6px 6px 0"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="gantt-row">
+                    <div class="label">C&B / Tài chính</div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="gantt-cell" style="background:#2196F3;border-radius:6px 0 0 6px"></div>
+                    <div class="gantt-cell" style="background:#2196F3;border-radius:0 6px 6px 0"></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="gantt-row">
+                    <div class="label">Dashboard 360°</div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="gantt-cell" style="background:#9C27B0;border-radius:6px 0 0 6px"></div>
+                    <div class="gantt-cell" style="background:#9C27B0;border-radius:0 6px 6px 0"></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <div class="num">05</div>
+                <h2>Các Điểm Chạm Chuyển Đổi Số (Use Cases)</h2>
+            </div>
+            <div class="usecases">
+                <div class="usecase">
+                    <div class="left">
+                        <div class="rank" style="background:#E6AC00">1</div>
+                        <div class="info">
+                            <h4>Tự động hóa Báo giá & Phương án</h4>
+                            <p>Kinh doanh — AI tạo draft Phương án bảo vệ và Báo giá ngay khi Sales nhập xong form khảo
+                                sát thực địa.</p>
+                        </div>
+                    </div><span class="badge b-high">GIAI ĐOẠN 1</span>
+                </div>
+                <div class="usecase">
+                    <div class="left">
+                        <div class="rank" style="background:#E6AC00">2</div>
+                        <div class="info">
+                            <h4>Workflow Mở Mục Tiêu Mới</h4>
+                            <p>Nghiệp vụ — Khi HĐ được ký, hệ thống tự động bắn task chuẩn bị công cụ dụng cụ và phân ca
+                                định biên.</p>
+                        </div>
+                    </div><span class="badge b-high">GIAI ĐOẠN 2</span>
+                </div>
+                <div class="usecase">
+                    <div class="left">
+                        <div class="rank" style="background:#FF9800">3</div>
+                        <div class="info">
+                            <h4>Đối soát Công - Lương theo Dự án</h4>
+                            <p>C&B — Tự động map dữ liệu quân số trực thực tế tại mục tiêu vào bảng tính lương cuối
+                                tháng.</p>
+                        </div>
+                    </div><span class="badge b-med">GIAI ĐOẠN 3</span>
+                </div>
+                <div class="usecase">
+                    <div class="left">
+                        <div class="rank" style="background:#FF9800">4</div>
+                        <div class="info">
+                            <h4>Ticketing Xử Lý Sự Cố</h4>
+                            <p>CSKH — Chuẩn hóa quy trình tiếp nhận phàn nàn/sự cố, tự động điều phối đến Chỉ huy trưởng
+                                khu vực.</p>
+                        </div>
+                    </div><span class="badge b-med">GIAI ĐOẠN 3</span>
+                </div>
+                <div class="usecase">
+                    <div class="left">
+                        <div class="rank" style="background:#4CAF50">5</div>
+                        <div class="info">
+                            <h4>Cảnh báo Tái ký & Thanh lý</h4>
+                            <p>Pháp lý / Kinh doanh — Trigger báo động trước 30/60 ngày khi hợp đồng dịch vụ sắp hết
+                                hạn.</p>
+                        </div>
+                    </div><span class="badge b-low">GIAI ĐOẠN 4</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <div class="num">06</div>
+                <h2>Hành Động Tức Thời</h2>
+            </div>
+            <div class="principles">
+                <div class="principle"><span class="emoji">🗺️</span>
+                    <h4>Mapping Hành Trình</h4>
+                    <p>Phác thảo Data Model luồng đi của 1 hợp đồng từ lúc lead đến lúc thanh lý.</p>
+                </div>
+                <div class="principle"><span class="emoji">🛠️</span>
+                    <h4>Thiết Kế Form</h4>
+                    <p>Chuẩn hóa lại Form Khảo Sát Đầu Vào sao cho dữ liệu có thể tận dụng ở các khâu sau.</p>
+                </div>
+                <div class="principle"><span class="emoji">🎯</span>
+                    <h4>Chọn Pilot 1 Dự Án</h4>
+                    <p>Thử nghiệm vận hành toàn bộ luồng số hóa mới trên 1 mục tiêu/khách hàng chuẩn bị ký.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer">SeaZen © 2026 — AI & Automation | Định Hướng Vòng Đời Khách Hàng</div>
+</body>
+
+</html>

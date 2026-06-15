@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaZen AI Implementation Master Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #F5A623; /* SeaZen Corporate Yellow/Orange */
+            --primary-hover: #D08C1E;
+            --bg-body: #F4F7FE; /* Soft Light Background */
+            --bg-sidebar: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --gray-hover: #F0F3F8;
+            --border-color: #E2E8F0;
+            --scrollbar: #CBD5E1;
+            --text-main: #1E293B; /* Dark Blue-Gray */
+            --text-muted: #64748B;
+            --text-inverse: #FFFFFF;
+            --success: #10B981;
+            --danger: #EF4444;
+            --info: #3B82F6;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: rgba(226, 232, 240, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+        /* Sidebar */
+        .sidebar { width: 280px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; padding: 24px 0; z-index: 10; box-shadow: 2px 0 10px rgba(0,0,0,0.02); }
+        .logo-area { padding: 0 24px 32px; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; }
+        .logo-area h1 { font-size: 22px; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 12px; letter-spacing: -0.5px; }
+        .logo-area h1 i { color: var(--primary); }
+        .logo-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+        .nav-menu { display: flex; flex-direction: column; gap: 6px; padding: 0 16px; flex: 1; }
+        .nav-item { padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 14px; font-weight: 600; color: var(--text-muted); border: 1px solid transparent; font-size: 14px; }
+        .nav-item i { width: 20px; text-align: center; font-size: 16px; transition: all 0.3s; }
+        .nav-item:hover { background-color: var(--gray-hover); color: var(--text-main); }
+        .nav-item.active { background: #FFFBEB; border: 1px solid #FEF3C7; color: #D97706; box-shadow: 0 2px 4px rgba(245,166,35,0.05); }
+        .nav-item.active i { color: #D97706; }
+
+        /* Main Content */
+        .main-content { flex: 1; overflow-y: auto; padding: 48px; background: var(--bg-body); scroll-behavior: smooth; }
+        .main-content::-webkit-scrollbar { width: 6px; }
+        .main-content::-webkit-scrollbar-thumb { background-color: var(--scrollbar); border-radius: 10px; }
+        .phase-section { display: none; animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .phase-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Header Area */
+        .phase-header { margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 32px; }
+        .phase-badge { display: inline-block; padding: 6px 14px; background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .phase-title { font-size: 36px; font-weight: 800; margin-bottom: 16px; color: #0F172A; letter-spacing: -0.5px; }
+        .phase-desc { color: var(--text-muted); font-size: 16px; line-height: 1.6; max-width: 800px; }
+
+        /* Grid Layout */
+        .grid-container { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        @media (min-width: 1200px) { .grid-container { grid-template-columns: 1fr; } .full-width { grid-column: 1 / -1; } }
+
+        /* Cards */
+        .glass-card { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; padding: 28px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); transition: all 0.3s ease; height: 100%; }
+        .glass-card:hover { border-color: #CBD5E1; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); transform: translateY(-2px); }
+        .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color); }
+        .card-header i { font-size: 20px; color: var(--primary); background: #FFFBEB; padding: 12px; border-radius: 12px; }
+        .card-title { font-size: 18px; font-weight: 700; color: #0F172A; }
+
+        /* Tables */
+        .table-responsive { overflow-x: auto; }
+        .data-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+        .data-table th { text-align: left; padding: 0 16px 12px; color: var(--text-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); }
+        .data-table td { padding: 16px; background: #F8FAFC; font-size: 14px; color: #334155; vertical-align: middle; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .data-table tr td:first-child { border-radius: 10px 0 0 10px; border-left: 1px solid var(--border-color); font-weight: 600; color: #0F172A; }
+        .data-table tr td:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(--border-color); }
+        .data-table tr { transition: transform 0.2s, box-shadow 0.2s; }
+        .data-table tr:hover td { background: #FFFFFF; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+
+        /* Tags / Badges */
+        .tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; background: #F1F5F9; white-space: nowrap; color: #475569; }
+        .tag.tag-doc { background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; }
+        .tag.tag-role { background: #F5F3FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+        .tag.tag-alert { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+        .tag.tag-success { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
+        .tag.tag-info { background: #F0FDF4; color: #16A34A; border: 1px solid #BBF7D0; }
+
+        .action-link { text-decoration: none; cursor: pointer; transition: all 0.2s ease; }
+        .action-link:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); filter: brightness(1.05); }
+
+        /* Checklists */
+        .checklist { list-style: none; }
+        .checklist-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px; background: #F8FAFC; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border-color); transition: all 0.2s; }
+        .checklist-item:hover { background: #FFFFFF; border-color: #CBD5E1; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .check-icon { width: 24px; height: 24px; border-radius: 50%; background: #D1FAE5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+        .check-content h4 { font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 6px; }
+        .check-content .role-badge { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; font-weight: 500; }
+
+        /* Hand-off Flow */
+        .handoff-flow { background: #F8FAFC; border-radius: 12px; padding: 24px; margin-top: 24px; border: 1px dashed #CBD5E1; }
+        .flow-step { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+        .flow-step:last-child { margin-bottom: 0; }
+        .step-icon { width: 32px; height: 32px; border-radius: 8px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 14px; border: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .step-content { flex: 1; font-size: 14px; font-weight: 600; color: #334155; }
+        .flow-arrow-down { margin: 8px 0 8px 15px; width: 2px; height: 20px; background: linear-gradient(to bottom, var(--primary), transparent); }
+        
+        .highlight-box { background: #FFFBEB; border: 1px solid #FEF3C7; padding: 16px; border-radius: 10px; margin-top: 16px; font-size: 14px; color: #B45309; line-height: 1.6; font-weight: 500; }
+
+    
+        /* To-do List */
+        .todo-list { margin-top: 16px; }
+        .todo-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s; }
+        .todo-item:hover { border-color: var(--primary); transform: translateX(4px); }
+        .todo-checkbox { width: 24px; height: 24px; border-radius: 4px; border: 2px solid #CBD5E1; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+        .todo-content h5 { font-size: 15px; color: #0F172A; margin-bottom: 4px; }
+        .todo-content p { font-size: 13px; color: var(--text-muted); }
+
+        /* Mail Template */
+        .mail-template { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; margin-top: 24px; position: relative; }
+        .mail-template::before { content: "EMAIL TEMPLATE"; position: absolute; top: -10px; left: 24px; background: #0F172A; color: #FFF; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; letter-spacing: 1px; }
+        .mail-header { border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px; }
+        .mail-row { display: flex; margin-bottom: 8px; font-size: 14px; }
+        .mail-label { width: 80px; font-weight: 600; color: var(--text-muted); }
+        .mail-value { flex: 1; color: var(--text-main); font-weight: 600; }
+        .mail-body { font-size: 14px; color: var(--text-main); font-family: monospace; line-height: 1.8; background: #F8FAFC; padding: 16px; border-radius: 6px; }
+        .btn-action { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #FFF; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s; margin-top: 16px; border: none; cursor: pointer; }
+        .btn-action:hover { background: var(--primary-hover); }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <h1 style="font-size: 17px;"><i class="fa-solid fa-shield-halved"></i> SeaZen Customer Lifecycle</h1>
+            <div class="logo-subtitle">AI Master Plan 2026</div>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-item active" onclick="switchPhase(1)">
+                <i class="fa-solid fa-1"></i>
+                <span>GĐ 1: Nền tảng Core</span>
+            </div>
+            <div class="nav-item" onclick="switchPhase(2)">
+                <i class="fa-solid fa-2"></i>
+                <span>GĐ 2: Auto Giao dịch</span>
+            </div>
+            <div class="nav-item" onclick="switchPhase(3)">
+                <i class="fa-solid fa-3"></i>
+                <span>GĐ 3: Vận hành & Phân ca</span>
+            </div>
+            <div class="nav-item" onclick="switchPhase(4)">
+                <i class="fa-solid fa-4"></i>
+                <span>GĐ 4: Tiền lương (C&B) & Tài chính</span>
+            </div>
+            <div class="nav-item" onclick="switchPhase(5)">
+                <i class="fa-solid fa-5"></i>
+                <span>GĐ 5: Phân tích 360°</span>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- ========================================== -->
+        
+        <!-- FLOWCHART SECTION -->
+        <section id="phase-flowchart" class="phase-section" >
+            <div class="section-header">
+                <h2>Sơ đồ Luồng Công việc Tổng thể A-Z</h2>
+                <p>Khái quát 5 Giai đoạn & Feedback Loop của toàn bộ hệ thống SeaZen AI</p>
+            </div>
+            <div class="glass-card full-width" style="overflow-x: auto;">
+                <div class="mermaid" style="min-width: 1000px; padding: 20px;">
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#FFFFFF',
+    'primaryTextColor': '#1E293B',
+    'primaryBorderColor': '#CBD5E1',
+    'lineColor': '#64748B',
+    'secondaryColor': '#F8FAFC',
+    'tertiaryColor': '#FFFFFF',
+    'clusterBkg': '#FFFFFF',
+    'clusterBorder': '#E2E8F0',
+    'fontFamily': 'Inter',
+    'fontSize': '16px'
+  },
+  'flowchart': {
+    'curve': 'stepAfter',
+    'rankSpacing': 80,
+    'nodeSpacing': 60
+  }
+}}%%
+flowchart TD
+    classDef default fill:#FFFFFF,stroke:#CBD5E1,stroke-width:2px,color:#1E293B,font-weight:600;
+    classDef decision fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E,font-weight:bold;
+    classDef loop fill:#EFF6FF,stroke:#3B82F6,stroke-width:2px,stroke-dasharray: 5 5,color:#1E3A8A;
+    classDef endpoint fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#065F46,font-weight:bold;
+
+    subgraph G1 ["1. NỀN TẢNG CORE (Sales & Vận hành)"]
+        direction TB
+        A1[Sales: Khởi tạo Khách Hàng] --> A2[Sales: Khảo sát Hiện trường]
+        A2 --> A3[App: Chụp ảnh & Chấm điểm Rủi ro]
+        A3 --> A4{GĐ Vận hành Duyệt?}
+        A4 -- "Từ chối" --> A2
+    end
+
+    subgraph G2 ["2. TỰ ĐỘNG GIAO DỊCH (Sales & Kế toán)"]
+        direction TB
+        A4 -- "Đồng ý" --> B1[Hệ thống: Xuất Báo giá & Phương án BV]
+        B1 --> B2{Lợi nhuận P&L < Giá Sàn?}
+        B2 -- "Yes" --> B3[Sales: Trình Deal Review]
+        B3 --> B4{BOD Duyệt?}
+        B4 -- "Từ chối" --> B1
+        B2 -- "No" --> B5[Ký Hợp đồng thành công]
+        B4 -- "Đồng ý" --> B5
+    end
+
+    subgraph G3 ["3. VẬN HÀNH & SLA (Vận hành & Tuyển dụng)"]
+        direction TB
+        B5 --> C1[Tuyển dụng: Chuẩn bị Nguồn nhân sự]
+        C1 --> C2[Vận hành: Lên Master Roster]
+        C2 --> C3[Chỉ huy: Bàn giao Post Order 10 Bước]
+        C3 --> C4[Bảo vệ: Check-in / Giao ca / Nhật ký Online]
+    end
+
+    subgraph G4 ["4. TÀI CHÍNH & TIỀN LƯƠNG (C&B & Tài chính)"]
+        direction TB
+        C4 --> D1[C&B: Khóa sổ & Chốt công / OT]
+        D1 --> D2[Kế toán: Duyệt & Xuất E-Invoice tự động]
+        D2 --> D3[Kế toán: Theo dõi Dashboard Công nợ]
+        D3 --> D4{KH Nợ Quá Hạn > 15 ngày?}
+        D4 -- "Yes" --> D5[Hệ thống: Tự động Gửi Mail Nhắc Nợ]
+        D4 -- "No" --> D6([Ghi nhận Doanh Thu An Toàn])
+        D5 --> D6
+    end
+
+    subgraph G5 ["5. CSKH & PHÂN TÍCH 360 (SOC & BOD)"]
+        direction TB
+        C4 --> E1[SOC: Trực Giám sát Dashboard 360]
+        E1 --> E2{Phát sinh Sự cố?}
+        E2 -- "Nghiêm trọng L3/L4" --> E3[Hệ thống: Báo động Đỏ & Điều động SRT]
+        E2 -- "Thông thường L1/L2" --> E4[Chỉ huy: Xử lý tại chỗ]
+        E3 --> E5[QA: Mở phiếu CAPA khắc phục lỗi]
+        E4 --> E5
+        E5 --> E6([Sự cố được Đóng - Close Incident])
+    end
+
+    E5 --> F1[BOD: Phân tích Dữ liệu Lỗ hổng & Churn Rate]
+    F1 -. "Rủi ro PCCC/Đình công mới" .-> A2
+    F1 -. "Tăng giá sàn bù Rủi ro" .-> B1
+    F1 -. "Cập nhật Quy trình bảo vệ" .-> C3
+
+    class A4,B2,B4,D4,E2 decision;
+    class D6,E6 endpoint;
+    class F1 loop;
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 1 -->
+
+        <!-- ========================================== -->
+        <section id="phase-1" class="phase-section active">
+            <div class="phase-header">
+                <h2 class="phase-title">Nền tảng Core & Đầu vào</h2>
+                <p class="phase-desc">Số hóa Form khảo sát mục tiêu thực địa. Thiết lập cấu trúc Master Data làm gốc cho toàn bộ luồng quy trình vận hành của SeaZen.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- 1. Danh sách form -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <h3 class="card-title">1.1 Danh sách Biểu mẫu / Template Khảo sát Thực địa</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Biểu mẫu / Template</th>
+                                    <th>Loại hình mục tiêu</th>
+                                    <th>Mã tài liệu</th>
+                                    <th>Gói Dịch vụ áp dụng</th>
+                                    <th>Trách nhiệm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Biên bản Khảo sát mục tiêu mới</strong></td>
+                                    <td>Tất cả mục tiêu mới</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-OPS-01</a></td>
+                                    <td>Tất cả</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực / Sales</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biểu mẫu Khảo sát Nhà máy – Kho vận</strong></td>
+                                    <td>Nhà máy / Kho logistics</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Dựa trên SZ-PO-OPS-01</a></td>
+                                    <td>Guarding+ / Integrated</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực + Vận hành</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biểu mẫu Khảo sát Bệnh viện – Y tế</strong></td>
+                                    <td>Bệnh viện / Y tế</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Dựa trên SZ-PO-OPS-02</a></td>
+                                    <td>Guarding+ / Integrated</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực + Vận hành</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biểu mẫu Khảo sát Tòa nhà – VP</strong></td>
+                                    <td>Tòa nhà / Chung cư</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Dựa trên SZ-PO-OPS-03</a></td>
+                                    <td>Standard / Guarding+</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực + Sales</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biểu mẫu Khảo sát Trường học</strong></td>
+                                    <td>Trường học / Đại học</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Dựa trên SZ-PO-OPS-04</a></td>
+                                    <td>Guarding+</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực + Sales</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risk Assessment chuyên sâu</strong></td>
+                                    <td>VVIP / Sự kiện</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Phụ lục 04 Quy chế Thương mại</a></td>
+                                    <td>High-Security</td>
+                                    <td><span class="tag tag-role">QA + Cố vấn An ninh</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Nội dung bắt buộc -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-list-check"></i>
+                        <h3 class="card-title">1.2 Nội dung bắt buộc trong mỗi Form Khảo sát (Điều 16 Quy chế Thương mại, Điều 18 Quy chế Vận hành)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nhóm thông tin</th>
+                                    <th>Nội dung cần thu thập</th>
+                                    <th>Bắt buộc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. Thực địa</strong></td>
+                                    <td>Loại hình, diện tích, số cổng, hàng rào, sơ đồ mặt bằng</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. Luồng di chuyển</strong></td>
+                                    <td>Luồng người / xe / hàng hóa, nhà thầu, giờ vận hành</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. Khu vực trọng yếu</strong></td>
+                                    <td>Khu vực PCCC, kho bãi, server room, khu VIP, điểm đặt chốt</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. Đánh giá rủi ro</strong></td>
+                                    <td>Mất cắp, xâm nhập, gian lận, đình công, PCCC, tai nạn, pháp lý</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5. Công nghệ hiện có</strong></td>
+                                    <td>Camera, access control, hệ thống báo động, app quản lý của Khách hàng</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6. Yêu cầu đặc thù Khách hàng</strong></td>
+                                    <td>SLA kỳ vọng, tiêu chuẩn nhân sự, ngoại ngữ, đồng phục</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>7. Ảnh & Bằng chứng</strong></td>
+                                    <td>Ảnh hiện trường có GPS / timestamp (Tối thiểu 10 ảnh)</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>8. Sơ đồ mục tiêu</strong></td>
+                                    <td>Layout mặt bằng đánh dấu vị trí chốt dự kiến</td>
+                                    <td><span class="tag tag-success">Có</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. Master Data -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-server"></i>
+                        <h3 class="card-title">1.3 Cấu trúc Master Data (Khởi tạo ở GĐ1)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nhóm dữ liệu</th>
+                                    <th>Trường thông tin cần nhập</th>
+                                    <th>Sử dụng trong Giai đoạn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Khách hàng</strong></td>
+                                    <td>Tên, địa chỉ, người quyết định, hotline, email</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> GĐ 2, 4, 5</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mục tiêu</strong></td>
+                                    <td>Loại hình, địa chỉ, diện tích, số vị trí trực, giờ vận hành</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> GĐ 2, 3</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Gói dịch vụ</strong></td>
+                                    <td>Tên gói đã chọn, mô hình ca trực, định biên dự kiến</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> GĐ 2, 3, 4</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rủi ro & SLA</strong></td>
+                                    <td>Cấp độ rủi ro, nhóm rủi ro, SLA kỳ vọng của Khách hàng</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> GĐ 2, 3, 5</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tài chính</strong></td>
+                                    <td>Ngân sách Khách hàng, điều kiện thanh toán, mức phạt</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> GĐ 2, 4</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cơ cấu nội bộ</strong></td>
+                                    <td>Quản lý khu vực phụ trách, Chỉ huy mục tiêu, Sales owner, tuyến báo cáo</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> GĐ 3, 4, 5</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Outputs -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3 class="card-title">1.4 Danh sách Output Bàn giao (Sang GĐ2)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Output</th>
+                                    <th>Mã / Form</th>
+                                    <th>Ai tạo ra</th>
+                                    <th>Mục đích ở GĐ 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Biên bản khảo sát (Đã ký)</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-OPS-01</a></td>
+                                    <td><span class="tag tag-role">Quản lý khu vực / Sales</span></td>
+                                    <td>Làm cơ sở thiết kế Phương án bảo vệ + Báo giá</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ảnh hiện trường</strong> (có GPS)</td>
+                                    <td>—</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực</span></td>
+                                    <td>Đính kèm minh chứng Khảo sát</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Danh sách rủi ro</strong> (Checklist)</td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Mẫu PPRT</a></td>
+                                    <td><span class="tag tag-role">Vận hành / QA</span></td>
+                                    <td>Đề xuất gói dịch vụ, Phương án bảo vệ</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sơ đồ mục tiêu</strong></td>
+                                    <td>—</td>
+                                    <td><span class="tag tag-role">Quản lý khu vực + Khách hàng</span></td>
+                                    <td>Input trực tiếp vẽ chốt Phương án bảo vệ</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Master Data Khách hàng</strong></td>
+                                    <td>CRM</td>
+                                    <td><span class="tag tag-role">Sales</span></td>
+                                    <td>Auto điền Hợp đồng</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Đề xuất Gói dịch vụ</strong></td>
+                                    <td>—</td>
+                                    <td><span class="tag tag-role">Sales + Vận hành</span></td>
+                                    <td>Kích hoạt template Báo giá phù hợp</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5. Handoff Checklist -->
+                
+                <!-- Employee Guideline -->
+                <div class="glass-card full-width" style="border-left: 4px solid var(--info);">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h3 class="card-title">1.5 Employee Guideline & To-Do List</h3>
+                    </div>
+                    <p class="section-desc">Hướng dẫn thao tác thực tế dành cho Sales / Quản lý khu vực (QLKV) khi đi Khảo sát Mục tiêu.</p>
+
+                    <div class="todo-list">
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>1. Khởi tạo Khách hàng trên Hệ thống</h5>
+                                <p>Mở ứng dụng Microsoft List trên điện thoại/Tablet, vào mục "Khách hàng" để tạo mới hoặc tìm kiếm mã KH hiện có.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>2. Thu thập Dữ liệu & Bằng chứng tại Hiện trường</h5>
+                                <p>Điền biểu mẫu Khảo sát (SZ-FRM-OPS-01) trực tiếp trên điện thoại. Bắt buộc chụp tối thiểu 10 ảnh (Hệ thống sẽ auto-tag GPS & Thời gian).</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>3. Đánh giá Rủi ro & Submit</h5>
+                                <p>Check vào bảng Risk Checklist (PCCC, Mất cắp, Đình công...). Bấm nút "Submit & Trình duyệt".</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail-template">
+                        <div class="mail-header">
+                            <div class="mail-row">
+                                <div class="mail-label">To:</div>
+                                <div class="mail-value">Trưởng Khối Vận Hành</div>
+                            </div>
+                            <div class="mail-row">
+                                <div class="mail-label">Subject:</div>
+                                <div class="mail-value">[ACTION REQUIRED] Trình duyệt Khảo sát Mục tiêu - [Tên Khách Hàng]</div>
+                            </div>
+                        </div>
+                        <div class="mail-body">
+                            Kính gửi Trưởng Khối Vận hành,<br><br>
+                            Nhân viên [Tên QLKV] vừa hoàn tất khảo sát thực địa cho mục tiêu [Tên Mục Tiêu].<br><br>
+                            - Loại hình: [Nhà máy/Tòa nhà...]<br>
+                            - Mức độ Rủi ro sơ bộ: [Cao/Trung bình/Thấp]<br>
+                            - Link chi tiết Form & Ảnh đính kèm: <a href="#">[Mở SharePoint Item]</a><br><br>
+                            Vui lòng click vào nút bên dưới để Phê duyệt (Approve) làm cơ sở làm Báo giá.<br><br>
+                            <button class="btn-action">Approve via Power Automate</button>
+                        </div>
+                    </div>
+                </div>
+
+<div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3 class="card-title">1.6 Checklist Bàn giao (Gate Condition)</h3>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Biên bản Khảo sát (SZ-FRM-OPS-01) hoàn tất chữ ký xác nhận</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Trưởng Khối Vận hành</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Đánh giá Risk Checklist rõ ràng cấp độ rủi ro</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> QA / Vận hành</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Gói dịch vụ đã được xác nhận (Standard / Guarding+ / Integrated / High-Security)</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Sales + Vận hành</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Master Data Khách hàng đã nhập đầy đủ vào CRM</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Sales / Kinh doanh</div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="handoff-flow">
+                        <div class="flow-step">
+                            <div class="step-icon"><i class="fa-solid fa-database"></i></div>
+                            <div class="step-content">Data Khảo sát & Master Data Khách hàng hoàn tất</div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fa-solid fa-bolt"></i> <strong>Hệ thống AI tự động kích hoạt Giai đoạn 2:</strong><br>
+                            - Sinh Báo giá draft dựa trên Gói + Định biên.<br>
+                            - Sinh Phương án bảo vệ draft dựa trên Sơ đồ + Rủi ro.<br>
+                            - Sinh Hợp đồng draft dựa trên Master Data.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PHASE 2 -->
+        <!-- ========================================== -->
+        <section id="phase-2" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">Tự động hóa Giao dịch</h2>
+                <p class="phase-desc">Tự động xuất file Báo giá, Phương án an ninh và Hợp đồng dựa trên Master Data GĐ1. Quản lý chặt chẽ luồng phê duyệt Deal/Bid Review.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- 1. Forms -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <h3 class="card-title">2.1 Hệ thống Biểu mẫu Tự động sinh (Điều 13-15 Quy chế Thương mại)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Biểu mẫu / Template</th>
+                                    <th>Mã tài liệu</th>
+                                    <th>Dữ liệu đầu vào (Từ GĐ1)</th>
+                                    <th>Trách nhiệm xuất</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Template Báo giá Dịch vụ</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Phụ lục 01 Quy chế Thương mại</a></td>
+                                    <td>Gói Dịch vụ, Định biên, Master Data</td>
+                                    <td><span class="tag tag-role">Sales / Kinh doanh</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phương án Bảo vệ (Phương án bảo vệ)</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-OPS-02</a></td>
+                                    <td>Biên bản Khảo sát (SZ-FRM-OPS-01), Sơ đồ</td>
+                                    <td><span class="tag tag-role">Khối Vận hành</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bản Thỏa thuận mức Dịch vụ (SLA)</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Phụ lục 05 Quy chế Thương mại</a></td>
+                                    <td>Yêu cầu đặc thù Khách hàng, Gói Dịch vụ</td>
+                                    <td><span class="tag tag-role">QA / Kinh doanh</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Form Deal / Bid Review</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-alert action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Phụ lục 05 Quy chế Thương mại</a></td>
+                                    <td>Giá < Sàn hoặc Nợ > Chuẩn</td>
+                                    <td><span class="tag tag-role">Sales (Tài chính, Vận hành thẩm định)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Template Hợp đồng chuẩn</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Hợp đồng chuẩn</a></td>
+                                    <td>Báo giá chốt, SLA, Master Data</td>
+                                    <td><span class="tag tag-role">Pháp lý / Kinh doanh</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Điều kiện Deal Review -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <h3 class="card-title">2.2 Điều kiện Kích hoạt Deal/Bid Review (Điều 16-18 Quy chế Thương mại)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tiêu chí ngoại lệ</th>
+                                    <th>Ngưỡng vi phạm (Kích hoạt khóa xuất Hợp đồng)</th>
+                                    <th>Đơn vị Thẩm định bắt buộc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Giá bán</strong></td>
+                                    <td>Báo giá đề xuất < Giá sàn (Phụ lục 01)</td>
+                                    <td><span class="tag tag-role">Tài chính - Kế toán</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biên lợi nhuận</strong></td>
+                                    <td>Biên lợi nhuận < Mức tối thiểu quy định</td>
+                                    <td><span class="tag tag-role">Tài chính - Kế toán</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Công nợ</strong></td>
+                                    <td>Cho phép Khách hàng nợ > 15-30 ngày (vượt chuẩn)</td>
+                                    <td><span class="tag tag-role">Tài chính - Kế toán</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SLA / Cam kết phạt</strong></td>
+                                    <td>SLA quá chặt, mức phạt vi phạm > mức chuẩn</td>
+                                    <td><span class="tag tag-role">QA, Vận hành, Pháp lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rủi ro Vận hành</strong></td>
+                                    <td>Mô hình ca 12h/30 ngày liên tục, khu vực thiếu người</td>
+                                    <td><span class="tag tag-role">Bộ phận Tuyển dụng, Khối Vận hành</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. Outputs -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3 class="card-title">2.3 Danh sách Output Bàn giao (Sang GĐ3)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Output</th>
+                                    <th>Ai phê duyệt</th>
+                                    <th>Mục đích / Bàn giao</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Phương án bảo vệ Final</strong></td>
+                                    <td><span class="tag tag-role">GĐ Vận hành + Khách hàng</span></td>
+                                    <td>Vận hành (để lên ca trực GĐ3)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hồ sơ Báo giá Final</strong></td>
+                                    <td><span class="tag tag-role">GĐ Kinh doanh/LOA</span></td>
+                                    <td>Gửi Khách hàng</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hợp đồng Dịch vụ (Đã ký)</strong></td>
+                                    <td><span class="tag tag-role">TGĐ + Khách hàng</span></td>
+                                    <td>Hành chính / Tài chính / Vận hành</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phụ lục SLA</strong></td>
+                                    <td><span class="tag tag-role">QA + Khách hàng</span></td>
+                                    <td>QA (để đo lường GĐ5)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Handoff -->
+                
+                <!-- Employee Guideline -->
+                <div class="glass-card full-width" style="border-left: 4px solid var(--info);">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h3 class="card-title">2.4 Employee Guideline & To-Do List</h3>
+                    </div>
+                    <p class="section-desc">Hướng dẫn thao tác chốt Báo giá và Ký Hợp đồng dành cho khối Kinh Doanh (Sales).</p>
+
+                    <div class="todo-list">
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>1. Tạo Báo Giá Tự Động</h5>
+                                <p>Truy cập SharePoint List "Hợp đồng". Chọn mã Khách hàng từ GĐ1, điền Định biên và Gói dịch vụ. Hệ thống tự xuất PDF Báo giá và Phương án Bảo vệ.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>2. Trình duyệt Ngoại lệ (Deal Review)</h5>
+                                <p>Nếu hệ thống báo Biên lợi nhuận (P&L) thấp hơn tiêu chuẩn, hãy điền phần "Giải trình" và chuyển Status sang "Deal Review".</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>3. Hoàn tất & Ký kết</h5>
+                                <p>Chờ BOD bấm Approve qua email. Sau đó, tải PDF Hợp đồng để gửi Khách hàng ký. Cập nhật Status thành "Signed".</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail-template">
+                        <div class="mail-header">
+                            <div class="mail-row">
+                                <div class="mail-label">To:</div>
+                                <div class="mail-value">Ban Giám Đốc (Tài chính & Vận hành)</div>
+                            </div>
+                            <div class="mail-row">
+                                <div class="mail-label">Subject:</div>
+                                <div class="mail-value">[DEAL REVIEW] Yêu cầu phê duyệt ngoại lệ HĐ - [Tên Khách Hàng]</div>
+                            </div>
+                        </div>
+                        <div class="mail-body">
+                            Kính gửi Ban Giám đốc,<br><br>
+                            Hợp đồng [Mã HĐ] đang chờ phê duyệt Deal Review do vi phạm điều kiện tiêu chuẩn:<br>
+                            - Lý do: Giá bán đề xuất thấp hơn Giá sàn quy định (Phụ lục 01 Quy chế Thương mại).<br>
+                            - Lợi nhuận gộp ước tính (P&L): <span style="color:var(--danger);font-weight:bold;">[X]%</span><br>
+                            - Giải trình từ Sales: [Lý do nhập từ List]<br><br>
+                            Vui lòng kiểm tra chi tiết P&L tại Dashboard và phản hồi kết quả:<br><br>
+                            <button class="btn-action">View P&L Dashboard</button> <button class="btn-action" style="background: var(--success);">Approve</button>
+                        </div>
+                    </div>
+                </div>
+
+<div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3 class="card-title">2.5 Checklist Bàn giao (Phụ lục 02 Quy chế Vận hành)</h3>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Hợp đồng chính thức / Email chốt Báo giá</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Hành chính / Kinh doanh</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Phương án bảo vệ (SZ-FRM-OPS-02) được duyệt</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Khối Vận hành</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Chốt định biên, mô hình ca, lương mục tiêu</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Vận hành / Tuyển dụng / Tài chính</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="handoff-flow">
+                        <div class="flow-step">
+                            <div class="step-icon"><i class="fa-solid fa-file-contract"></i></div>
+                            <div class="step-content">Đẩy Data Hợp đồng (Ngày BĐ, Quân số, Mô hình ca, SLA)</div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fa-solid fa-bolt"></i> <strong>Hệ thống tự động kích hoạt Giai đoạn 3:</strong><br>
+                            - Tạo Master Roster (Lịch trực tổng).<br>
+                            - Gửi request tuyển dụng / điều quân cho bộ phận Tuyển dụng.<br>
+                            - Sinh Draft Post Order (SZ-PO-OPS).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PHASE 3 -->
+        <!-- ========================================== -->
+        <section id="phase-3" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">Vận hành & Phân ca</h2>
+                <p class="phase-desc">Số hóa điều quân, quản lý ca trực, kiểm soát Zero-Gap và quy chuẩn SOP 10 bước qua hệ thống App.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- 1. Forms -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <h3 class="card-title">3.1 Công cụ Quản trị Vận hành & Phân ca (Chương V, VI Quy chế Vận hành)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Biểu mẫu / Template</th>
+                                    <th>Mã tài liệu</th>
+                                    <th>Trách nhiệm</th>
+                                    <th>Mục đích</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Post Order Hiện trường</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-PO-OPS-01..04</a></td>
+                                    <td><span class="tag tag-role">Quản lý khu vực / Chỉ huy mục tiêu / Khách hàng duyệt</span></td>
+                                    <td>Hướng dẫn công việc vị trí cụ thể</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SOP Quản lý Quân số</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-SOP-OPS-04</a></td>
+                                    <td><span class="tag tag-role">Khối Vận hành / Tuyển dụng</span></td>
+                                    <td>Nguyên tắc bù quân, chống thủng ca</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Master Roster (Lịch trực)</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> AI App System</a></td>
+                                    <td><span class="tag tag-role">Quản lý khu vực / Tuyển dụng</span></td>
+                                    <td>Phân ca thực tế, khóa định biên Hợp đồng</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nhật ký Ca trực & Bàn giao</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-OPS-03</a></td>
+                                    <td><span class="tag tag-role">Chỉ huy mục tiêu / Ca trưởng</span></td>
+                                    <td>Ghi nhận công, bàn giao tài sản</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nhật ký Tuần tra, Kiểm tra</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-OPS-04</a></td>
+                                    <td><span class="tag tag-role">Nhân viên bảo vệ / Chỉ huy mục tiêu</span></td>
+                                    <td>Log quá trình đi tuần bằng App/GPS</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Checklist Audit Mục tiêu</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-QA-01</a></td>
+                                    <td><span class="tag tag-role">QA</span></td>
+                                    <td>Chấm điểm chất lượng vận hành</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Outputs -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3 class="card-title">3.2 Output Giai đoạn 3 (Phụ lục 03 Quy chế Vận hành)</h3>
+                    </div>
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td>Master Roster đã duyệt</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Nhân viên bảo vệ (hiển thị App)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Dữ liệu Chấm công thực tế</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Gửi GĐ4 (Tiền lương (C&B)/Tài chính)</a></td>
+                            </tr>
+                            <tr>
+                                <td>Báo cáo Tuần tra số (GPS)</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Gửi GĐ5 (Trung tâm An ninh (SOC))</a></td>
+                            </tr>
+                            <tr>
+                                <td>Log Giao/Nhận ca số hóa</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Quản lý khu vực / Trung tâm An ninh (SOC)</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 3. Handoff -->
+                
+                <!-- Employee Guideline -->
+                <div class="glass-card full-width" style="border-left: 4px solid var(--info);">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h3 class="card-title">3.3 Employee Guideline & To-Do List</h3>
+                    </div>
+                    <p class="section-desc">Hướng dẫn Triển khai Mục tiêu mới & Vận hành hàng ngày cho Khối Vận hành, QLKV, và Chỉ huy mục tiêu.</p>
+
+                    <div class="todo-list">
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>1. Tiếp nhận & Phân ca (Master Roster)</h5>
+                                <p>Khi Hợp đồng thành "Signed" ở GĐ2, QLKV sẽ nhận được Task nhắc việc. Truy cập Hệ thống, nhập dữ liệu nhân sự vào các chốt theo đúng định biên đã chốt.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>2. Bàn giao Post Order (SOP 10 Bước)</h5>
+                                <p>Chỉ huy mục tiêu sinh Post Order (SZ-PO-OPS) từ template và training cho Nhân viên. NVBV xác nhận đã đọc quy định.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>3. Nhật ký Ca trực Online</h5>
+                                <p>Hàng ngày, Ca trưởng không dùng sổ giấy mà quét QR/GPS tại mục tiêu để "Check-in" và "Giao/Nhận ca" cùng tài sản trực tuyến.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail-template">
+                        <div class="mail-header">
+                            <div class="mail-row">
+                                <div class="mail-label">To:</div>
+                                <div class="mail-value">QLKV, Chỉ huy mục tiêu, Tuyển dụng</div>
+                            </div>
+                            <div class="mail-row">
+                                <div class="mail-label">Subject:</div>
+                                <div class="mail-value">[DEPLOYMENT] Bàn giao Vận hành Mục tiêu mới - [Tên Khách Hàng]</div>
+                            </div>
+                        </div>
+                        <div class="mail-body">
+                            Chào team Vận hành,<br><br>
+                            Hợp đồng [Mã HĐ] đã được ký kết thành công. Các thông số vận hành như sau:<br>
+                            - Ngày bắt đầu (Go-live): [DD/MM/YYYY]<br>
+                            - Tổng định biên: [Số lượng] nhân sự<br>
+                            - Gói Dịch vụ: [Standard / Guarding+ / Integrated]<br><br>
+                            <strong>Yêu cầu:</strong> Tuyển dụng chuẩn bị nguồn lực. QLKV vui lòng hoàn thiện Master Roster và Phương án Bảo vệ trước ngày Go-live 3 ngày.<br><br>
+                            <button class="btn-action">Mở Hệ thống Phân Ca</button>
+                        </div>
+                    </div>
+                </div>
+
+<div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3 class="card-title">3.4 Checklist Bàn giao (SOP 10 bước Quy chế Vận hành)</h3>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Chốt sổ Master Roster cuối kỳ</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Quản lý khu vực / Chỉ huy mục tiêu xác nhận</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Xác nhận các khoản Tăng ca (Tăng ca (OT)), phụ cấp với Khách hàng</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Khối Vận hành</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Nhật ký ca trực không có Sự cố treo (Open Incidents)</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Trung tâm An ninh (SOC) / QA</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="handoff-flow">
+                        <div class="flow-step">
+                            <div class="step-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                            <div class="step-content">Hệ thống chốt dữ liệu 00:00 ngày cuối kỳ tính lương</div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fa-solid fa-bolt"></i> <strong>Hệ thống tự động đẩy dữ liệu sang Giai đoạn 4:</strong><br>
+                            - Sinh Bảng lương thô (Cho Tiền lương (C&B) xử lý).<br>
+                            - Sinh Bảng tổng hợp công để xuất Hóa đơn (Cho Kế toán).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PHASE 4 -->
+        <!-- ========================================== -->
+        <section id="phase-4" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">Tích hợp Tiền lương (C&B) & Tài chính</h2>
+                <p class="phase-desc">AI thực hiện đối soát chéo (Cross-check) dữ liệu vận hành thực tế so với hợp đồng để tính lương và xuất hóa đơn tự động.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- 1. Forms -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <h3 class="card-title">4.1 Hệ thống Đối soát (Điều 48-52 QC Vận hành, Điều 25-27 QC Thương mại)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Biểu mẫu / Template</th>
+                                    <th>Nguồn Dữ liệu (Input AI)</th>
+                                    <th>Mục đích</th>
+                                    <th>Trách nhiệm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Bảng Chấm Công - Lương Tiền lương (C&B)</strong></td>
+                                    <td>Master Roster (GĐ3) + Hợp đồng (GĐ2)</td>
+                                    <td>Trả lương Nhân viên bảo vệ chính xác</td>
+                                    <td><span class="tag tag-role">Tuyển dụng / Tiền lương (C&B)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bảng Đề nghị Xuất Hóa Đơn</strong></td>
+                                    <td>Giờ công chốt (GĐ3) + Đơn giá (GĐ2)</td>
+                                    <td>Gửi Khách hàng thanh toán</td>
+                                    <td><span class="tag tag-role">Kế toán Doanh thu</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Báo cáo P&L (Lỗ/Lãi mục tiêu)</strong></td>
+                                    <td>Doanh thu (GĐ2) - Chi phí Lương/Tăng ca (OT) (GĐ4)</td>
+                                    <td>Đo lường hiệu quả từng hợp đồng</td>
+                                    <td><span class="tag tag-role">GĐ Tài chính</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Báo cáo Cảnh báo Công nợ</strong></td>
+                                    <td>Tiến độ thanh toán Khách hàng (CRM)</td>
+                                    <td>Thu hồi nợ quá hạn (>15, >30 ngày)</td>
+                                    <td><span class="tag tag-role">Kế toán Công nợ / Sales</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Outputs -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3 class="card-title">4.2 Output Giai đoạn 4</h3>
+                    </div>
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td>Bảng Lương Final đã duyệt</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Ngân hàng/Kế toán</a></td>
+                            </tr>
+                            <tr>
+                                <td>Hóa Đơn Điện Tử (E-Invoice)</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Khách hàng</a></td>
+                            </tr>
+                            <tr>
+                                <td>Cảnh báo Lỗ hợp đồng</td>
+                                <td><span class="tag tag-alert">BGĐ / Vận hành</span></td>
+                            </tr>
+                            <tr>
+                                <td>Danh sách Khách hàng nợ quá hạn</td>
+                                <td><span class="tag tag-alert">CSKH / Sales</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 3. Handoff -->
+                
+                <!-- Employee Guideline -->
+                <div class="glass-card full-width" style="border-left: 4px solid var(--info);">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h3 class="card-title">4.3 Employee Guideline & To-Do List</h3>
+                    </div>
+                    <p class="section-desc">Hướng dẫn Đối soát, Công nợ, Doanh thu, Tính lương cho khối Tài chính & Tiền lương (C&B).</p>
+
+                    <div class="todo-list">
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>1. Đóng sổ Chấm công (Cut-off)</h5>
+                                <p>Ngày cuối kỳ, C&B kiểm tra Dashboard Lỗi Chấm công (những người quên check-in/out). Khóa Master Roster để hệ thống chốt công và Tăng ca (OT).</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>2. Xuất Hóa đơn Tự động</h5>
+                                <p>Kế toán Doanh thu vào List "Đề nghị Xuất Hóa đơn", đối chiếu số tiền tự động tính. Nếu khớp, bấm "Duyệt" để tự động xuất E-Invoice gửi Khách hàng.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>3. Thu hồi Công nợ Tự động</h5>
+                                <p>Hệ thống tự động lọc các Hợp đồng "Quá hạn > 15 ngày". Kế toán Công nợ chỉ cần bấm "Send Reminder Email" (Gửi mail dọa phạt/ngưng dịch vụ tự động theo SLA).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail-template">
+                        <div class="mail-header">
+                            <div class="mail-row">
+                                <div class="mail-label">To:</div>
+                                <div class="mail-value">[Kế toán trưởng Khách Hàng]</div>
+                            </div>
+                            <div class="mail-row">
+                                <div class="mail-label">Subject:</div>
+                                <div class="mail-value">[SeaZen] Nhắc nhở Thanh toán Phí Dịch vụ An ninh Kỳ [Tháng/Năm]</div>
+                            </div>
+                        </div>
+                        <div class="mail-body">
+                            Kính gửi Quý Khách hàng,<br><br>
+                            Hệ thống Kế toán SeaZen ghi nhận Hóa đơn số [Số Hóa Đơn] trị giá <strong>[Số Tiền] VNĐ</strong> đã quá hạn thanh toán [X] ngày so với hợp đồng [Mã HĐ].<br><br>
+                            Để đảm bảo duy trì chất lượng dịch vụ và không bị gián đoạn nhân sự bảo vệ, Quý khách vui lòng tiến hành thanh toán vào tài khoản của SeaZen trước ngày [DD/MM/YYYY].<br><br>
+                            Mọi thắc mắc xin liên hệ bộ phận Kế toán: ketoan@seazen.vn.<br><br>
+                            Trân trọng,<br>Phòng Kế toán SeaZen.
+                        </div>
+                    </div>
+                </div>
+
+<div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3 class="card-title">4.4 Checklist Bàn giao (Điều 54 Quy chế Tổ chức)</h3>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Lương và Hóa đơn không lệch số (Zero Discrepancy)</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Kế toán / Tiền lương (C&B)</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>P&L của từng mục tiêu đã tính hoàn tất</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Kế toán quản trị</div>
+                            </div>
+                        </li>
+                        <li class="checklist-item">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="check-content">
+                                <h4>Thanh toán đồng bộ CRM</h4>
+                                <div class="role-badge"><i class="fa-solid fa-user-check"></i> Hành chính</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="handoff-flow">
+                        <div class="flow-step">
+                            <div class="step-icon"><i class="fa-solid fa-check-double"></i></div>
+                            <div class="step-content">Đóng sổ kế toán kỳ (Month-end closing)</div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fa-solid fa-bolt"></i> Cập nhật Doanh thu, Chi phí, P&L lên Dashboard 360° BGĐ (GĐ5).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PHASE 5 -->
+        <!-- ========================================== -->
+        <section id="phase-5" class="phase-section">
+            <div class="phase-header">
+                <h2 class="phase-title">CSKH & Phân tích 360°</h2>
+                <p class="phase-desc">Radar cảnh báo rủi ro tự động, giám sát SLA xuyên suốt và minh bạch hóa dữ liệu quản trị cho Ban Giám Đốc theo chuẩn PPRT.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- 1. Forms -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-robot"></i>
+                        <h3 class="card-title">5.1 Form & Cảnh báo Sự cố (Điều 37-42 Quy chế Vận hành)</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên Biểu mẫu / Template</th>
+                                    <th>Mã tài liệu / Điều kiện kích hoạt</th>
+                                    <th>Hành động của Hệ thống</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Báo cáo Sự cố An ninh</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-INC-01</a></td>
+                                    <td>Tạo Log ghi nhận Incident</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sự cố Khẩn cấp L3/L4</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-alert action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-INC-01 mức High Risk</a></td>
+                                    <td>Bắn SMS/App Noti tới Ban Giám đốc (BOD) + Kích hoạt Đội phản ứng nhanh (SRT)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Biên bản Xử lý Sự cố</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-INC-02</a></td>
+                                    <td>Ghi nhận phương án xử lý cuối cùng</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Auto Nhắc Gia hạn Hợp đồng</strong></td>
+                                    <td><span class="tag tag-info">45 ngày trước hết hạn Hợp đồng</span></td>
+                                    <td>Tạo Task trên CRM cho Sales</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cảnh báo Churn Khách hàng (Mất Khách hàng)</strong></td>
+                                    <td><span class="tag tag-alert">Điểm Đánh giá hài lòng (CSAT) thấp HOẶC > 3 Sự cố/Tháng</span></td>
+                                    <td>Gắn tag "High-Risk Account"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phiếu CAPA / Báo cáo SLA</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-QA-02</a> / <a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> SZ-FRM-QA-03</a></td>
+                                    <td>Giao chỉ tiêu khắc phục lỗi hệ thống</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Audit Fail (Lỗi SLA)</strong></td>
+                                    <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-alert action-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Checklist SZ-FRM-QA-01 < 80%</a></td>
+                                    <td>Tự động sinh Phiếu CAPA ép khắc phục</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Outputs -->
+                <div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <h3 class="card-title">5.2 Dashboard BGĐ & Output</h3>
+                    </div>
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Dashboard 360°</strong> (6 chỉ số: Doanh thu, P&L, Quân số, SLA, Sự cố, CSKH)</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Ban Giám đốc (BOD) View</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hồ sơ Đánh giá Doanh nghiệp hàng quý (QBR)</strong> (Đánh giá Quý)</td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> Cho Khách hàng Strategic/FDI</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Báo cáo Phân tích & Khắc phục (RCA/CAPA)</strong></td>
+                                <td><a href="#" onclick="alert('Tài liệu \'' + this.innerText.trim() + '\' đang chờ đội hệ thống upload lên SharePoint/Drive. Tính năng xem trực tiếp sẽ sớm được mở!'); return false;" class="tag tag-doc action-link"><i class="fa-solid fa-file-lines"></i> QA / Khách hàng</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 3. Handoff -->
+                
+                <!-- Employee Guideline -->
+                <div class="glass-card full-width" style="border-left: 4px solid var(--info);">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h3 class="card-title">5.3 Employee Guideline & To-Do List</h3>
+                    </div>
+                    <p class="section-desc">Hướng dẫn Xử lý Sự cố & Giám sát Hệ thống dành cho Ban Giám đốc, SOC và Đội Đặc nhiệm (SRT).</p>
+
+                    <div class="todo-list">
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>1. Giám sát Dashboard 360 Độ</h5>
+                                <p>BOD và SOC mở Power BI Dashboard. Màn hình sẽ chớp đỏ ở các mục tiêu bị lủng ca (Zero-Gap) hoặc có sự cố chưa xử lý xong.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>2. Khởi tạo & Phản ứng Sự cố (Incident Management)</h5>
+                                <p>Khi có khẩn cấp (cháy/mất cắp), Chỉ huy mục tiêu bấm "Emergency". Cảnh báo tự sinh ra và gửi SMS/Push Noti cho Ban Giám Đốc, đồng thời kích hoạt đội SRT ngay lập tức.</p>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-checkbox"><i class="fa-solid fa-check" style="color: #CBD5E1;"></i></div>
+                            <div class="todo-content">
+                                <h5>3. Đóng vòng Lỗi (CAPA)</h5>
+                                <p>Sau khi xử lý sự cố, Trưởng phòng QA tạo Phiếu Khắc phục (SZ-FRM-QA-02) bắt buộc Vận hành giải trình và đóng lỗi trong vòng 48 tiếng.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail-template">
+                        <div class="mail-header">
+                            <div class="mail-row">
+                                <div class="mail-label">To:</div>
+                                <div class="mail-value">BOD, GĐ Vận hành, Team SRT, Trung tâm An ninh (SOC)</div>
+                            </div>
+                            <div class="mail-row">
+                                <div class="mail-label">Subject:</div>
+                                <div class="mail-value"><span style="color:var(--danger); font-weight:bold;">[EMERGENCY - L3/L4]</span> Cảnh báo Sự cố Khẩn cấp tại [Tên Mục Tiêu]</div>
+                            </div>
+                        </div>
+                        <div class="mail-body" style="background: #FEF2F2; border: 1px solid #FECACA;">
+                            <strong><i class="fa-solid fa-triangle-exclamation"></i> ALARM ACTIVATED!</strong><br><br>
+                            - Phân loại: [Mất cắp tài sản giá trị lớn / Đình công / Hỏa hoạn...]<br>
+                            - Người báo cáo: [Tên Nhân viên bảo vệ / Chỉ huy]<br>
+                            - Thời gian phát sinh: [HH:MM DD/MM/YYYY]<br>
+                            - Tình trạng: <strong>Đang chờ SRT tiếp ứng.</strong><br><br>
+                            <strong>Hành động tự động:</strong> Đội SRT đã nhận lệnh điều động. Yêu cầu GĐ Vận hành chỉ đạo trực tiếp qua bộ đàm/Teams ngay lập tức.<br><br>
+                            <button class="btn-action" style="background: var(--danger);">View Live Camera & Log</button>
+                        </div>
+                    </div>
+                </div>
+
+<div class="glass-card full-width">
+                    <div class="card-header">
+                        <i class="fa-solid fa-rotate"></i>
+                        <h3 class="card-title">5.4 Vòng lặp Cải tiến (Feedback Loop)</h3>
+                    </div>
+                    <div class="handoff-flow">
+                        <div class="flow-step">
+                            <div class="step-icon"><i class="fa-solid fa-tower-observation"></i></div>
+                            <div class="step-content">Dashboard GĐ5 Phát hiện Rủi ro hoặc Churn Rate Cao</div>
+                        </div>
+                        <div class="highlight-box">
+                            <ul style="margin-left: 20px; font-weight: normal;  list-style-type: disc;">
+                                <li><strong>Cải tiến GĐ1:</strong> Update lại Form Khảo sát (SZ-FRM-OPS-01) thêm rủi ro mới để khảo sát chặt hơn.</li>
+                                <li style="margin-top:8px;"><strong>Cải tiến GĐ2:</strong> Điều chỉnh "Ma trận Giá" (Quy chế Thương mại) để tăng giá nếu mục tiêu có rủi ro P&L cao.</li>
+                                <li style="margin-top:8px;"><strong>Cải tiến GĐ3:</strong> Update Post Order (SZ-PO-OPS) để bít lỗ hổng an ninh đã xảy ra.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function switchPhase(phaseId) {
+            // Update Navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // Update Content Sections
+            document.querySelectorAll('.phase-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('phase-' + phaseId).classList.add('active');
+            
+            // Scroll back to top
+            document.querySelector('.main-content').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>

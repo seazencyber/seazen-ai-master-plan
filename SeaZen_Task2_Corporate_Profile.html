@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeaZen - Hồ Sơ Năng Lực 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--navy:#0f172a;--navy-dark:#020617;--gold:#d4af37;--cyan:#06b6d4;--gray-light:#f8fafc;--text-dark:#334155;--white:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Open Sans',sans-serif;margin:0;padding:0;background:#333;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;margin:0}
+.page{width:210mm;height:297mm;margin:20px auto;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5);page-break-after:always;display:flex;flex-direction:column}
+.dark-page{background:var(--navy)}
+.light-page{background:var(--white)}
+
+/* CBRE Style Typography */
+.cbre-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 12px; }
+.dark-page .cbre-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 12px; }
+.light-page .cbre-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 12px; }
+.light-page .cbre-title span { color: var(--gold) !important; }
+
+.cbre-title.gold-span span { color: var(--gold); }
+.cbre-line { width: 100px; height: 4px; background: var(--cyan); margin-bottom: 30px; }
+.light-page .cbre-line { background: var(--gold); }
+.cbre-line.solid-cyan { background: var(--cyan); }
+.cbre-line.solid-gold { background: var(--gold); }
+
+/* Layouts */
+.content-wrapper { position: relative; z-index: 10; color: white; padding: 13mm 15mm 13mm 15mm; height: 100%; display: flex; flex-direction: column; }
+.dark-page .content-wrapperper{color:#fff}
+.light-page .content-wrapperper{color:var(--text-dark)}
+
+.split-wrap { display: flex; height: 100%; margin: -13mm -15mm; } 
+.split-half { flex: 1; padding: 15mm 15mm; display: flex; flex-direction: column; position: relative; }
+.split-half.dark { background: var(--navy-dark); color: white; }
+.split-half.light { background: var(--white); color: var(--text-dark); }
+.split-img { flex: 1; background-size: cover; background-position: center; position: relative; }
+
+/* Backgrounds */
+.bg-img{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;z-index:1}
+.overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2}
+.overlay-dark{background:linear-gradient(135deg,rgba(15,23,42,.92),rgba(15,23,42,.7))}
+.overlay-heavy{background:rgba(2,6,23,0.85)}
+.overlay-glass{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* Mega Stats */
+.mega-stat { margin-bottom: 35px; }
+.mega-stat-num { font-size: 14px; font-weight: 800; font-family: 'Montserrat', sans-serif; line-height: 1; color: var(--cyan); display: block; }
+.mega-stat-num.gold { color: var(--gold); }
+.mega-stat-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 600; display: block; opacity: 0.9; }
+.dark-page .mega-stat-lbl, .split-half.dark .mega-stat-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 600; display: block; opacity: 0.9; }
+
+/* Header & Footer */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:24px}
+.light-page .hdr{border-bottom-color:rgba(0,0,0,.1)}
+.hdr img{height:40px}
+.logo-slogan{font-size:8.5px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.5);margin-top:5px;font-weight:400;white-space:nowrap}
+.light-page .logo-slogan{color:rgba(15,23,42,.45)}
+.hdr-right{text-align:right;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.7)}
+.light-page .hdr-right{color:var(--text-dark)}
+.hdr-title{font-size: 14px;font-weight:700;color:var(--cyan);margin-top:4px}
+.light-page .hdr-title{color:var(--navy)!important}
+
+.footer{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;align-items:flex-end; position:relative; z-index:10;}
+.footer h4{font-size:11px;font-weight:700;color:#fff;margin-bottom:6px}
+.footer p{font-size:9px;margin-bottom:3px;color:rgba(255,255,255,.85);text-align:left}
+.footer i{color:var(--gold);margin-right:5px}
+.light-page .footer{border-top-color:rgba(0,0,0,.1)}
+.light-page .footer h4{color:var(--navy)}
+.light-page .footer p{color:#475569}
+.qr-placeholder{width:70px;height:70px;border-radius:6px;overflow:hidden}
+.qr-placeholder img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* Elements */
+.glass-box { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 13px 18px; margin-bottom: 14px; }
+.light-page .glass-box { background: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.07); border-radius: 8px; padding: 13px 18px; margin-bottom: 14px; }
+.glass-box.gold-border{border-left:4px solid var(--gold)}
+.glass-box.cyan-border{border-left:4px solid var(--cyan)}
+
+p { font-size: 12px; line-height: 1.6; text-align: justify; color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; }
+.light-page p, 
+ul { padding-left: 20px; font-size: 12px; line-height: 1.6; text-align: justify; color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; }
+
+li { margin-bottom: 6px; }
+
+.col2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.col3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+
+
+/* PPRT diagram */
+.pprt-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px; max-width:800px; margin: 0 auto;}
+.pprt-box{position:relative;background:rgba(15,23,42,.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;min-height:220px; border-radius: 12px;}
+.pprt-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:50%;z-index:10;background:var(--navy-dark);box-shadow:0 15px 40px rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;flex-direction:column; border: 4px solid rgba(255,255,255,0.05);}
+
+/* Print */
+@media print{
+body{background:transparent}
+.page{margin:0;box-shadow:none;break-after:page}
+.overlay-dark{background:rgba(15,23,42,.9)!important}
+.overlay-heavy{background:rgba(2,6,23,0.95)!important}
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+/* Snake Timeline */
+.snake-timeline { position: relative; width: 100%; height: 550px; margin-top: 20px; font-family: 'Open Sans', sans-serif; }
+.snake-box { position: absolute; width: 150px; background: white; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 12px 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); font-size: 11px; color: var(--text-dark); z-index: 2; line-height: 1.4; display: flex; align-items: center; justify-content: center; min-height: 60px; }
+.snake-year { position: absolute; width: 70px; height: 30px; background: var(--navy); color: var(--gold); border-radius: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 14px; font-family: 'Montserrat', sans-serif; box-shadow: 0 3px 10px rgba(0,0,0,0.2); border: 2px solid white; z-index: 3; }
+.snake-year.highlight { background: var(--cyan); color: white; box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
+.snake-box.highlight { border: 2px solid var(--cyan); background: rgba(6, 182, 212, 0.03); }
+.snake-logo { position: absolute; left: 10px; top: 370px; width: 90px; height: 90px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid var(--gold); z-index: 4; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+.snake-logo img { width: 70%; }
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.4); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(0, 174, 239, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 174, 239, 0); }
+}
+@keyframes pulseGold {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* Service Chapter (Pages 10, 10b, 11, 12) */
+.service-light-shell {
+    margin: auto 0;
+    padding: 24px 26px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+.service-light-heading {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.service-light-intro {
+    max-width: 81%;
+    margin: 0 auto 34px;
+    padding-left: 0;
+    text-align: center;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.55;
+}
+.service-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.service-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+.service-card {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    padding: 22px 22px 20px;
+    min-height: 228px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.service-card.centered {
+    align-items: center;
+    text-align: center;
+}
+.service-card-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    font-size: 23px;
+    background: rgba(6, 182, 212, 0.12);
+    color: var(--cyan);
+}
+.service-card-icon.gold {
+    background: rgba(212, 175, 55, 0.14);
+    color: var(--gold);
+}
+.service-card h3 {
+    margin: 0 0 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.28;
+    letter-spacing: 0.1px;
+    text-transform: uppercase;
+    color: var(--navy);
+}
+.service-card p {
+    margin: 0;
+    padding-left: 0;
+    text-align: left;
+    color: var(--text-dark);
+    font-size: 11.8px;
+    line-height: 1.58;
+    word-spacing: normal;
+}
+.service-card.centered p {
+    text-align: left;
+}
+
+.service-dark-shell {
+    padding: 0 !important;
+}
+.service-master-hdr {
+    position: absolute;
+    top: 13mm;
+    left: 15mm;
+    right: 15mm;
+    z-index: 30;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.service-master-hdr .logo-slogan {
+    color: rgba(255, 255, 255, 0.5);
+}
+.service-master-hdr .hdr-right {
+    margin-top: 1px;
+}
+.service-dark-split {
+    margin: 0 !important;
+    background: transparent;
+}
+.service-dark-col {
+    padding: 15mm !important;
+    padding-top: 32mm !important;
+    justify-content: center;
+}
+.service-dark-col-left {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.5));
+}
+.service-dark-col-right {
+    background: linear-gradient(135deg, rgba(2, 6, 23, 0.62), rgba(2, 6, 23, 0.45));
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+.service-dark-col .cbre-title {
+    margin-bottom: 10px;
+}
+.service-dark-col .cbre-line {
+    margin-bottom: 24px;
+}
+.service-desc {
+    margin: 0 0 22px;
+    padding-left: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.83);
+}
+.service-dark-card {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 16px 16px 14px;
+}
+.service-dark-card + .service-dark-card {
+    margin-top: 14px;
+}
+.service-dark-card h3 {
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.service-dark-card p {
+    margin: 0;
+    padding-left: 0;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+}
+.service-dark-card ul {
+    margin: 0;
+    padding-left: 16px;
+    list-style: disc;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 11px;
+    line-height: 1.58;
+}
+.service-dark-card li {
+    margin-bottom: 6px;
+}
+.service-label {
+    margin: 0 0 9px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.service-path {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+.service-path-step {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+.service-path-arrow {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 9px;
+}
+.service-soc-image {
+    margin-bottom: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.38);
+}
+.service-soc-image img {
+    width: 100%;
+    height: 152px;
+    object-fit: cover;
+    display: block;
+}
+.service-stats {
+    margin-top: 18px;
+    padding: 12px 14px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.service-stats .mega-stat-lbl {
+    margin-top: 2px;
+    font-size: 9px !important;
+    line-height: 1.3;
+    opacity: 0.88;
+}
+</style>
+</head>
+<body>
+
+<!-- TRANG 1: COVER -->
+<div id="page-1" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark"></div>
+<div class="content-wrapper" style="justify-content:center;align-items:flex-start;padding:20mm 18mm">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" class="cover-logo" alt="SeaZen Logo" style="height:80px; margin-bottom:12px;">
+<div style="font-size: 8.5px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255, 255, 255, 0.5); margin-bottom: 32px; font-family: 'Open Sans', sans-serif; font-weight: 600;">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+<div class="cbre-line" style="margin-bottom: 24px; background: var(--gold);"></div>
+<h1 class="cbre-title" style="color:#fff; font-size:36px; line-height:1.2; margin-bottom:8px; text-transform:uppercase; letter-spacing: 2px;">HỒ SƠ NĂNG LỰC</h1>
+<p style="color:var(--gold); font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:24px; font-family:'Montserrat', sans-serif;">CÔNG TY GIẢI PHÁP AN NINH TÍCH HỢP SEAZEN</p>
+<p style="color:rgba(255,255,255,.9);font-size: 14px;max-width:80%; line-height:1.6; font-weight:400; margin-bottom:24px; letter-spacing:0.5px;">QUẢN TRỊ RỦI RO THEO MÔ HÌNH PPRT</p>
+<div>
+<div style="display:inline-block; padding:14px 20px; border:1px solid rgba(212,175,55,0.4); border-left:3px solid var(--gold); border-radius:4px; background:rgba(0,0,0,0.2); text-align:left;">
+    <div style="font-size:12px; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:700; margin-bottom:6px;">PREDICT · PROTECT · RESPOND · TRANSPARENT</div>
+    <div style="font-size:9.5px; color:rgba(255,255,255,0.6); letter-spacing:1px; font-family:'Open Sans', sans-serif; text-transform:uppercase;">DỰ BÁO · BẢO VỆ · PHẢN ỨNG · MINH BẠCH</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 2: MỤC LỤC -->
+<div id="page-2" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.15;"></div>
+<div class="content-wrapper">
+<div class="hdr">
+<div class="logo-area">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+<div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+</div>
+<div class="hdr-right">INTEGRATED SECURITY SOLUTIONS<div class="hdr-title">Mục Lục</div></div>
+</div>
+<div class="glass-box" style="margin-top: 16px; padding: 24px; padding-bottom: 16px;">
+<h2 class="cbre-title" style="margin-bottom: 8px;">Nội Dung Chi Tiết</h2>
+<div class="cbre-line" style="background:var(--gold); margin-top: 0; margin-bottom: 24px;"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;">
+        <a href="#page-3" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">01</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Tổng Quan Doanh Nghiệp</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">03</span>
+        </a>
+        <a href="#page-4" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">02</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Lịch Sử Hình Thành</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">04</span>
+        </a>
+        <a href="#page-5" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">03</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Tầm Nhìn & Sứ Mệnh</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">05</span>
+        </a>
+        <a href="#page-6" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">04</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Giá Trị Cốt Lõi</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">06</span>
+        </a>
+        <a href="#page-7" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">05</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Sơ Đồ Cơ Cấu Tổ Chức</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">07</span>
+        </a>
+        <a href="#page-8" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">06</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Mô Hình An Ninh Tích Hợp – PPRT</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">08</span>
+        </a>
+        <a href="#page-9" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">07</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Hệ Thống Văn Phòng</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">09</span>
+        </a>
+        <a href="#page-10" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">08</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Các Gói Dịch Vụ Tích Hợp</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">10</span>
+        </a>
+        <a href="#page-11" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">09</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Đào Tạo Nghiệp Vụ</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">11</span>
+        </a>
+        <a href="#page-12" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">10</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Năng Lực Công Nghệ & SOC</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">12</span>
+        </a>
+        <a href="#page-13" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">11</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Tiêu Chuẩn Dịch Vụ & SLA</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">13</span>
+        </a>
+        <a href="#page-14" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">12</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Quy Trình Triển Khai</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">14</span>
+        </a>
+        <a href="#page-15" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">13</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">RACA & Cải Tiến Liên Tục</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">15</span>
+        </a>
+        <a href="#page-16" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">14</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Cam Kết Giá Trị</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">16</span>
+        </a>
+        <a href="#page-17" style="display:flex; align-items:center; padding:9px 12px; text-decoration:none; color:var(--text-dark); cursor:pointer; transition: 0.2s; border-radius: 4px; border-bottom: 1px solid rgba(0,0,0,0.03);">
+            <span style="color:var(--gold); font-family:'Montserrat',sans-serif; font-weight:800; width:35px; font-size:13px;">15</span>
+            <span style="flex:1; font-weight:600; font-size:12px; letter-spacing:0.1px;">Thông Tin Liên Hệ</span>
+            <span style="color:rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif; font-weight:500; font-size:11px; width:20px; text-align:right;">17</span>
+        </a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 3: TỔNG QUAN DOANH NGHIỆP -->
+<div id="page-3" class="page dark-page">
+<div class="content-wrapper" style="padding:0;">
+    <div class="split-wrap" style="margin:0;">
+        <div class="split-half dark" style="padding:15mm;">
+            <div class="hdr" style="border-bottom:none; margin-bottom:20px;">
+                <div class="logo-area">
+                <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo" style="height: 45px; margin-bottom: 8px;">
+                <div style="font-size: 8.5px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255, 255, 255, 0.5); font-family: 'Open Sans', sans-serif; font-weight: 600;">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+                </div>
+            </div>
+            <h2 class="cbre-title" style="margin-bottom: 12px;">Tổng Quan Doanh Nghiệp</h2>
+            <div class="cbre-line" style="background: var(--gold); margin-bottom: 24px;"></div>
+            <p style="font-size: 14px; margin-bottom: 16px;">CÔNG TY GIẢI PHÁP AN NINH TÍCH HỢP SEAZEN định hướng xây dựng mô hình an ninh chuyên nghiệp, minh bạch và bền vững. Chúng tôi tự hào là đơn vị tiên phong cung cấp <strong>Giải pháp An ninh Tích hợp</strong> lấy quản trị rủi ro làm trọng tâm.</p>
+            <p style="font-size: 14px; margin-bottom: 16px;">SeaZen tạo ra sự khác biệt cốt lõi thông qua mô hình <strong>PPRT</strong>. Chúng tôi kiến tạo hệ sinh thái an ninh đa lớp kết hợp: <strong>Nhân sự tinh nhuệ</strong> (Chuẩn hóa bởi Khối Đào tạo), <strong>Công nghệ hiện đại</strong> (AI CCTV, Access Control) và trung tâm <strong>SOC & Ứng Phó Cơ Động (SRT)</strong>. Hệ thống này đảm bảo khả năng dự báo, kiểm soát toàn diện và cải tiến liên tục, đáp ứng khắt khe tiêu chuẩn FDI.</p>
+            
+            <div style="margin-top:40px;">
+                <h3 style="color:var(--gold); font-size:14px; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;"><i class="fas fa-crosshairs"></i> Phân Khúc Trọng Tâm</h3>
+                <ul style="list-style:none; padding:0;">
+                    <li style="display:flex; align-items:center; margin-bottom:12px; font-size:13px;"><i class="fas fa-industry" style="color:var(--gold); width:28px; font-size:16px;"></i> Nhà Máy FDI & Khu Công Nghiệp</li>
+                    <li style="display:flex; align-items:center; margin-bottom:12px; font-size:13px;"><i class="fas fa-warehouse" style="color:var(--gold); width:28px; font-size:16px;"></i> Logistics & Kho Bãi Quy Mô Lớn</li>
+                    <li style="display:flex; align-items:center; margin-bottom:12px; font-size:13px;"><i class="fas fa-building" style="color:var(--gold); width:28px; font-size:16px;"></i> Tòa Nhà Hạng A & Khu Phức Hợp</li>
+                    <li style="display:flex; align-items:center; margin-bottom:12px; font-size:13px;"><i class="fas fa-graduation-cap" style="color:var(--gold); width:28px; font-size:16px;"></i> Trường Quốc Tế & Bệnh Viện</li>
+                </ul>
+            </div>
+        </div>
+        <div class="split-half split-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1080'); display:flex; flex-direction:column; justify-content:center; padding:15mm;">
+            <div class="overlay overlay-heavy"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 3B: NHỮNG CON SỐ NỔI BẬT -->
+<div id="page-3b" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.08;"></div>
+<div class="content-wrapper">
+    <div class="hdr">
+        <div class="logo-area">
+            <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+            <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+        </div>
+        <div class="hdr-right">CORPORATE CAPABILITY STATEMENT<div class="hdr-title">Những Con Số Nổi Bật</div></div>
+    </div>
+
+    <div class="glass-box" style="flex:1; display:flex; flex-direction:column; padding:20px 24px;">
+        <h2 class="cbre-title" style="margin-bottom:8px;">Những Con Số Nổi Bật</h2>
+        <div class="cbre-line" style="background:var(--gold);"></div>
+
+        <!-- STATS + MAP (pushed to top) -->
+        <div style="display:flex; gap:20px; align-items:center; margin-top:12px;">
+
+            <!-- LEFT: 3 stats -->
+            <div style="flex:1; display:flex; flex-direction:column; gap:28px;">
+                <div>
+                    <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:var(--gold); line-height:1; margin-bottom:6px;">20<span style="font-size:14px; margin-left:2px;">+</span></div>
+                    <div style="font-size:11px; color:var(--text-dark); line-height:1.5;">Năm kinh nghiệm tư vấn và triển khai an ninh tích hợp</div>
+                </div>
+                <div>
+                    <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:var(--gold); line-height:1; margin-bottom:6px;">1.200<span style="font-size:14px; margin-left:2px;">+</span></div>
+                    <div style="font-size:11px; color:var(--text-dark); line-height:1.5;">Nhân sự tinh nhuệ, chuẩn hóa bởi SeaZen Edu</div>
+                </div>
+                <div>
+                    <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:var(--gold); line-height:1; margin-bottom:6px;">100<span style="font-size:14px; margin-left:2px;">+</span></div>
+                    <div style="font-size:11px; color:var(--text-dark); line-height:1.5;">Khách hàng FDI tin tưởng lựa chọn đồng hành</div>
+                </div>
+            </div>
+
+            <!-- CENTER: Map -->
+            <div style="flex-shrink:0; display:flex; justify-content:center; align-items:center;">
+                <img src="images/Bản đồ việt nam.png" style="height:400px; object-fit:contain;" alt="Bản đồ Việt Nam - Hoàng Sa, Trường Sa">
+            </div>
+
+            <!-- RIGHT: 3 stats -->
+            <div style="flex:1; display:flex; flex-direction:column; gap:28px;">
+                <div>
+                    <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:var(--gold); line-height:1; margin-bottom:6px;">~150 <span style="font-size:14px;">Tỷ</span></div>
+                    <div style="font-size:11px; color:var(--text-dark); line-height:1.5;">Doanh thu / năm, tăng trưởng bền vững</div>
+                </div>
+                <div>
+                    <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:var(--gold); line-height:1; margin-bottom:6px;">50 <span style="font-size:14px;">Tỷ</span></div>
+                    <div style="font-size:11px; color:var(--text-dark); line-height:1.5;">Vốn điều lệ, nền tảng tài chính vững mạnh</div>
+                </div>
+                <div>
+                    <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:var(--gold); line-height:1; margin-bottom:6px;">24/7</div>
+                    <div style="font-size:11px; color:var(--text-dark); line-height:1.5;">SOC giám sát & SRT ứng phó cơ động</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM: Panoramic image banner -->
+        <div style="margin-top:auto; border-radius:8px; overflow:hidden; height:350px; position:relative;">
+            <img src="images/CCTV.jpeg" style="width:100%; height:100%; object-fit:cover;" alt="SeaZen CCTV Security">
+            <div style="position:absolute; bottom:0; left:0; right:0; height:60%; background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);"></div>
+            <div style="position:absolute; bottom:20px; left:24px; z-index:2;">
+                <div style="font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; color:white; letter-spacing:1px;">KIẾN TẠO HỆ SINH THÁI AN NINH ĐA LỚP</div>
+                <div style="font-size:10px; color:rgba(255,255,255,0.8); margin-top:4px;">DỰ BÁO · BẢO VỆ · PHẢN ỨNG · MINH BẠCH</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 4: LỊCH SỬ HÌNH THÀNH (PHẦN 1) -->
+<div id="page-4" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark"></div>
+<div class="content-wrapper">
+<div class="hdr">
+    <div class="logo-area">
+        <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo">
+        <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+    </div>
+    <div class="hdr-right">CORPORATE CAPABILITY STATEMENT<div class="hdr-title">Lịch Sử Hình Thành</div></div>
+</div>
+
+<div class="glass-box" style="flex:1; padding:30px 40px; overflow:hidden;">
+    <h2 class="cbre-title" style="margin-bottom:6px; color:white;">Hành Trình Phát Triển</h2>
+    <div class="cbre-line" style="background:var(--cyan);"></div>
+
+    <style>
+    .tl { position:relative; padding-left:140px; margin-top:30px; }
+    .tl::before { content:''; position:absolute; left:90px; top:12px; bottom:12px; width:1px; background:#d1d5db; }
+    .tl-item { position:relative; margin-bottom:40px; display:flex; align-items:flex-start; }
+    .tl-item:last-child { margin-bottom:0; }
+    .tl-dot { position:absolute; left:-54.5px; top:8px; width:8px; height:8px; border-radius:50%; background:#d1d5db; border:2px solid white; box-shadow:0 0 0 2px #d1d5db; z-index:2; }
+    .tl-year { position:absolute; left:-140px; top:-2px; font-family:'Montserrat',sans-serif; font-size:22px; font-weight:800; color:#cbd5e1; width:60px; text-align:right;}
+    .tl-body { flex:1; }
+    .tl-event { margin-bottom:16px; }
+    .tl-event:last-child { margin-bottom:0; }
+    
+    /* Default (Light Page) */
+    .tl-date { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; color:var(--text-dark); margin-bottom:2px; }
+    .tl-text { font-size:12px; color:#475569; line-height:1.5; font-weight: 500; }
+    .tl-text strong { color:var(--navy); }
+    
+    /* Dark Page Override */
+    .dark-page .tl-date { color: var(--gold); }
+    .dark-page .tl-text { color: #f8fafc; }
+    .dark-page .tl-text strong { color: white; }
+    .dark-page .tl-dot { border-color: rgba(255,255,255,0.1); }
+    </style>
+
+    <div class="tl">
+        <div class="tl-item">
+            <div class="tl-year">2007</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Ngày 11/06/2007</div>
+                    <div class="tl-text">Thành lập <strong>Công ty Cổ phần Dịch vụ Bảo vệ Sài Gòn – Đông Á</strong> (Saigon East Asia) tại Đồng Nai. Sáng lập bởi đội ngũ tri thức trẻ.</div>
+                </div>
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 12/2007</div>
+                    <div class="tl-text">Ký kết hợp đồng cung cấp dịch vụ bảo vệ đầu tiên tại KCN Biên Hòa II, bắt đầu phục vụ phân khúc khách hàng doanh nghiệp FDI (Nhật Bản, Hàn Quốc).</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2011</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 08/2011</div>
+                    <div class="tl-text">Thành lập VPĐD Bà Rịa – Vũng Tàu, mở rộng mạng lưới hoạt động khu vực duyên hải. Khởi xướng thông điệp định vị cốt lõi: <em>"SZ – Bảo vệ bằng tri thức"</em>.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2012</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 10/2012</div>
+                    <div class="tl-text">Vinh dự lọt <strong>TOP 10 Doanh nghiệp xuất sắc</strong> và <strong>TOP 5 Doanh nghiệp có phúc lợi tốt nhất Việt Nam</strong>, khẳng định chất lượng môi trường làm việc.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2015</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 01/2015</div>
+                    <div class="tl-text">Chuyển trụ sở điều hành chính về TP. Hồ Chí Minh để đáp ứng tốc độ phát triển.</div>
+                </div>
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 09/2015</div>
+                    <div class="tl-text">Quy mô nhân sự vượt mốc <strong>500 người</strong>, triển khai dịch vụ tại hơn 40 mục tiêu trọng điểm khu vực phía Nam.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2016</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 06/2016</div>
+                    <div class="tl-text">Nhận <strong>Bằng khen Cục Thuế</strong> và <strong>Công an Tỉnh Đồng Nai</strong> ghi nhận thành tích đóng góp xuất sắc vào công tác giữ gìn an ninh trật tự địa phương.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2017</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 04/2017</div>
+                    <div class="tl-text">Thành lập <strong>Khối Công Nghệ An Ninh</strong>, chính thức cung cấp các giải pháp kiểm soát ra vào (Access Control) và hệ thống camera giám sát (CCTV).</div>
+                </div>
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 11/2017</div>
+                    <div class="tl-text">Triển khai thành công dự án tích hợp công nghệ an ninh đầu tiên tại KCN VSIP Bình Dương.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 4B: LỊCH SỬ HÌNH THÀNH (PHẦN 2) -->
+<div id="page-4b" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.08;"></div>
+<div class="content-wrapper">
+<div class="hdr">
+    <div class="logo-area">
+        <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+        <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+    </div>
+    <div class="hdr-right">CORPORATE CAPABILITY STATEMENT<div class="hdr-title">Lịch Sử Hình Thành</div></div>
+</div>
+
+<div class="glass-box" style="flex:1; padding:30px 40px; overflow:hidden;">
+
+    <div class="tl" style="margin-top:10px;">
+        
+        <div class="tl-item">
+            <div class="tl-year">2018</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 03/2018</div>
+                    <div class="tl-text">Tiếp tục mở rộng quy mô với việc thành lập <strong>VPĐD Hà Nội</strong>. Trang bị gói bảo hiểm trách nhiệm nghề nghiệp trị giá <strong>1 triệu USD</strong> nhằm đáp ứng tiêu chuẩn FDI.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2020</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 06/2020</div>
+                    <div class="tl-text">Thực hiện chiến lược mở rộng toàn quốc thông qua việc góp vốn thành lập <strong>SeaZen Miền Bắc</strong>, tạo mạng lưới dịch vụ an ninh xuyên suốt 3 miền.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2021</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 05/2021</div>
+                    <div class="tl-text">Ra mắt <strong>Trung tâm Đào tạo Nghiệp vụ An ninh (SeaZen Edu)</strong> nhằm chuẩn hóa 100% nghiệp vụ nhân sự. Tổng quy mô cán bộ nhân viên đạt hơn <strong>800 người</strong>.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2022</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 01/2022</div>
+                    <div class="tl-text">Tái định vị thương hiệu thành <strong>Công ty Cổ phần Dịch vụ Bảo vệ SeaZen</strong>. (Sea: Saigon East Asia, Zen: Tri thức).</div>
+                </div>
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 06/2022</div>
+                    <div class="tl-text">Tăng vốn điều lệ lên mức <strong>50 tỷ VNĐ</strong>. Đạt chứng nhận Hệ thống quản lý chất lượng <strong>ISO 9001:2015</strong>.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tl-item">
+            <div class="tl-year">2026</div><div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 01/2026</div>
+                    <div class="tl-text">Trở thành <strong>Total Security Solution Provider</strong>. Đẩy mạnh triển khai hệ sinh thái <strong>PPRT</strong> (Predict - Protect - Respond - Transparent).</div>
+                </div>
+                <div class="tl-event">
+                    <div class="tl-date">Tháng 03/2026</div>
+                    <div class="tl-text">Ra mắt <strong>Trung tâm SOC</strong> giám sát 24/7 và đội <strong>SRT</strong> ứng phó cơ động.</div>
+                </div>
+                <div class="tl-event">
+                    <div class="tl-date">Hiện tại</div>
+                    <div class="tl-text"><strong>Ông Đỗ Văn Toàn (Tổng Giám đốc)</strong> giữ vai trò Thành viên ASIS International, Chủ tịch BNI, Phó Chủ tịch CLB Doanh Nhân 2030 và thành viên VCCI. Quy mô <strong>1.200+ nhân sự</strong>, phục vụ hơn <strong>100+ khách hàng FDI</strong>.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 5: TẦM NHÌN -->
+<div id="page-5" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark"></div>
+<div class="content-wrapper" style="justify-content:center; align-items:center; text-align:center;">
+    <h2 class="cbre-title" style=" margin-top:0; font-size:24px; letter-spacing:2px;">Tầm Nhìn 2030</h2>
+    <div class="cbre-line solid-gold" style="margin:0 auto 50px;"></div>
+    <p style="font-size: 15px; line-height: 1.8; max-width: 60%; font-weight: 300; font-style:italic; margin:0 auto; font-family:'Montserrat',sans-serif; color:rgba(255,255,255,0.9);">"Trở thành nhà cung cấp giải pháp an ninh tích hợp hàng đầu tại Việt Nam, dẫn dắt ngành an ninh bằng quản trị rủi ro, công nghệ hiện đại và đội ngũ tinh nhuệ được đào tạo chuẩn hóa."</p>
+
+    <!-- Dải phân cách ở đuôi -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:15px; margin-top:60px; width:100%;">
+        <div style="height:1px; width:120px; background:linear-gradient(to right, transparent, rgba(255,255,255,0.3));"></div>
+        <div style="width:6px; height:6px; transform:rotate(45deg); background:var(--gold);"></div>
+        <div style="height:1px; width:120px; background:linear-gradient(to left, transparent, rgba(255,255,255,0.3));"></div>
+    </div>
+
+</div>
+</div>
+
+<!-- TRANG 5B: SỨ MỆNH -->
+<div id="page-5b" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity:0.15;"></div>
+<div class="content-wrapper" style="position:relative; z-index:10;">
+    <div class="hdr">
+        <div class="logo-area">
+            <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+            <div class="logo-slogan" style="color:rgba(15,23,42,0.45);">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+        </div>
+        <div class="hdr-right" style="color:var(--text-dark);">CORPORATE CAPABILITY STATEMENT<div class="hdr-title" style="color:var(--navy)!important;">Sứ Mệnh</div></div>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:32px; padding:0 20px;">
+        <div style="text-align:center; max-width:800px; margin:0 auto;">
+            <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
+                <h2 style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:800; text-transform:uppercase; letter-spacing:3px; color:var(--gold); margin:0 0 12px 0;">Sứ Mệnh Cốt Lõi</h2>
+                <div style="width:60px; height:3px; background-color:var(--gold); border-radius:2px;"></div>
+            </div>
+            <p style="font-family:'Montserrat',sans-serif; font-size:24px; line-height:1.5; color:var(--navy); font-weight:500; margin:0;">
+                "Xây dựng nghề an ninh theo chuẩn mực chuyên nghiệp, lấy <strong style="font-weight:800;">con người</strong> làm tài sản,
+                <strong style="font-weight:800;">khách hàng</strong> làm đối tác và <strong style="font-weight:800;">cộng đồng</strong> làm mục đích."
+            </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:10px;">
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:24px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                    <div style="width:32px; height:32px; background:#f1f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--navy);">
+                        <i class="fa-solid fa-users" style="font-size:14px;"></i>
+                    </div>
+                    <div style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--navy);">Nhân Sự</div>
+                </div>
+                <ul style="margin:0; padding-left:0; list-style:none; font-size:11px; line-height:1.8; color:#475569;">
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Phát triển bền vững</li>
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Chuẩn hóa nghiệp vụ</li>
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Lộ trình thăng tiến rõ ràng</li>
+                </ul>
+            </div>
+
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:24px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                    <div style="width:32px; height:32px; background:#f1f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--navy);">
+                        <i class="fa-solid fa-handshake" style="font-size:14px;"></i>
+                    </div>
+                    <div style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--navy);">Khách Hàng</div>
+                </div>
+                <ul style="margin:0; padding-left:0; list-style:none; font-size:11px; line-height:1.8; color:#475569;">
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Bảo vệ giá trị bền vững</li>
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Quản trị theo PPRT</li>
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Minh bạch qua Dashboard</li>
+                </ul>
+            </div>
+
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:24px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                    <div style="width:32px; height:32px; background:#f1f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--navy);">
+                        <i class="fa-solid fa-globe" style="font-size:14px;"></i>
+                    </div>
+                    <div style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--navy);">Cộng Đồng</div>
+                </div>
+                <ul style="margin:0; padding-left:0; list-style:none; font-size:11px; line-height:1.8; color:#475569;">
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Nâng chuẩn đạo đức</li>
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Bảo vệ nhân phẩm nghề</li>
+                    <li style="position:relative; padding-left:14px;"><span style="position:absolute; left:0; top:0; color:var(--gold);">•</span> Trách nhiệm xã hội (CSR)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-around; margin-top:20px; padding:24px 0; background:#f8fafc; border-radius:8px;">
+            <div style="text-align:center;">
+                <div style="font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:var(--navy); line-height:1;">1.200<span style="font-size:16px; color:var(--gold);">+</span></div>
+                <div style="font-size:10px; text-transform:uppercase; letter-spacing:1.5px; margin-top:8px; color:#64748b; font-weight:600;">Nhân Sự Tinh Nhuệ</div>
+            </div>
+            <div style="width:1px; height:40px; background:#e2e8f0;"></div>
+            <div style="text-align:center;">
+                <div style="font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:var(--navy); line-height:1;">100<span style="font-size:16px; color:var(--gold);">+</span></div>
+                <div style="font-size:10px; text-transform:uppercase; letter-spacing:1.5px; margin-top:8px; color:#64748b; font-weight:600;">Khách Hàng FDI</div>
+            </div>
+            <div style="width:1px; height:40px; background:#e2e8f0;"></div>
+            <div style="text-align:center;">
+                <div style="font-family:'Montserrat',sans-serif; font-size:28px; font-weight:800; color:var(--navy); line-height:1;">23 <span style="font-size:16px; color:var(--gold);">Tỷ</span></div>
+                <div style="font-size:10px; text-transform:uppercase; letter-spacing:1.5px; margin-top:8px; color:#64748b; font-weight:600;">Bảo Hiểm Trách Nhiệm</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" style="margin-top:12px; border-top-color:rgba(0,0,0,.1);">
+        <div></div>
+        <p style="font-size:8.5px; text-transform:uppercase; letter-spacing:1px; margin:0; color:#64748b;">Giải pháp an ninh tích hợp</p>
+    </div>
+</div>
+</div>
+
+
+<!-- TRANG 6: GIÁ TRỊ CỐT LÕI -->
+<div id="page-6" class="page light-page">
+<div class="content-wrapper" style="padding:0;">
+    <div class="split-wrap" style="margin:0;">
+        <div class="split-half split-img" style="background-image:url('images/ảnh1.jpeg'); display:flex; justify-content:center; align-items:flex-start; padding:20mm 12mm;">
+            <div class="overlay" style="background:linear-gradient(transparent, rgba(15,23,42,0.9));"></div>
+            <div style="position:relative; z-index:10; width:100%; max-width:100%;">
+                <p style="color:#fff; font-size:14px; font-style:italic; line-height:1.6; font-weight:300; max-width:100%;">"Chúng tôi xây dựng nghề an ninh theo tiêu chuẩn chuyên nghiệp và bền vững. An ninh là năng lực dự báo, phòng ngừa và kiểm soát rủi ro minh bạch."</p>
+            </div>
+        </div>
+        <div class="split-half light" style="padding:15mm; justify-content:center;">
+            <h2 class="cbre-title" style="">Giá Trị Cốt Lõi</h2>
+            <div class="cbre-line"></div>
+            
+            
+<div style="display:flex; flex-direction:column; gap:12px;">
+    <div>
+        <h3 style="font-size:12px; color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; margin-bottom:4px;">1. CHÍNH TRỰC</h3>
+        <p style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:4px;">Trung thực, minh bạch, giữ chữ tín</p>
+        <ul style="font-size:11px; margin:0; padding-left:16px; color:var(--text-dark); line-height:1.5;">
+            <li style="margin-bottom:4px;">Tự kỷ luật, nhất quán, làm đúng cam kết, không gian dối hay che giấu sai sót.</li>
+            <li style="margin-bottom:4px;">Báo cáo trung thực, minh bạch trong công việc, tài chính và các quan hệ.</li>
+            <li>Dũng cảm bảo vệ lẽ phải, đấu tranh với hành vi sai trái, tiêu cực.</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size:12px; color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; margin-bottom:4px;">2. TRÁCH NHIỆM</h3>
+        <p style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:4px;">Chủ động, tận tâm, cam kết thực hiện</p>
+        <ul style="font-size:11px; margin:0; padding-left:16px; color:var(--text-dark); line-height:1.5;">
+            <li style="margin-bottom:4px;">Luôn đặt sự an toàn và hài lòng của khách hàng lên hàng đầu.</li>
+            <li style="margin-bottom:4px;">Chủ động nhận và hoàn thành nhiệm vụ, luôn nhìn thấy trách nhiệm từ mình.</li>
+            <li>Hợp tác với đồng đội, hỗ trợ khách hàng, nỗ lực hết khả năng làm cho tốt mọi việc.</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size:12px; color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; margin-bottom:4px;">3. CHUYÊN NGHIỆP</h3>
+        <p style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:4px;">Chuẩn mực, kỷ luật, dịch vụ xuất sắc</p>
+        <ul style="font-size:11px; margin:0; padding-left:16px; color:var(--text-dark); line-height:1.5;">
+            <li style="margin-bottom:4px;">Luôn đúng giờ, đồng phục gọn gàng, tác phong nghiêm túc, giao tiếp lịch sự.</li>
+            <li style="margin-bottom:4px;">Tuân thủ quy trình, thực hiện nhiệm vụ chính xác, không lơ là, luôn sẵn sàng phục vụ.</li>
+            <li>Đáp ứng nhanh, xử lý tình huống linh hoạt, mang lại sự an toàn và tin cậy tuyệt đối.</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size:12px; color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; margin-bottom:4px;">4. ĐỔI MỚI</h3>
+        <p style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:4px;">Tiên phong công nghệ, cải tiến không ngừng</p>
+        <ul style="font-size:11px; margin:0; padding-left:16px; color:var(--text-dark); line-height:1.5;">
+            <li style="margin-bottom:4px;">Luôn cập nhật kiến thức, ứng dụng công nghệ để nâng cao hiệu suất làm việc.</li>
+            <li style="margin-bottom:4px;">Đề xuất cải tiến, sáng tạo để nâng cao chất lượng dịch vụ và vận hành tối ưu.</li>
+            <li>Sẵn sàng thay đổi để thích nghi, phát triển bản thân và tổ chức.</li>
+        </ul>
+    </div>
+    <div>
+        <h3 style="font-size:12px; color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800; margin-bottom:4px;">5. ĐOÀN KẾT</h3>
+        <p style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:4px;">Đồng lòng, hợp tác, tận tâm phục vụ</p>
+        <ul style="font-size:11px; margin:0; padding-left:16px; color:var(--text-dark); line-height:1.5;">
+            <li style="margin-bottom:4px;">Hỗ trợ đồng đội, làm việc nhóm hiệu quả, vì mục tiêu chung.</li>
+            <li style="margin-bottom:4px;">Tôn trọng, lắng nghe, phối hợp chặt chẽ, cùng thắng.</li>
+            <li>Luôn đặt lợi ích chung lên trên, sẵn sàng phục vụ khách hàng.</li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 7: SƠ ĐỒ CƠ CẤU TỔ CHỨC -->
+<div id="page-7" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark"></div>
+<div class="content-wrapper">
+<div class="hdr">
+<div class="logo-area">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo">
+<div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+</div>
+<div class="hdr-right">CORPORATE CAPABILITY STATEMENT<div class="hdr-title">Cơ Cấu Tổ Chức</div></div>
+</div>
+
+<div style="flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+    <h2 class="cbre-title" style="text-align:center; margin-top:12px; margin-bottom:6px;">Sơ Đồ Cơ Cấu Tổ Chức</h2>
+    <div class="cbre-line" style="margin:0 auto 20px; background:var(--cyan);"></div>
+
+    <style>
+    .oc-wrap {display:flex; flex-direction:column; position:relative; align-items:stretch;}
+    .oc-ceo {display:flex; justify-content:center; margin-bottom:0; position:relative; z-index:2;}
+    .oc-ceo-card {display:flex; align-items:center; gap:14px; background:linear-gradient(135deg, rgba(212,175,55,0.18), rgba(6,182,212,0.1)); border:1.5px solid rgba(212,175,55,0.4); border-radius:12px; padding:12px 28px; box-shadow:0 8px 24px rgba(0,0,0,0.25);}
+    .oc-ceo-card img {width:50px; height:50px; border-radius:50%; object-fit:cover; border:2.5px solid var(--gold); box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+    .oc-connector {display:flex; flex-direction:column; align-items:center; width:100%;}
+    .oc-vline {width:2px; height:18px; background:var(--cyan);}
+    .oc-hline {height:2px; background:var(--cyan); align-self:stretch;}
+    .oc-cols {display:flex; gap:7px; align-items:flex-start; width:100%;}
+    .oc-col {flex:1; display:flex; flex-direction:column; align-items:center;}
+    .oc-col::before {content:''; width:2px; height:14px; background:var(--cyan);}
+    .oc-dept-card {background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; width:100%; display:flex; flex-direction:column; overflow:hidden;}
+    .oc-dept-hdr {padding:10px 8px 8px; text-align:center; border-bottom:1px solid rgba(255,255,255,0.06);}
+    .oc-dept-icon {width:30px; height:30px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:5px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+    .oc-dept-name {font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; line-height:1.25;}
+    .oc-dept-desc {font-size:7.5px; color:rgba(255,255,255,0.4); margin-top:4px; line-height:1.35; font-weight:500;}
+    .oc-dept-body {padding:8px 7px; flex:1; display:flex; flex-direction:column; gap:5px;}
+    .oc-person {display:flex; align-items:center; gap:7px; padding:6px 7px; border-radius:7px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);}
+    .oc-person img {width:28px; height:28px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(255,255,255,0.3); flex-shrink:0;}
+    .oc-pname {font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; color:#fff; line-height:1.2; white-space:nowrap;}
+    .oc-prole {font-size:7.5px; color:rgba(255,255,255,0.5); font-weight:600; margin-top:1px; line-height:1.2;}
+    </style>
+
+    <div class="oc-wrap">
+        <!-- CEO -->
+        <div class="oc-ceo">
+            <div class="oc-ceo-card">
+                <img src="images/toan_do.jpg" alt="Đỗ Văn Toàn">
+                <div style="text-align:left;">
+                    <div style="font-family:'Montserrat',sans-serif; font-size:15px; font-weight:800; color:#fff;">Đỗ Văn Toàn</div>
+                    <div style="font-size:10px; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-top:2px;">Tổng Giám Đốc · CEO</div>
+                    <div style="font-size:8px; color:rgba(255,255,255,0.45); margin-top:3px;">ASIS International · Chủ tịch BNI · Phó CT CLB DN 2030</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Connector -->
+        <div class="oc-connector">
+            <div class="oc-vline"></div>
+            <div class="oc-hline"></div>
+        </div>
+
+        <!-- 5 Department Columns -->
+        <div class="oc-cols">
+            <!-- 1. Điều Hành -->
+            <div class="oc-col">
+                <div class="oc-dept-card">
+                    <div class="oc-dept-hdr">
+                        <div class="oc-dept-icon" style="background:linear-gradient(135deg, var(--gold), #b8941e);">
+                            <i class="fas fa-landmark" style="font-size:13px; color:#fff;"></i>
+                        </div>
+                        <div class="oc-dept-name" style="color:var(--gold);">Khối<br>Điều Hành</div>
+                        <div class="oc-dept-desc">Tài chính, Nhân sự,<br>Hành chính & Pháp lý</div>
+                    </div>
+                    <div class="oc-dept-body">
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Thảo Lê</div><div class="oc-prole">Head of Finance</div></div></div>
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Hương Đỗ</div><div class="oc-prole">Head of HR</div></div></div>
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Anh Nguyễn</div><div class="oc-prole">Head of Hành Chính</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Vận Hành -->
+            <div class="oc-col">
+                <div class="oc-dept-card">
+                    <div class="oc-dept-hdr">
+                        <div class="oc-dept-icon" style="background:linear-gradient(135deg, var(--cyan), #0891b2);">
+                            <i class="fas fa-cogs" style="font-size:13px; color:#fff;"></i>
+                        </div>
+                        <div class="oc-dept-name" style="color:var(--cyan);">Khối<br>Vận Hành</div>
+                        <div class="oc-dept-desc">Quản lý mục tiêu,<br>Giám sát & SRT</div>
+                    </div>
+                    <div class="oc-dept-body">
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Nguyễn Đặng</div><div class="oc-prole">Head of Operations</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Sale & MKT -->
+            <div class="oc-col">
+                <div class="oc-dept-card">
+                    <div class="oc-dept-hdr">
+                        <div class="oc-dept-icon" style="background:linear-gradient(135deg, var(--gold), #b8941e);">
+                            <i class="fas fa-chart-line" style="font-size:13px; color:#fff;"></i>
+                        </div>
+                        <div class="oc-dept-name" style="color:var(--gold);">Khối<br>Sale & MKT</div>
+                        <div class="oc-dept-desc">Kinh doanh, Thương hiệu<br>& Truyền thông</div>
+                    </div>
+                    <div class="oc-dept-body">
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Minh Khương</div><div class="oc-prole">Head of Sale</div></div></div>
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Khiêm Trần</div><div class="oc-prole">Head of Marketing</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. SeaZen Tech -->
+            <div class="oc-col">
+                <div class="oc-dept-card" style="border-color:rgba(6,182,212,0.2);">
+                    <div class="oc-dept-hdr">
+                        <div class="oc-dept-icon" style="background:linear-gradient(135deg, #06b6d4, #0e7490);">
+                            <i class="fas fa-microchip" style="font-size:13px; color:#fff;"></i>
+                        </div>
+                        <div class="oc-dept-name" style="color:var(--cyan);">SeaZen<br>Technology</div>
+                        <div class="oc-dept-desc">SOC, CCTV, AI<br>& Giải pháp công nghệ</div>
+                    </div>
+                    <div class="oc-dept-body">
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Thắng Đỗ</div><div class="oc-prole">Head of Tech · Deputy CEO</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. SeaZen Edu -->
+            <div class="oc-col">
+                <div class="oc-dept-card" style="border-color:rgba(6,182,212,0.2);">
+                    <div class="oc-dept-hdr">
+                        <div class="oc-dept-icon" style="background:linear-gradient(135deg, #06b6d4, #0e7490);">
+                            <i class="fas fa-graduation-cap" style="font-size:13px; color:#fff;"></i>
+                        </div>
+                        <div class="oc-dept-name" style="color:var(--cyan);">SeaZen<br>Education</div>
+                        <div class="oc-dept-desc">Đào tạo, Chuẩn hóa<br>& Phát triển nhân lực</div>
+                    </div>
+                    <div class="oc-dept-body">
+                        <div class="oc-person"><img src="images/org_placeholder.png" alt=""><div><div class="oc-pname">Hà Nguyễn</div><div class="oc-prole">Head of SeaZen Edu</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PPRT Tagline -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:14px; padding:14px 0;">
+        <div style="height:1px; width:80px; background:linear-gradient(to right, transparent, rgba(212,175,55,0.3));"></div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:8px; text-transform:uppercase; letter-spacing:2.5px; color:rgba(212,175,55,0.5); font-weight:700;">Predict · Protect · Respond · Transparent</div>
+        <div style="height:1px; width:80px; background:linear-gradient(to left, transparent, rgba(212,175,55,0.3));"></div>
+    </div>
+
+    <!-- Mạng Lưới Toàn Quốc - 50% page -->
+    <div style="flex:1; display:flex; flex-direction:column; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+            <div style="width:3px; height:22px; background:var(--gold); border-radius:2px;"></div>
+            <h3 style="font-family:'Montserrat',sans-serif; font-size:13px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:1.2px; margin:0;">Mạng Lưới Toàn Quốc</h3>
+        </div>
+        <p style="font-size:10px; color:rgba(255,255,255,0.5); margin:0 0 10px 13px; line-height:1.5;">Hiện diện tại các trung tâm kinh tế trọng điểm — đảm bảo triển khai nhanh trên phạm vi toàn quốc.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; flex:1;">
+            <!-- HCM -->
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--gold); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <div style="width:30px; height:30px; background:linear-gradient(135deg, var(--gold), #b8941e); border-radius:7px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(212,175,55,0.2);">
+                        <i class="fas fa-building" style="font-size:12px; color:#fff;"></i>
+                    </div>
+                    <div>
+                        <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; color:var(--gold);">Trụ Sở Chính</div>
+                        <div style="font-size:8px; color:rgba(255,255,255,0.4); font-weight:600;">TP. Hồ Chí Minh · Thành lập 2017</div>
+                    </div>
+                </div>
+                <div style="font-size:9px; color:rgba(255,255,255,0.7); line-height:1.5;">
+                    Văn phòng điều hành trung tâm, quản lý toàn bộ hệ thống vận hành khu vực phía Nam. Bao gồm SOC Center, SRT Hub và trung tâm đào tạo SeaZen Edu.
+                </div>
+                <div style="margin-top:auto; padding-top:6px; border-top:1px solid rgba(255,255,255,0.06); display:flex; gap:12px;">
+                    <div style="font-size:8px; color:rgba(255,255,255,0.45);"><i class="fas fa-phone" style="margin-right:4px; color:var(--cyan); font-size:7px;"></i>0937 275 877</div>
+                    <div style="font-size:8px; color:rgba(255,255,255,0.45);"><i class="fas fa-envelope" style="margin-right:4px; color:var(--cyan); font-size:7px;"></i>info@seazen.vn</div>
+                </div>
+            </div>
+            <!-- HN -->
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--cyan); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <div style="width:30px; height:30px; background:linear-gradient(135deg, var(--cyan), #0891b2); border-radius:7px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(6,182,212,0.2);">
+                        <i class="fas fa-building" style="font-size:12px; color:#fff;"></i>
+                    </div>
+                    <div>
+                        <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; color:var(--cyan);">VPĐD Hà Nội</div>
+                        <div style="font-size:8px; color:rgba(255,255,255,0.4); font-weight:600;">Khu vực phía Bắc · Thành lập 2020</div>
+                    </div>
+                </div>
+                <div style="font-size:9px; color:rgba(255,255,255,0.7); line-height:1.5;">
+                    Điều hành hoạt động khu vực phía Bắc thông qua SeaZen Miền Bắc. Phục vụ các dự án FDI tại Hà Nội, Hải Phòng, Bắc Ninh và các tỉnh lân cận.
+                </div>
+                <div style="margin-top:auto; padding-top:6px; border-top:1px solid rgba(255,255,255,0.06);">
+                    <div style="font-size:8px; color:rgba(255,255,255,0.45);"><i class="fas fa-map-marker-alt" style="margin-right:4px; color:var(--cyan); font-size:7px;"></i>Hà Nội · Hải Phòng · Bắc Ninh</div>
+                </div>
+            </div>
+            <!-- BD -->
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--cyan); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <div style="width:30px; height:30px; background:linear-gradient(135deg, var(--cyan), #0891b2); border-radius:7px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(6,182,212,0.2);">
+                        <i class="fas fa-industry" style="font-size:12px; color:#fff;"></i>
+                    </div>
+                    <div>
+                        <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; color:var(--cyan);">VPĐD Bình Dương</div>
+                        <div style="font-size:8px; color:rgba(255,255,255,0.4); font-weight:600;">Bình Dương & Đồng Nai</div>
+                    </div>
+                </div>
+                <div style="font-size:9px; color:rgba(255,255,255,0.7); line-height:1.5;">
+                    Phục vụ các KCN và nhà máy FDI tập trung tại Bình Dương, Đồng Nai. Đội ngũ vận hành chuyên biệt cho môi trường công nghiệp nặng.
+                </div>
+                <div style="margin-top:auto; padding-top:6px; border-top:1px solid rgba(255,255,255,0.06);">
+                    <div style="font-size:8px; color:rgba(255,255,255,0.45);"><i class="fas fa-map-marker-alt" style="margin-right:4px; color:var(--cyan); font-size:7px;"></i>VSIP · Mỹ Phước · Amata · Long Thành</div>
+                </div>
+            </div>
+            <!-- BRVT -->
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--cyan); border-radius:8px; padding:12px 14px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <div style="width:30px; height:30px; background:linear-gradient(135deg, var(--cyan), #0891b2); border-radius:7px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(6,182,212,0.2);">
+                        <i class="fas fa-anchor" style="font-size:12px; color:#fff;"></i>
+                    </div>
+                    <div>
+                        <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; color:var(--cyan);">VPĐD Bà Rịa – Vũng Tàu</div>
+                        <div style="font-size:8px; color:rgba(255,255,255,0.4); font-weight:600;">Đông Nam Bộ</div>
+                    </div>
+                </div>
+                <div style="font-size:9px; color:rgba(255,255,255,0.7); line-height:1.5;">
+                    Hỗ trợ các dự án công nghiệp, logistics và dầu khí khu vực Đông Nam Bộ. Bao gồm cảng biển, khu công nghiệp và nhà máy chế biến.
+                </div>
+                <div style="margin-top:auto; padding-top:6px; border-top:1px solid rgba(255,255,255,0.06);">
+                    <div style="font-size:8px; color:rgba(255,255,255,0.45);"><i class="fas fa-map-marker-alt" style="margin-right:4px; color:var(--cyan); font-size:7px;"></i>Phú Mỹ · Châu Đức · Cái Mép</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 8: MÔ HÌNH PPRT -->
+<div id="page-8" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark"></div>
+<div class="content-wrapper">
+<div class="hdr">
+<div class="logo-area">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo">
+<div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+</div>
+<div class="hdr-right">CORPORATE CAPABILITY STATEMENT<div class="hdr-title">Mô Hình PPRT</div></div>
+</div>
+<div style="text-align:center; margin-bottom:30px;">
+    <h2 class="cbre-title" style="margin-bottom:10px;">Mô Hình PPRT</h2>
+    <p style="font-size: 14px; max-width:70%; margin:0 auto; opacity:0.85;">Khung vận hành 4 lớp kiến tạo hệ thống an ninh đa tầng có khả năng dự báo, phòng ngừa, ứng phó và minh bạch hóa toàn bộ quy trình.</p>
+</div>
+
+<!-- CSS CHO MÔ HÌNH PPRT THEO TASK 1 -->
+<style>
+.pprt-grid-wrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.pprt-box {
+    position: relative;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+}
+.box-tl {
+    padding: 22px 60px 60px 22px;
+    border-top: 3px solid var(--cyan);
+    border-left: 3px solid var(--cyan);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.box-tr {
+    padding: 22px 22px 60px 60px;
+    border-top: 3px solid var(--cyan);
+    border-right: 3px solid var(--cyan);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: right;
+}
+.box-bl {
+    padding: 60px 60px 22px 22px;
+    border-bottom: 3px solid var(--gold);
+    border-left: 3px solid var(--gold);
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.box-br {
+    padding: 60px 22px 22px 60px;
+    border-bottom: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    text-align: right;
+}
+.pprt-box-hd {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.box-tr .pprt-box-hd, .box-br .pprt-box-hd {
+    flex-direction: row-reverse;
+}
+.pprt-icon-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pprt-icon-badge.ic {
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+.pprt-icon-badge.ig {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.pprt-icon-badge i { font-size: 14px; }
+.pprt-icon-badge.ic i { color: var(--cyan); }
+.pprt-icon-badge.ig i { color: var(--gold); }
+.pprt-box-ttl {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+}
+.pprt-box-ttl.tc { color: var(--cyan); }
+.pprt-box-ttl.tg { color: var(--gold); }
+.pprt-box-sub {
+    font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    margin-top: 3px;
+    text-transform: uppercase;
+}
+.pprt-box ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+.pprt-box li {
+    margin-bottom: 6px;
+    text-align: left;
+}
+.box-tr ul, .box-br ul {
+    padding-left: 0;
+    padding-right: 18px;
+    list-style: none;
+}
+.box-tr li, .box-br li {
+    text-align: right;
+    padding-right: 14px;
+    position: relative;
+}
+.box-tr li::after, .box-br li::after {
+    content: '•';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    line-height: 1.6;
+}
+.pprt-center-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 10;
+    background: #020617;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+}
+.pprt-ring-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+.pprt-div-v {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08);
+}
+.pprt-div-h {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+}
+.pprt-qtext {
+    position: absolute;
+    text-align: center;
+    line-height: 1.2;
+    transform: translate(-50%, -50%);
+    width: max-content;
+}
+.pprt-qtext .qt {
+    font-size: 9px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+}
+.pprt-qtext .qs {
+    font-size: 7.5px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    margin-top: 3px;
+}
+.pprt-qtext.tc .qt { color: var(--cyan); }
+.pprt-qtext.tg .qt { color: var(--gold); }
+.pprt-center-shield {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #0f172a;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 12;
+}
+.pprt-arrow-badge {
+    position: absolute;
+    z-index: 20;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1e293b;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+.pprt-arrow-badge.top {
+    top: calc(50% - 141px);
+    left: calc(50% - 16px);
+    color: var(--cyan);
+}
+.pprt-arrow-badge.right {
+    top: calc(50% - 16px);
+    right: calc(50% - 141px);
+    color: var(--cyan);
+}
+.pprt-arrow-badge.bottom {
+    bottom: calc(50% - 141px);
+    left: calc(50% - 16px);
+    color: var(--gold);
+}
+.pprt-arrow-badge.left {
+    top: calc(50% - 16px);
+    left: calc(50% - 141px);
+    color: var(--gold);
+}
+.pprt-arrow-badge i {
+    font-size: 12px;
+}
+</style>
+
+<div class="pprt-grid-wrap">
+
+    <div class="pprt-box box-tl">
+        <div class="pprt-box-hd">
+            <div class="pprt-icon-badge ic"><i class="fa-solid fa-satellite-dish"></i></div>
+            <div>
+                <div class="pprt-box-ttl tc">PREDICT</div>
+                <div class="pprt-box-sub">Phòng Ngừa</div>
+            </div>
+        </div>
+        <ul>
+            <li>Khảo sát kỹ, thu thập dữ liệu.</li>
+            <li>Phân tích sâu, nhận diện mối nguy.</li>
+            <li>Xây dựng phương án, ngăn chặn rủi ro.</li>
+        </ul>
+    </div>
+
+    <div class="pprt-box box-tr">
+        <div class="pprt-box-hd">
+            <div class="pprt-icon-badge ic"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <div class="pprt-box-ttl tc">PROTECT</div>
+                <div class="pprt-box-sub">Bảo Vệ</div>
+            </div>
+        </div>
+        <ul>
+            <li>Thiết lập bảo vệ vật lý đa lớp.</li>
+            <li>Tích hợp công nghệ, chuẩn hóa nhân sự.</li>
+            <li>Vận hành SOP, kiểm soát chặt chẽ.</li>
+        </ul>
+    </div>
+
+    <div class="pprt-box box-bl">
+        <div class="pprt-box-hd">
+            <div class="pprt-icon-badge ig"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+                <div class="pprt-box-ttl tg">TRANSPARENT</div>
+                <div class="pprt-box-sub">Minh Bạch</div>
+            </div>
+        </div>
+        <ul>
+            <li>Số hóa Dashboard, giám sát trực tuyến.</li>
+            <li>Dữ liệu thực, báo cáo trung thực.</li>
+            <li>Quản trị thông minh, minh bạch vận hành.</li>
+        </ul>
+    </div>
+
+    <div class="pprt-box box-br">
+        <div class="pprt-box-hd">
+            <div class="pprt-icon-badge ig"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+                <div class="pprt-box-ttl tg">RESPOND</div>
+                <div class="pprt-box-sub">Ứng Phó</div>
+            </div>
+        </div>
+        <ul>
+            <li>Ứng phó nhanh, đúng cấp độ.</li>
+            <li>Từ Nhân viên tại chỗ, đến chuỗi chỉ huy phản ứng 4 cấp.</li>
+            <li>Báo cáo RCA sau sự cố, xử lý tận gốc.</li>
+        </ul>
+    </div>
+
+    <!-- CENTER CIRCLE OVERLAY -->
+    <div class="pprt-center-overlay">
+        <!-- SVG ring: gradient border, PDF-safe -->
+        <svg class="pprt-ring-svg" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#06b6d4" />
+                    <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.15" />
+                    <stop offset="100%" stop-color="#d4af37" />
+                </linearGradient>
+            </defs>
+            <circle cx="125" cy="125" r="123" fill="none" stroke="url(#ringGrad)" stroke-width="3" />
+        </svg>
+        <div class="pprt-div-v"></div>
+        <div class="pprt-div-h"></div>
+        <div class="pprt-qtext tc" style="top:25%; left:30%;">
+            <div class="qt">PREDICT</div>
+            <div class="qs">Phòng Ngừa</div>
+        </div>
+        <div class="pprt-qtext tc" style="top:25%; left:70%;">
+            <div class="qt">PROTECT</div>
+            <div class="qs">Bảo Vệ</div>
+        </div>
+        <div class="pprt-qtext tg" style="top:75%; left:30%;">
+            <div class="qt">TRANSPARENT</div>
+            <div class="qs">Minh Bạch</div>
+        </div>
+        <div class="pprt-qtext tg" style="top:75%; left:70%;">
+            <div class="qt">RESPOND</div>
+            <div class="qs">Ứng Phó</div>
+        </div>
+        <div class="pprt-center-shield">
+            <i class="fa-solid fa-shield-halved" style="color:white;  margin-bottom:5px;"></i>
+            <div style="font-family:'Montserrat',sans-serif; font-size:8px; font-weight:800; color:white; letter-spacing:1px;">SEAZEN</div>
+        </div>
+    </div>
+
+    <!-- ARROWS outside the hidden circle -->
+    <div class="pprt-arrow-badge top"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="pprt-arrow-badge right"><i class="fa-solid fa-arrow-down"></i></div>
+    <div class="pprt-arrow-badge bottom"><i class="fa-solid fa-arrow-left"></i></div>
+    <div class="pprt-arrow-badge left"><i class="fa-solid fa-arrow-up"></i></div>
+
+</div>
+
+<!-- HỆ THỐNG QUẢN TRỊ VẬN HÀNH -->
+<div style="margin-top:40px; padding: 0 10px;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+        <div style="width:4px; height:24px; background:var(--gold); border-radius:2px;"></div>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size:14px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin:0;"><i class="fa-solid fa-sitemap" style="margin-right:8px;"></i>Hệ Thống Quản Trị Vận Hành</h3>
+    </div>
+    <p style="font-size:12px; color:rgba(255,255,255,0.65); margin:0 0 20px 14px; line-height:1.6;">Mô hình PPRT được vận hành trực tiếp tại đội — khi sự cố xảy ra, chuỗi phản ứng <strong style="color:var(--cyan);">4 cấp</strong> được kích hoạt tức thì:</p>
+
+    <div style="display:flex; gap:16px; align-items: stretch;">
+        <!-- Level 1 -->
+        <div style="flex:1; background:rgba(15,23,42,0.6); backdrop-filter:blur(10px); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:20px 16px; text-align:center; position:relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+            <div style="width:36px; height:36px; background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.4); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; box-shadow: 0 4px 10px rgba(6,182,212,0.2);">
+                <span style="color:var(--cyan); font-size:14px; font-weight:800; font-family:'Montserrat',sans-serif;">1</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:var(--cyan); margin-bottom:6px; text-transform:uppercase;">Nhân Viên Bảo Vệ</div>
+            <div style="font-size:10px; color:rgba(255,255,255,0.6); line-height:1.5;">Ghi nhận sự việc tại nhật ký ca trực</div>
+        </div>
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; color:rgba(255,255,255,0.2);"><i class="fas fa-chevron-right" style="font-size:14px;"></i></div>
+        
+        <!-- Level 2 -->
+        <div style="flex:1; background:rgba(15,23,42,0.6); backdrop-filter:blur(10px); border:1px solid rgba(212,175,55,0.3); border-radius:12px; padding:20px 16px; text-align:center; position:relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+            <div style="width:36px; height:36px; background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.4); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; box-shadow: 0 4px 10px rgba(212,175,55,0.2);">
+                <span style="color:var(--gold); font-size:14px; font-weight:800; font-family:'Montserrat',sans-serif;">2</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:var(--gold); margin-bottom:6px; text-transform:uppercase;">Chỉ Huy Đội</div>
+            <div style="font-size:10px; color:rgba(255,255,255,0.6); line-height:1.5;">Thông báo ngay qua điện thoại hoặc email</div>
+        </div>
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; color:rgba(255,255,255,0.2);"><i class="fas fa-chevron-right" style="font-size:14px;"></i></div>
+        
+        <!-- Level 3 -->
+        <div style="flex:1; background:rgba(15,23,42,0.6); backdrop-filter:blur(10px); border:1px solid rgba(6,182,212,0.3); border-radius:12px; padding:20px 16px; text-align:center; position:relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+            <div style="width:36px; height:36px; background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.4); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; box-shadow: 0 4px 10px rgba(6,182,212,0.2);">
+                <span style="color:var(--cyan); font-size:14px; font-weight:800; font-family:'Montserrat',sans-serif;">3</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:var(--cyan); margin-bottom:6px; text-transform:uppercase;">Quản Lý Khu Vực</div>
+            <div style="font-size:10px; color:rgba(255,255,255,0.6); line-height:1.5;">Gửi báo cáo chính thức trong vòng 24 giờ</div>
+        </div>
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; color:rgba(255,255,255,0.2);"><i class="fas fa-chevron-right" style="font-size:14px;"></i></div>
+        
+        <!-- Level 4 -->
+        <div style="flex:1; background:rgba(15,23,42,0.6); backdrop-filter:blur(10px); border:1px solid rgba(212,175,55,0.3); border-radius:12px; padding:20px 16px; text-align:center; position:relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+            <div style="width:36px; height:36px; background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.4); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; box-shadow: 0 4px 10px rgba(212,175,55,0.2);">
+                <span style="color:var(--gold); font-size:14px; font-weight:800; font-family:'Montserrat',sans-serif;">4</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:var(--gold); margin-bottom:6px; text-transform:uppercase;">Ban Giám Đốc Khối</div>
+            <div style="font-size:10px; color:rgba(255,255,255,0.6); line-height:1.5;">Trực tiếp làm việc cùng khách hàng</div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+<!-- TRANG 10: TỔNG QUAN HỆ SINH THÁI DỊCH VỤ -->
+<div id="page-10" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.15;"></div>
+<div class="content-wrapper">
+    <div class="hdr">
+        <div class="logo-area">
+            <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+            <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+        </div>
+        <div class="hdr-right">INTEGRATED SECURITY SOLUTIONS<div class="hdr-title">Hệ Sinh Thái</div></div>
+    </div>
+    <div class="service-light-shell">
+        <h2 class="cbre-title service-light-heading">04 Trụ Cột Dịch Vụ Tích Hợp</h2>
+        <div class="cbre-line" style="margin: 0 auto 30px;"></div>
+
+        <div class="service-grid-2">
+            <div class="service-card">
+                <div class="service-card-icon"><i class="fas fa-user-shield"></i></div>
+                <h3>Gói 1: Dịch Vụ Bảo Vệ (Guarding)</h3>
+                <p>Lực lượng an ninh tinh nhuệ, vận hành 24/7 với phương án ca kíp tối ưu. Nền tảng cốt lõi đảm bảo an toàn vật lý cho mọi mục tiêu từ tiêu chuẩn đến cao cấp.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card-icon"><i class="fas fa-microchip"></i></div>
+                <h3>Gói 2: An Ninh Công Nghệ</h3>
+                <p>Số hóa toàn diện bằng Hệ sinh thái App (VMS, Patrol) và Hạ tầng thiết bị (AI CCTV, Access Control). Tối ưu hóa độ chính xác và minh bạch dữ liệu.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card-icon gold"><i class="fas fa-satellite-dish"></i></div>
+                <h3>Gói 3: Giám Sát & Ứng Phó (SOC)</h3>
+                <p>Trung tâm điều hành SOC 24/7 kết hợp Đội phản ứng nhanh SRT. Biến dữ liệu công nghệ thành hành động tức thì tại hiện trường.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card-icon gold"><i class="fas fa-crown"></i></div>
+                <h3>Gói 4: Giải Pháp Cao Cấp</h3>
+                <p>Dịch vụ chuyên biệt: Bảo vệ yếu nhân (VIP), Trợ lý an ninh, Tư vấn rủi ro và Chuyển giao đào tạo nghiệp vụ chuẩn quốc tế ASIS.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 11: GÓI 1 & ĐÀO TẠO -->
+<div id="page-11" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark" style="background:linear-gradient(to right, rgba(15,23,42,0.9), rgba(2,6,23,0.8));"></div>
+<div class="content-wrapper service-dark-shell">
+    <div class="service-master-hdr">
+        <div class="logo-area">
+            <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo">
+            <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+        </div>
+        <div class="hdr-right">HUMAN RESOURCES</div>
+    </div>
+    <div class="split-wrap service-dark-split">
+        <!-- Left: Guarding -->
+        <div class="split-half dark service-dark-col service-dark-col-left">
+            <h2 class="cbre-title">Gói 1: Dịch Vụ Bảo Vệ</h2>
+            <div class="cbre-line" style="background:var(--gold);"></div>
+            <p class="service-desc">Cung cấp lực lượng bảo vệ chuyên nghiệp với phương án bố trí ca kíp linh hoạt, đảm bảo tuân thủ nghiêm ngặt Luật Lao động.</p>
+
+            <div class="service-dark-card" style="border-left:4px solid var(--cyan); padding-left:14px;">
+                <h3 style="color:var(--cyan);">Ca Trực 08 Tiếng</h3>
+                <ul>
+                    <li style="margin-bottom:6px;"><strong>Đối tượng:</strong> Phù hợp mục tiêu tiêu chuẩn cao, khối lượng công việc nhiều.</li>
+                    <li><strong>Vận hành:</strong> 03 nhân sự luân phiên trực 8/24/7 (nghỉ 1 ngày/tuần theo luật).</li>
+                </ul>
+            </div>
+
+            <div class="service-dark-card" style="border-left:4px solid var(--gold); padding-left:14px;">
+                <h3 style="color:var(--gold);">Ca Trực 12 Tiếng</h3>
+                <ul>
+                    <li style="margin-bottom:6px;"><strong>Đối tượng:</strong> Phù hợp mục tiêu ổn định, tính chất an ninh trung bình hoặc đơn giản.</li>
+                    <li><strong>Vận hành:</strong> 02 nhân sự luân phiên trực 12/24/7 (tối ưu chi phí).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Right: Training -->
+        <div class="split-half dark service-dark-col service-dark-col-right">
+            <h2 class="cbre-title" style="margin-top:20px;">Nền Tảng Đào Tạo</h2>
+            <div class="cbre-line" style="background:var(--gold);"></div>
+            <p class="service-desc">Trung tâm Đào tạo cấp phép, chuẩn hóa năng lực nhân sự để đáp ứng chất lượng Guarding & Giải pháp cao cấp.</p>
+
+            <div style="margin-bottom:24px;">
+                <h3 class="service-label" style="color:var(--cyan);">Lộ Trình Phát Triển</h3>
+                <div class="service-path">
+                    <div class="service-path-step" style="color:var(--cyan);">Guard</div>
+                    <i class="fas fa-chevron-right service-path-arrow"></i>
+                    <div class="service-path-step" style="color:var(--cyan);">Ca Trưởng</div>
+                    <i class="fas fa-chevron-right service-path-arrow"></i>
+                    <div class="service-path-step" style="color:var(--gold);">CHĐ</div>
+                    <i class="fas fa-chevron-right service-path-arrow"></i>
+                    <div class="service-path-step" style="color:var(--gold);">ESO</div>
+                </div>
+            </div>
+
+            <div class="service-grid-2" style="gap:14px;">
+                <div class="service-dark-card" style="padding:14px;">
+                    <h3 style="color:#fff;">Nghiệp Vụ Cơ Bản</h3>
+                    <ul>
+                        <li style="margin-bottom:6px;">Tuần tra & PCCC, Sơ cấp cứu</li>
+                        <li>Vận hành App & tác phong</li>
+                    </ul>
+                </div>
+                <div class="service-dark-card" style="padding:14px;">
+                    <h3 style="color:var(--gold);">Đào Tạo Quản Lý</h3>
+                    <ul>
+                        <li style="margin-bottom:6px;">Quản trị rủi ro & Lập kế hoạch</li>
+                        <li>Khung năng lực chuẩn ASIS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-grid-2" style="margin-top:18px; gap:14px;">
+                <div class="mega-stat service-dark-card" style="margin-bottom:0; padding:10px 12px;">
+                    <span class="mega-stat-num" style="font-size:24px;">3h/th</span>
+                    <span class="mega-stat-lbl">Đào tạo VVIP</span>
+                </div>
+                <div class="mega-stat service-dark-card" style="margin-bottom:0; padding:10px 12px;">
+                    <span class="mega-stat-num gold" style="font-size:24px;">2h/th</span>
+                    <span class="mega-stat-lbl">Đào tạo VIP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 12: GÓI 2 & 3 - CÔNG NGHỆ & SOC -->
+<div id="page-12" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark" style="background:linear-gradient(to right, rgba(15,23,42,0.9), rgba(2,6,23,0.8));"></div>
+<div class="content-wrapper service-dark-shell">
+    <div class="service-master-hdr">
+        <div class="logo-area">
+            <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo">
+            <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+        </div>
+        <div class="hdr-right">TECHNOLOGY & REACTION</div>
+    </div>
+    <div class="split-wrap service-dark-split">
+        <!-- Left: Gói 2 Tech -->
+        <div class="split-half dark service-dark-col service-dark-col-left">
+            <h2 class="cbre-title">Gói 2: An Ninh Công Nghệ</h2>
+            <div class="cbre-line" style="background:var(--gold);"></div>
+            <p class="service-desc">Hệ sinh thái số hóa toàn diện giúp thu thập, lưu trữ và minh bạch hóa dữ liệu an ninh tại mục tiêu.</p>
+
+            <div style="margin-bottom:24px;">
+                <h3 class="service-label" style="color:var(--cyan); font-size:13px;"><i class="fas fa-mobile-alt" style="margin-right:8px;"></i>Hệ Sinh Thái App</h3>
+                <div class="service-dark-card">
+                    <ul style="list-style:none; padding-left:0;">
+                        <li style="display:flex; gap:10px;"><i class="fas fa-check" style="color:var(--cyan); margin-top:2px;"></i><span><strong>VMS & GatePass:</strong> Quản lý khách, nhà thầu, phương tiện.</span></li>
+                        <li style="display:flex; gap:10px;"><i class="fas fa-check" style="color:var(--cyan); margin-top:2px;"></i><span><strong>Cloudpatrol:</strong> Giám sát tuần tra GPS thời gian thực.</span></li>
+                        <li style="display:flex; gap:10px;"><i class="fas fa-check" style="color:var(--cyan); margin-top:2px;"></i><span><strong>Incident Report:</strong> Báo cáo sự cố bằng hình ảnh/video.</span></li>
+                        <li style="display:flex; gap:10px; margin-bottom:0;"><i class="fas fa-check" style="color:var(--cyan); margin-top:2px;"></i><span><strong>QA Inspection:</strong> Đo lường chất lượng vận hành.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="service-label" style="color:white; font-size:13px;"><i class="fas fa-video" style="margin-right:8px; color:var(--gold);"></i>Hạ Tầng Thiết Bị</h3>
+                <div class="service-dark-card">
+                    <ul style="list-style:none; padding-left:0;">
+                        <li style="margin-bottom:8px;">Thi công, bảo trì hệ thống AI CCTV (Nhận diện khuôn mặt/LPR).</li>
+                        <li style="margin-bottom:0;">Tích hợp Access Control Kiosk, Cảm biến báo động đột nhập.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right: Gói 3 SOC -->
+        <div class="split-half dark service-dark-col service-dark-col-right">
+            <h2 class="cbre-title" style="margin-top:20px;">Gói 3: Giám Sát SOC & SRT</h2>
+            <div class="cbre-line" style="background:var(--gold);"></div>
+            <p class="service-desc">Tận dụng dữ liệu từ Gói 2 để phân tích, cảnh báo và điều phối lực lượng phản ứng nhanh tới hiện trường.</p>
+
+            <div class="service-soc-image">
+                <img src="images/security_soc_monitoring.png" alt="SOC">
+            </div>
+
+            <div class="service-grid-2">
+                <div class="service-dark-card" style="border-left:3px solid var(--gold);">
+                    <h3 style="color:var(--gold);">Trung Tâm SOC</h3>
+                    <p>Giám sát tập trung 24/7. Phân tích hành vi và cung cấp Dashboard live.</p>
+                </div>
+                <div class="service-dark-card" style="border-left:3px solid var(--cyan);">
+                    <h3 style="color:var(--cyan);">Tuần Tra SRT</h3>
+                    <p>Lực lượng cơ động kiểm tra định kỳ và ứng phó khẩn cấp dưới 30 phút.</p>
+                </div>
+            </div>
+
+            <div class="col3 service-stats" style="text-align:center;">
+                <div><span class="mega-stat-num" style="font-size:20px;">100%</span><span class="mega-stat-lbl">Mục tiêu có App</span></div>
+                <div><span class="mega-stat-num gold" style="font-size:20px;">4–8h</span><span class="mega-stat-lbl">SLA Xử Lý IT</span></div>
+                <div><span class="mega-stat-num" style="font-size:20px;">90</span><span class="mega-stat-lbl">Ngày Lưu Trữ</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 12b: GÓI 4 - GIẢI PHÁP CAO CẤP -->
+<div id="page-12-1" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.15;"></div>
+<div class="content-wrapper">
+    <div class="hdr">
+        <div class="logo-area">
+            <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+            <div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+        </div>
+        <div class="hdr-right">INTEGRATED SECURITY SOLUTIONS<div class="hdr-title">Giải Pháp Cao Cấp</div></div>
+    </div>
+    <div class="service-light-shell" style="margin-top: 10px;">
+        <h2 class="cbre-title service-light-heading">Gói 4: Giải Pháp An Ninh Chuyên Biệt</h2>
+        <div class="cbre-line" style="margin: 0 auto 30px;"></div>
+
+        <p class="service-light-intro">Dịch vụ thiết kế "đo ni đóng giày" đáp ứng các yêu cầu khắt khe nhất về an toàn cá nhân, bảo mật thông tin và quản trị rủi ro tổng thể.</p>
+
+        <div class="service-grid-3">
+            <!-- Card 1 -->
+            <div class="service-card centered" style="min-height: 318px;">
+                <div class="service-card-icon"><i class="fas fa-user-secret"></i></div>
+                <h3>Bảo Vệ Yếu Nhân & Sự Kiện</h3>
+                <p>Đội ngũ Close Protection tinh nhuệ bảo vệ VVIP. Quản trị đám đông sự kiện và áp tải hàng hóa giá trị cao an toàn tuyệt đối.</p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="service-card centered" style="min-height: 318px;">
+                <div class="service-card-icon gold"><i class="fas fa-user-tie"></i></div>
+                <h3>Trợ Lý An Ninh</h3>
+                <p>Nhân sự cấp cao (cơ bản/nâng cao) am hiểu pháp luật và nghiệp vụ, đồng hành cùng Ban Lãnh đạo xử lý các sự cố kinh doanh.</p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="service-card centered" style="min-height: 318px;">
+                <div class="service-card-icon"><i class="fas fa-chess-knight"></i></div>
+                <h3>Tư Vấn Chiến Lược & Rủi Ro</h3>
+                <p>Chuyên gia đầu ngành khảo sát, đánh giá toàn diện và thiết kế giải pháp an ninh riêng biệt, giúp tối ưu chi phí và phòng ngừa dài hạn.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 13: TIÊU CHUẨN DỊCH VỤ & SLA -->
+<div id="page-13" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.15;"></div>
+<div class="content-wrapper">
+<div class="hdr">
+<div class="logo-area">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+<div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+</div>
+<div class="hdr-right">INTEGRATED SECURITY SOLUTIONS<div class="hdr-title">Tiêu Chuẩn & SLA</div></div>
+</div>
+<div class="glass-box" style="margin-top: 10px; padding: 24px; padding-bottom: 24px;">
+<h2 class="cbre-title" style="margin-top:0;">Tiêu Chuẩn Dịch Vụ & SLA</h2>
+<div class="cbre-line"></div>
+<p style="font-size: 14px; margin-bottom:30px; font-weight:600;">Cam kết bằng chỉ số đo lường cụ thể, minh bạch hóa chất lượng qua từng hạng mục.</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:12px; box-shadow:0 10px 30px rgba(0,0,0,.05); border-radius:12px; overflow:hidden;">
+<thead>
+    <tr style="background:var(--navy);color:#fff;">
+        <th style="padding:16px;text-align:left; font-family:'Montserrat',sans-serif; font-size:14px; width:25%;">Danh Mục</th>
+        <th style="padding:16px;text-align:left; font-family:'Montserrat',sans-serif; font-size:14px; width:35%;">Chỉ Số Cam Kết</th>
+        <th style="padding:16px;text-align:left; font-family:'Montserrat',sans-serif; font-size:14px; width:40%;">Chi Tiết Tiêu Chuẩn</th>
+    </tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px;font-weight:800;color:var(--cyan); background:rgba(6,182,212,.05);" rowspan="3">I. Nhân Sự</td><td style="padding:14px 16px; font-weight:600;">Ngoại hình & Độ tuổi</td><td style="padding:14px 16px;">Chiều cao từ 1.65m trở lên. Tỷ lệ nhân sự trên 50 tuổi chiếm tối đa 30% quân số.</td></tr>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px; font-weight:600;">Trình độ & Chứng chỉ</td><td style="padding:14px 16px;">Tốt nghiệp THCS trở lên. Có đầy đủ chứng chỉ PCCC, Sơ cấp cứu và An toàn lao động.</td></tr>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px; font-weight:600;">Kỹ năng nghiệp vụ</td><td style="padding:14px 16px;">Thành thạo quy trình xử lý khẩn cấp và sử dụng ứng dụng công nghệ.</td></tr>
+
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px;font-weight:800;color:var(--gold); background:rgba(212,175,55,.05);" rowspan="3">II. Vận Hành</td><td style="padding:14px 16px; font-weight:600;">Chấm công & Điểm danh</td><td style="padding:14px 16px;">Kiểm soát qua hệ thống định vị GPS và sinh trắc học vân tay.</td></tr>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px; font-weight:600;">Đào tạo tại mục tiêu</td><td style="padding:14px 16px;">Mục tiêu VVIP: 3 giờ/tháng. Mục tiêu VIP: 2 giờ/tháng.</td></tr>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px; font-weight:600;">Báo cáo SLA/KPI</td><td style="padding:14px 16px;">Báo cáo thông qua Real-time Dashboard cho Khách hàng.</td></tr>
+
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px;font-weight:800;color:var(--cyan); background:rgba(6,182,212,.05);" rowspan="2">III. Rủi Ro</td><td style="padding:14px 16px; font-weight:600;">SRT phản ứng</td><td style="padding:14px 16px; font-weight:700; color:var(--cyan);">Lực lượng Cơ động (SRT) có mặt tại hiện trường trong vòng 30 phút.</td></tr>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px; font-weight:600;">Bảo hiểm trách nhiệm</td><td style="padding:14px 16px;font-weight:800;color:var(--gold); font-size:14px;">23 Tỷ VNĐ</td></tr>
+
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px;font-weight:800;color:var(--gold); background:rgba(212,175,55,.05);" rowspan="2">IV. Công Nghệ</td><td style="padding:14px 16px; font-weight:600;">Giải pháp AI & SOC</td><td style="padding:14px 16px;">Tích hợp AI CCTV & SOC 24/7</td></tr>
+<tr style="border-bottom:1px solid rgba(0,0,0,.05);"><td style="padding:14px 16px; font-weight:600;">Lưu trữ dữ liệu</td><td style="padding:14px 16px;">90 ngày trên hệ thống Cloud</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- TRANG 14: QUY TRÌNH CUNG CẤP DỊCH VỤ -->
+<div id="page-14" class="page dark-page">
+<div class="content-wrapper" style="padding:0;">
+    <div class="split-wrap" style="margin:0;">
+        <div class="split-half dark" style="padding:15mm; background:var(--navy); justify-content:center;">
+            <div class="hdr" style="position:absolute; top:13mm; left:15mm; right:15mm; border-bottom:none;">
+                <div class="logo-area">
+                <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" alt="SeaZen Logo">
+                </div>
+            </div>
+            <h2 class="cbre-title" style="">Quy Trình Triển Khai</h2>
+            <div class="cbre-line"></div>
+            <p style="font-size: 14px; line-height: 1.6;">Quy trình 6 bước khép kín từ tiếp nhận, đánh giá rủi ro đến chuyển giao giải pháp an ninh thực tế.</p>
+            <div style="margin-top:40px;">
+                <img src="images/security_guard_tablet.png" style="width:100%; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.5);" alt="Guard">
+            </div>
+        </div>
+        <div class="split-half dark" style="padding:15mm; justify-content:center;">
+            <div style="margin-bottom:24px; position:relative; padding-left:30px;">
+                <div style="position:absolute; left:0; top:0; font-family:'Montserrat',sans-serif;  font-weight:900; color:var(--cyan);">1</div>
+                <h3 style="font-size: 14px; color:white; margin-bottom:6px; font-family:'Montserrat',sans-serif; font-weight:700;">Tiếp Nhận Đa Kênh</h3>
+                <p style="font-size: 12px; margin:0; opacity:0.8;">Website, Hotline 24/7 (0937 275 877), Cổng tương tác App.</p>
+            </div>
+            <div style="margin-bottom:24px; position:relative; padding-left:30px;">
+                <div style="position:absolute; left:0; top:0; font-family:'Montserrat',sans-serif;  font-weight:900; color:var(--gold);">2</div>
+                <h3 style="font-size: 14px; color:white; margin-bottom:6px; font-family:'Montserrat',sans-serif; font-weight:700;">Xác Nhận & Phân Loại</h3>
+                <p style="font-size: 12px; margin:0; opacity:0.8;">Phản hồi trong 02h. Lên lịch khảo sát trong 01–03 ngày.</p>
+            </div>
+            <div style="margin-bottom:24px; position:relative; padding-left:30px;">
+                <div style="position:absolute; left:0; top:0; font-family:'Montserrat',sans-serif;  font-weight:900; color:var(--cyan);">3</div>
+                <h3 style="font-size: 14px; color:var(--cyan); margin-bottom:6px; font-family:'Montserrat',sans-serif; font-weight:700;">Khảo Sát Rủi Ro (Predict)</h3>
+                <p style="font-size: 12px; margin:0; opacity:0.8;">Thực hiện 04–08 giờ. Xác định điểm yếu hạ tầng bằng công nghệ.</p>
+            </div>
+            <div style="margin-bottom:24px; position:relative; padding-left:30px;">
+                <div style="position:absolute; left:0; top:0; font-family:'Montserrat',sans-serif;  font-weight:900; color:var(--gold);">4</div>
+                <h3 style="font-size: 14px; color:white; margin-bottom:6px; font-family:'Montserrat',sans-serif; font-weight:700;">Thiết Kế & Báo Giá</h3>
+                <p style="font-size: 12px; margin:0; opacity:0.8;">03–05 ngày xây dựng giải pháp (Nhân sự, SOP, Công nghệ).</p>
+            </div>
+            <div style="margin-bottom:24px; position:relative; padding-left:30px;">
+                <div style="position:absolute; left:0; top:0; font-family:'Montserrat',sans-serif;  font-weight:900; color:var(--cyan);">5</div>
+                <h3 style="font-size: 14px; color:white; margin-bottom:6px; font-family:'Montserrat',sans-serif; font-weight:700;">Thiết Lập & Đào Tạo (Protect)</h3>
+                <p style="font-size: 12px; margin:0; opacity:0.8;">03–07 ngày lập SOP, cài đặt App/Dashboard, đào tạo NV.</p>
+            </div>
+            <div style="position:relative; padding-left:30px;">
+                <div style="position:absolute; left:0; top:0; font-family:'Montserrat',sans-serif;  font-weight:900; color:var(--gold);">6</div>
+                <h3 style="font-size: 14px; color:var(--gold); margin-bottom:6px; font-family:'Montserrat',sans-serif; font-weight:700;">Triển Khai & Chuyển Giao</h3>
+                <p style="font-size: 12px; margin:0; opacity:0.8;">Kích hoạt luồng dữ liệu SOC, bàn giao tài khoản Dashboard KH.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- TRANG 15: ĐÁNH GIÁ VÀ CẢI TIẾN -->
+<div id="page-15" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.15;"></div>
+<div class="content-wrapper">
+<div class="hdr">
+<div class="logo-area">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+<div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+</div>
+<div class="hdr-right">INTEGRATED SECURITY SOLUTIONS<div class="hdr-title">RACA & Cải Tiến</div></div>
+</div>
+<div class="glass-box" style="margin-top: 10px; padding: 24px; padding-bottom: 24px;">
+<h2 class="cbre-title" style="text-align:center; margin-top:0;">RACA (Phân Tích Nguyên Nhân & Cải Tiến)</h2>
+<div class="cbre-line" style="margin: 0 auto 40px;"></div>
+
+<div class="col3" style="gap:24px; margin-bottom:40px;">
+    <div style="background:#fff; border:1px solid rgba(0,0,0,.1); padding:30px; border-radius:12px; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,.05);">
+        <i class="fas fa-chart-line" style=" color:var(--cyan); margin-bottom:20px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--navy);">Số Hóa Báo Cáo</h3>
+        <p style="font-size: 12px; color:#475569; margin:0;">Cập nhật và đo lường chất lượng hàng ngày minh bạch qua Dashboard.</p>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(0,0,0,.1); padding:30px; border-radius:12px; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,.05);">
+        <i class="fas fa-users" style=" color:var(--gold); margin-bottom:20px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--navy);">Họp Định Kỳ</h3>
+        <p style="font-size: 12px; color:#475569; margin:0;">Đánh giá KPIs hàng tháng, trực tiếp giải quyết các vấn đề vận hành.</p>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(0,0,0,.1); padding:30px; border-radius:12px; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,.05);">
+        <i class="fas fa-tools" style=" color:var(--cyan); margin-bottom:20px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--navy);">Điều Chỉnh Hệ Thống</h3>
+        <p style="font-size: 12px; color:#475569; margin:0;">Chủ động cải tiến quy trình từ dữ liệu SOC và báo cáo tuần tra.</p>
+    </div>
+</div>
+
+<div style="background:#fff; border:1px solid rgba(0,0,0,.1); padding:30px; border-radius:12px; color:var(--text-dark); text-align:center; box-shadow:0 15px 30px rgba(0,0,0,.05);">
+    <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; color:var(--navy); margin-bottom:16px;">Cam Kết Tiến Độ Phủ Quân</h3>
+    <div class="col3">
+        <div><p style="font-size:14px; font-weight:700; color:var(--cyan); margin:0;">Dưới 40 nhân sự</p><p style="font-size: 12px; opacity:0.8; margin:0;">20 – 40 ngày</p></div>
+        <div style="border-left:1px solid rgba(0,0,0,.1); border-right:1px solid rgba(0,0,0,.1);"><p style="font-size:14px; font-weight:700; color:var(--cyan); margin:0;">41 – 100 nhân sự</p><p style="font-size: 12px; opacity:0.8; margin:0;">Trước 45 ngày</p></div>
+        <div><p style="font-size:14px; font-weight:700; color:var(--gold); margin:0;">Trên 100 nhân sự</p><p style="font-size: 12px; opacity:0.8; margin:0;">Theo lộ trình (tới 60 ngày)</p></div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 16: CAM KẾT GIÁ TRỊ -->
+<div id="page-16" class="page light-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop'); opacity: 0.15;"></div>
+<div class="content-wrapper">
+<div class="hdr">
+<div class="logo-area">
+<img src="Logo SeaZen Expert/Logo_SeaZen_Expert_Black_01.png" alt="SeaZen Logo">
+<div class="logo-slogan">Giải pháp an ninh tích hợp &nbsp;·&nbsp; Integrated Security Solution</div>
+</div>
+<div class="hdr-right">INTEGRATED SECURITY SOLUTIONS<div class="hdr-title">Cam Kết Giá Trị</div></div>
+</div>
+<div class="glass-box" style="margin-top: 10px; padding: 24px; padding-bottom: 24px;">
+<h2 class="cbre-title" style="text-align:center; margin-top:0;">Cam Kết Bền Vững</h2>
+<div class="cbre-line" style="margin: 0 auto 40px;"></div>
+
+<div class="col2" style="gap:24px; margin-bottom:40px;">
+    <div style="background:#fff; padding:30px; border-radius:12px; color:var(--text-dark); box-shadow:0 15px 30px rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.05);">
+        <i class="fas fa-scale-balanced" style=" color:var(--cyan); margin-bottom:16px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--cyan);">Tuân Thủ Pháp Lý</h3>
+        <p style="font-size: 12px; color:var(--text-dark); margin:0; line-height:1.6;">100% tuân thủ quy định pháp luật Việt Nam, tiêu chuẩn đạo đức nghề nghiệp quốc tế và chuẩn mực quyền con người.</p>
+    </div>
+    <div style="background:#fff; padding:30px; border-radius:12px; color:var(--text-dark); box-shadow:0 15px 30px rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.05);">
+        <i class="fas fa-chart-pie" style=" color:var(--gold); margin-bottom:16px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--gold);">Quản Trị Chất Lượng</h3>
+        <p style="font-size: 12px; color:var(--text-dark); margin:0; line-height:1.6;">Chứng nhận ISO 9001:2015, hệ thống KPI đo lường định kỳ, báo cáo điện tử hoàn toàn minh bạch.</p>
+    </div>
+    <div style="background:#fff; padding:30px; border-radius:12px; color:var(--text-dark); box-shadow:0 15px 30px rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.05);">
+        <i class="fas fa-people-group" style=" color:var(--cyan); margin-bottom:16px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--cyan);">Đảm Bảo Nguồn Lực</h3>
+        <p style="font-size: 12px; color:var(--text-dark); margin:0; line-height:1.6;">Triển khai đúng và đủ quân số. Trang bị hệ thống công cụ hỗ trợ theo đúng danh mục đã phê duyệt.</p>
+    </div>
+    <div style="background:#fff; padding:30px; border-radius:12px; color:var(--text-dark); box-shadow:0 15px 30px rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.05);">
+        <i class="fas fa-shield-halved" style=" color:var(--gold); margin-bottom:16px; display:block;"></i>
+        <h3 style="font-family:'Montserrat',sans-serif; font-size: 14px; font-weight:800; margin-bottom:12px; color:var(--gold);">Bảo Hiểm & Rủi Ro</h3>
+        <p style="font-size: 12px; color:var(--text-dark); margin:0; line-height:1.6;">Sở hữu gói Bảo hiểm trách nhiệm nghề nghiệp lên đến <strong>23 tỷ VNĐ</strong>. Cơ chế Night Audit đột xuất.</p>
+    </div>
+</div>
+
+<div style="text-align:center;">
+    <p style="font-size: 14px; font-style:italic; font-family:'Montserrat',sans-serif; font-weight:700; color:var(--navy); margin-bottom:8px;">"Chúng tôi không cạnh tranh bằng giá thấp."</p>
+    <p style="font-size:14px; color:var(--text-dark); margin:0;">Chúng tôi cạnh tranh bằng <strong>hệ thống kiểm soát</strong>, <strong>năng lực quản trị</strong> và <strong>giá trị dài hạn</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TRANG 17: LIÊN HỆ -->
+<div id="page-17" class="page dark-page">
+<div class="bg-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1080&auto=format&fit=crop');"></div>
+<div class="overlay overlay-dark"></div>
+<div class="content-wrapper" style="justify-content:center; align-items:center; text-align:center;">
+    
+    <h2 class="cbre-title" style="">Sẵn Sàng Bảo Vệ Giá Trị</h2>
+    <div class="cbre-line solid-gold" style="margin: 0 auto 40px;"></div>
+    <p style="font-size: 14px; color:rgba(255,255,255,.9); margin-bottom:50px; max-width:70%; font-weight:300;">Liên hệ với chúng tôi để thực hiện đánh giá rủi ro an ninh sơ bộ cho doanh nghiệp của Quý vị.</p>
+    
+    <div class="col3" style="gap:24px; margin-bottom:60px; width:100%;">
+        <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); padding:24px; border-radius:12px;">
+            <i class="fas fa-globe" style=" color:var(--cyan); margin-bottom:16px; display:block;"></i>
+            <p style="font-size: 12px; margin:0; font-family:'Montserrat',sans-serif; font-weight:700;">www.seazen.vn</p>
+        </div>
+        <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); padding:24px; border-radius:12px;">
+            <i class="fas fa-phone" style=" color:var(--gold); margin-bottom:16px; display:block;"></i>
+            <p style="font-size: 12px; margin:0; font-family:'Montserrat',sans-serif; font-weight:700;">0937 275 877</p>
+        </div>
+        <div style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); padding:24px; border-radius:12px;">
+            <i class="fas fa-envelope" style=" color:var(--cyan); margin-bottom:16px; display:block;"></i>
+            <p style="font-size:12px; margin:0; font-family:'Montserrat',sans-serif; font-weight:700;">minh.khuong@seazen.vn</p>
+        </div>
+    </div>
+    
+    <img src="Logo SeaZen Expert/Logo_SeaZen_Expert_White_01.png" style="height:60px; margin-bottom:0;" alt="SeaZen Logo">
+
+    <!-- FOOTER CHUẨN TẠI TRANG CUỐI -->
+    <div class="footer" style="width:100%; border-top:1px solid rgba(255,255,255,.2); margin-top:auto; padding-top:20px; align-items:flex-end; text-align:left;">
+        <div class="footer-contact">
+            <h4>CÔNG TY GIẢI PHÁP AN NINH TÍCH HỢP SEAZEN</h4>
+            <p><i class="fa-solid fa-location-dot"></i> 15/16, Đường 37, Khu Phố 7, Phường Hiệp Bình, TP Hồ Chí Minh</p>
+            <p><i class="fa-solid fa-envelope"></i> customercare@seazen.vn &nbsp;|&nbsp; <i class="fa-solid fa-globe"></i> seazen.vn</p>
+            <p><i class="fa-solid fa-phone"></i> Hotline: 0937.402.577 — (028) 22.538.539</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:2px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.7);margin-bottom:5px;letter-spacing:0.5px;text-transform:uppercase">Zalo OA</span>
+            <div class="qr-placeholder" style="border:1px solid rgba(0,0,0,.1)">
+                <img src="Logo SeaZen Expert/ZALO OA_SZ_EXPERT.jpg" alt="Zalo QR">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
+
+/* Ẩn các mảng overlay tối trên giao diện sáng */
+.page.light-page .overlay {
+    display: none;
+}
