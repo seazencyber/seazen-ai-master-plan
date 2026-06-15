@@ -216,11 +216,11 @@ flowchart TD
     subgraph G2 ["2. TỰ ĐỘNG GIAO DỊCH (Sales & Kế toán)"]
         direction TB
         A4 -- "Đồng ý" --> B1[Hệ thống: Xuất Báo giá & Phương án BV]
-        B1 --> B2{Lợi nhuận P&L dưới Giá Sàn?}
-        B2 -- "Yes" --> B3[Sales: Trình Deal Review]
+        B1 --> B2{Báo giá Đạt chuẩn Lợi nhuận?}
+        B2 -- "No (Dưới giá sàn)" --> B3[Sales: Trình Deal Review]
         B3 --> B4{BOD Duyệt?}
         B4 -- "Từ chối" --> B1
-        B2 -- "No" --> B5[Ký Hợp đồng thành công]
+        B2 -- "Yes (Đạt chuẩn)" --> B5[Ký Hợp đồng thành công]
         B4 -- "Đồng ý" --> B5
     end
 
