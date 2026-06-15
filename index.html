@@ -1419,9 +1419,16 @@ flowchart TD
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            mermaid.initialize({ startOnLoad: true });
+            mermaid.initialize({ startOnLoad: false });
         });
         function switchPhase(phaseId) {
+            if (phaseId === 'flowchart' && !window.mermaidRendered) {
+                setTimeout(() => {
+                    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                    window.mermaidRendered = true;
+                }, 100);
+            }
+
             // Update Navigation
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
@@ -1437,7 +1444,7 @@ flowchart TD
             // Scroll back to top
             document.querySelector('.main-content').scrollTo({ top: 0, behavior: 'smooth' });
         }
-        mermaid.initialize({ startOnLoad: true });
+        mermaid.initialize({ startOnLoad: false });
     </script>
 </body>
 </html>
