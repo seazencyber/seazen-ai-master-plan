@@ -33,11 +33,7 @@
             border: 1px solid #E2E8F0;
         }
         
-        .mermaid svg {
-            min-width: 1200px !important;
-            max-width: none !important;
-            height: auto;
-        }
+        
         
         .btn-home {
             display: inline-block;
@@ -90,10 +86,10 @@
 }}%%
 flowchart TD
     %% ===== ĐỊNH NGHĨA STYLE =====
-    classDef default fill:#FFFFFF,stroke:#CBD5E1,stroke-width:2px,color:#1E293B,font-weight:600;
-    classDef decision fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#92400E,font-weight:bold;
-    classDef loop fill:#EFF6FF,stroke:#3B82F6,stroke-width:2px,stroke-dasharray: 5 5,color:#1E3A8A;
-    classDef endpoint fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#065F46,font-weight:bold;
+    classDef default fill:#FFFFFF,stroke:#CBD5E1,stroke-width:4px,color:#1E293B,font-weight:600;
+    classDef decision fill:#FEF3C7,stroke:#D97706,stroke-width:4px,color:#92400E,font-weight:bold;
+    classDef loop fill:#EFF6FF,stroke:#3B82F6,stroke-width:4px,stroke-dasharray: 5 5,color:#1E3A8A;
+    classDef endpoint fill:#ECFDF5,stroke:#10B981,stroke-width:4px,color:#065F46,font-weight:bold;
 
     %% ===== LUỒNG GIAI ĐOẠN 1 =====
     subgraph G1 ["1. NỀN TẢNG CORE (Sales & Vận hành)"]
@@ -108,7 +104,7 @@ flowchart TD
     subgraph G2 ["2. TỰ ĐỘNG GIAO DỊCH (Sales & Kế toán)"]
         direction TB
         A4 -- "Đồng ý" --> B1[Hệ thống: Xuất Báo giá & Phương án BV]
-        B1 --> B2{Lợi nhuận P&L < Giá Sàn?}
+        B1 --> B2{Lợi nhuận P&L dưới Giá Sàn?}
         B2 -- "Yes" --> B3[Sales: Trình Deal Review]
         B3 --> B4{BOD Duyệt?}
         B4 -- "Từ chối" --> B1
@@ -131,7 +127,7 @@ flowchart TD
         C4 --> D1[C&B: Khóa sổ & Chốt công / OT]
         D1 --> D2[Kế toán: Duyệt & Xuất E-Invoice tự động]
         D2 --> D3[Kế toán: Theo dõi Dashboard Công nợ]
-        D3 --> D4{KH Nợ Quá Hạn > 15 ngày?}
+        D3 --> D4{KH Nợ Quá Hạn trên 15 ngày?}
         D4 -- "Yes" --> D5[Hệ thống: Tự động Gửi Mail Nhắc Nợ]
         D4 -- "No" --> D6([Ghi nhận Doanh Thu An Toàn])
         D5 --> D6
@@ -169,7 +165,7 @@ flowchart TD
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: false } });
+            mermaid.initialize({ startOnLoad: true });
         });
     </script>
 </body>
