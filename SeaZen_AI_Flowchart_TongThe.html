@@ -34,7 +34,8 @@
         }
         
         .mermaid svg {
-            max-width: 100%;
+            min-width: 1200px !important;
+            max-width: none !important;
             height: auto;
         }
         
@@ -168,7 +169,7 @@ flowchart TD
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            mermaid.initialize({ startOnLoad: true });
+            mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: false } });
         });
     </script>
 </body>

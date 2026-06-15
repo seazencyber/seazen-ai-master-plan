@@ -139,6 +139,10 @@
         </div>
         
         <nav class="nav-menu">
+            <div class="nav-item" onclick="switchPhase('flowchart')">
+                <i class="fa-solid fa-sitemap"></i>
+                <span>Sơ đồ Tổng thể</span>
+            </div>
             <div class="nav-item active" onclick="switchPhase(1)">
                 <i class="fa-solid fa-1"></i>
                 <span>GĐ 1: Nền tảng Core</span>
@@ -1414,6 +1418,9 @@ flowchart TD
     </main>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: false } });
+        });
         function switchPhase(phaseId) {
             // Update Navigation
             document.querySelectorAll('.nav-item').forEach(item => {
