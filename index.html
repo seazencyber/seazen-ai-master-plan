@@ -126,10 +126,40 @@
         .btn-action { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #FFF; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s; margin-top: 16px; border: none; cursor: pointer; }
         .btn-action:hover { background: var(--primary-hover); }
 
+
+        /* Mobile Warning */
+        #mobile-warning {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-body);
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            color: var(--text-main);
+        }
+        #mobile-warning i { font-size: 64px; color: var(--primary); margin-bottom: 24px; }
+        #mobile-warning h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; color: #0F172A; }
+        #mobile-warning p { font-size: 16px; color: var(--text-muted); line-height: 1.6; max-width: 400px; margin: 0 auto; }
+        
+        @media (max-width: 900px) {
+            .sidebar, .main-content { display: none !important; }
+            #mobile-warning { display: flex; }
+            body { overflow: hidden; background: #FFFFFF; }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
+    <!-- Mobile Warning Screen -->
+    <div id="mobile-warning">
+        <i class="fa-solid fa-desktop"></i>
+        <h2>Vui lòng sử dụng Máy tính</h2>
+        <p>Vì tính chất phức tạp của sơ đồ và các biểu mẫu, Hệ thống Master Plan này chỉ hỗ trợ hiển thị trên nền tảng Web (PC / Laptop) để đảm bảo trải nghiệm nhìn tốt nhất.</p>
+    </div>
 
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
