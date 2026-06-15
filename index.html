@@ -139,11 +139,11 @@
         </div>
         
         <nav class="nav-menu">
-            <div class="nav-item" onclick="switchPhase('flowchart')">
+            <div class="nav-item active" onclick="switchPhase('flowchart')">
                 <i class="fa-solid fa-sitemap"></i>
                 <span>Sơ đồ Tổng thể</span>
             </div>
-            <div class="nav-item active" onclick="switchPhase(1)">
+            <div class="nav-item" onclick="switchPhase(1)">
                 <i class="fa-solid fa-1"></i>
                 <span>GĐ 1: Nền tảng Core</span>
             </div>
@@ -172,7 +172,7 @@
         <!-- ========================================== -->
         
         <!-- FLOWCHART SECTION -->
-        <section id="phase-flowchart" class="phase-section" >
+        <section id="phase-flowchart" class="phase-section active">
             <div class="section-header">
                 <h2>Sơ đồ Luồng Công việc Tổng thể A-Z</h2>
                 <p>Khái quát 5 Giai đoạn & Feedback Loop của toàn bộ hệ thống SeaZen AI</p>
@@ -269,7 +269,7 @@ flowchart TD
         <!-- PHASE 1 -->
 
         <!-- ========================================== -->
-        <section id="phase-1" class="phase-section active">
+        <section id="phase-1" class="phase-section">
             <div class="phase-header">
                 <h2 class="phase-title">Nền tảng Core & Đầu vào</h2>
                 <p class="phase-desc">Số hóa Form khảo sát mục tiêu thực địa. Thiết lập cấu trúc Master Data làm gốc cho toàn bộ luồng quy trình vận hành của SeaZen.</p>
@@ -1420,6 +1420,11 @@ flowchart TD
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             mermaid.initialize({ startOnLoad: false });
+            // Since flowchart is default, render it immediately
+            setTimeout(() => {
+                mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                window.mermaidRendered = true;
+            }, 100);
         });
         function switchPhase(phaseId) {
             if (phaseId === 'flowchart' && !window.mermaidRendered) {
