@@ -381,7 +381,7 @@ export default function App() {
     
     const today = new Date().toLocaleDateString('vi-VN');
     
-    let md = `# THỎA THUẬN LÀM VIỆC\n\n`;
+    let md = `# RULE LÀM VIỆC\n\n`;
     md += `**Áp dụng cho:** ${member.name}\n`;
     md += `**Vai trò:** ${member.role}\n`;
     md += `**Chế độ:** ${status?.label || ''}\n`;
@@ -460,7 +460,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Thoa-thuan-lam-viec-${selected.name.replace(/\s+/g, '-')}.md`;
+    a.download = `Rule-lam-viec-${selected.name.replace(/\s+/g, '-')}.md`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
