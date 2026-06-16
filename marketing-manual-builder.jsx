@@ -468,7 +468,10 @@ export default function App() {
   };
 
   const handlePrint = () => {
+    const originalTitle = document.title;
+    document.title = `Manual-${selected.name.replace(/\s+/g, '-')}`;
     window.print();
+    document.title = originalTitle;
   };
 
   // =========================================
