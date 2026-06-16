@@ -2,6 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Users, Plus, Trash2, Copy, Printer, Download, Check, X, Edit2, Save, FileText, Eye, Settings, ArrowRight, AlertCircle } from 'lucide-react';
 
 // =========================================
+// POLYFILL FOR STORAGE
+// =========================================
+if (typeof window !== 'undefined' && !window.storage) {
+  window.storage = {
+    get: async (key) => ({ value: localStorage.getItem(key) }),
+    set: async (key, val) => localStorage.setItem(key, val)
+  };
+}
+
+// =========================================
 // MODULE DEFINITIONS
 // =========================================
 const MODULES = {
