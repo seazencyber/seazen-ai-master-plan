@@ -483,7 +483,7 @@ export default function App() {
   }
 
   return (
-    <div style={{
+    <div className="app-container" style={{
       background: colors.bg,
       minHeight: '100vh',
       fontFamily: 'Inter, system-ui, sans-serif',
@@ -492,6 +492,7 @@ export default function App() {
       <style>{`
         @media print {
           body { background: white !important; }
+          .app-container { background: white !important; }
           .no-print { display: none !important; }
           .print-only { display: block !important; }
           .print-doc { padding: 0 !important; max-width: 100% !important; box-shadow: none !important; border: none !important; }
