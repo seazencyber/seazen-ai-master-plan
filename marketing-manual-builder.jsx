@@ -421,7 +421,7 @@ export default function App() {
     }
     
     md += `---\n\n## Cam kết hai bên\n\n`;
-    md += `**Sếp cam kết:**\n`;
+    md += `**Quản lý cam kết:**\n`;
     md += `- Feedback cụ thể, không mơ hồ ("không ổn, làm lại")\n`;
     md += `- Phản hồi brief trong 30 phút (nếu có M2/S1)\n`;
     md += `- Duyệt plan trong 1 ngày làm việc\n`;
@@ -1087,7 +1087,7 @@ function renderMarkdown(md) {
     }
     
     // Empty line
-    if (line.trim() === '') { closeList(); return; }
+    if (line.trim() === '') { return; }
     
     // Paragraph
     closeList();
