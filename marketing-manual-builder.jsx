@@ -48,13 +48,13 @@ const MODULES = {
     content: `**Áp dụng cho task lớn:** >2 giờ làm việc HOẶC liên quan ≥2 người HOẶC có ngân sách.
 
 **Quy trình:**
-1. Sếp giao task
+1. Quản lý giao task
 2. Trong 30 phút, em gửi brief xác nhận (chat/email):
    - Task này là gì
    - Deadline nào
    - Output cuối cùng là gì (file, link, post, số liệu...)
    - Tiêu chí "xong" là gì
-3. Sếp confirm "OK" hoặc sửa
+3. Quản lý confirm "OK" hoặc sửa
 4. Sau confirm = bắt đầu làm. Không được nói "em tưởng" sau khi đã confirm.
 
 **Task nhỏ** (sửa 1 caption, đăng 1 post lặp lại) → không cần brief, triển khai luôn.
@@ -65,7 +65,7 @@ const MODULES = {
 
 Đây là chỗ rất dễ overscope — marketing nhận luôn phần đào tạo, đánh giá kỹ năng, kiểm tra thực hiện. Phải vạch ranh giới rõ từ brief.
 
-**Tình huống:** Sếp giao bạn: "Làm minigame truyền thông SOP 10 bước vận hành để CBNV khối đội nắm được."
+**Tình huống:** Quản lý giao bạn: "Làm minigame truyền thông SOP 10 bước vận hành để CBNV khối đội nắm được."
 
 **Brief Uyên gửi lại trong 30 phút:**
 > Anh ơi em xác nhận task:
@@ -106,7 +106,7 @@ const MODULES = {
 > Marketing chịu trách nhiệm tới phần "CBNV biết và nhớ được 10 bước qua truyền thông". Việc CBNV thực hiện đúng SOP trong ca trực thực tế là KPI của quản lý đội, không phải KPI của em. Em sẽ ghi rõ điều này trong báo cáo kết quả để tránh nhầm lẫn khi đánh giá hiệu quả.
 > Anh confirm giúp em ạ?
 
-**Bạn (sếp) confirm có ghi chú:**
+**Bạn (quản lý) confirm có ghi chú:**
 > OK confirm, nhưng anh bổ sung 3 điểm:
 > 1. Nội dung 10 bước SOP lấy từ chị [tên trưởng phòng vận hành] — em hẹn chị trong tuần này, gửi anh cc để anh biết
 > 2. Khối đội dùng Zalo nhiều hơn Facebook — ưu tiên kênh Zalo (group khối đội đã có sẵn), Facebook là phụ
@@ -119,8 +119,8 @@ const MODULES = {
 3. Dependency rõ ràng. Phối hợp với phòng vận hành là rủi ro lớn nhất.
 4. Có dấu vết suy nghĩ riêng (kênh Zalo cho khối đội, ranh giới marketing vs vận hành).
 
-**Bonus — câu nói bạn dùng nếu sếp ép overscope:**
-Trường hợp sếp nói "em phải đảm bảo bảo vệ làm đúng SOP luôn". Phản ứng đúng:
+**Bonus — câu nói bạn dùng nếu quản lý ép overscope:**
+Trường hợp quản lý nói "em phải đảm bảo bảo vệ làm đúng SOP luôn". Phản ứng đúng:
 *"Anh ơi để em đảm bảo CBNV nắm được SOP qua truyền thông thì em làm được — đó là chuyên môn em. Còn đảm bảo thực hiện đúng trong ca trực thì cần quản lý đội kiểm tra trực tiếp ngoài hiện trường — em không có mặt ở các ca, không kiểm soát được. Em đề xuất chia KPI: marketing chịu KPI nắm được (qua quiz), quản lý đội chịu KPI thực hiện đúng (qua kiểm tra ca). Anh thấy thế nào?"*`
   },
   M3: {
@@ -137,7 +137,7 @@ Trường hợp sếp nói "em phải đảm bảo bảo vệ làm đúng SOP lu
 3. Thử cách khác đạt cùng mục tiêu
 4. Ghi lại error/screenshot cụ thể
 
-**Sau 2 tiếng vẫn không xử được → báo sếp NGAY, kèm phương án.**
+**Sau 2 tiếng vẫn không xử được → báo quản lý NGAY, kèm phương án.**
 
 Mẫu báo cáo đúng:
 "Em gặp vấn đề X. Em đã thử (1), (2), kết quả thế này. Em đề xuất phương án A hoặc B. Anh chọn phương án nào ạ?"
@@ -163,12 +163,12 @@ Mẫu báo cáo đúng:
 - Lesson learned
 - Vướng mắc còn lại để xử tuần sau
 
-**1:1 với sếp — 20 phút/tuần/người**
+**1:1 với quản lý — 20 phút/tuần/người**
 - Không gian feedback cá nhân
 - Phát triển nghề nghiệp
 - Vấn đề không tiện nói trước team
 
-**Lưu ý:** Mọi feedback sếp đưa = ghi vào "Sổ note" cá nhân (Google Doc). Tuần sau check xem có sửa không. Lặp lại cùng lỗi 2 lần = vấn đề nghiêm trọng.`
+**Lưu ý:** Mọi feedback quản lý đưa = ghi vào "Sổ note" cá nhân (Google Doc). Tuần sau check xem có sửa không. Lặp lại cùng lỗi 2 lần = vấn đề nghiêm trọng.`
   },
   S1: {
     code: 'S1',
@@ -179,17 +179,17 @@ Mẫu báo cáo đúng:
     content: `**Khác với M2:** S1 áp cho **MỌI task**, kể cả nhỏ. Không có ngoại lệ.
 
 **Quy trình:**
-1. Sếp giao task (dù chỉ là sửa 1 dòng caption)
+1. Quản lý giao task (dù chỉ là sửa 1 dòng caption)
 2. Trong 30 phút, em gửi brief xác nhận:
    - Task là gì
    - Deadline
    - Output cuối
    - Tiêu chí "xong"
-3. Sếp confirm → bắt đầu
+3. Quản lý confirm → bắt đầu
 
-**Nếu không gửi brief trong 30 phút = coi như chưa nhận việc.** Sếp sẽ hỏi lại.
+**Nếu không gửi brief trong 30 phút = coi như chưa nhận việc.** Quản lý sẽ hỏi lại.
 
-**Sau khi sếp confirm brief:** Cấm dùng các lý do "em tưởng", "em hiểu khác".
+**Sau khi quản lý confirm brief:** Cấm dùng các lý do "em tưởng", "em hiểu khác".
 
 Áp dụng đến khi vượt qua trial/onboarding (thường 2-4 tuần).`
   },
@@ -243,9 +243,9 @@ Mẫu báo cáo đúng:
     content: `**Cấm các câu sau trong thời gian trial:**
 
 ❌ "Em tưởng..." → Phải hỏi rõ trước khi làm (xem M2/S1)
-❌ "Em không biết..." → Phải tìm hiểu: google, hỏi đồng nghiệp, hỏi sếp
+❌ "Em không biết..." → Phải tìm hiểu: google, hỏi đồng nghiệp, hỏi quản lý
 ❌ "Em không có quyền..." → Phải hỏi: cần ai duyệt, xin duyệt giúp em
-❌ "Em nghe a này, c kia nói nên em làm theo" → Phải tự đánh giá, chốt với sếp trước khi làm
+❌ "Em nghe a này, c kia nói nên em làm theo" → Phải tự đánh giá, chốt với quản lý trước khi làm
 
 **Công thức phản ứng đúng cho mọi vướng mắc:**
 
@@ -254,7 +254,7 @@ Mẫu báo cáo đúng:
 3 phần bắt buộc:
 - **Vấn đề cụ thể** (không mơ hồ)
 - **Việc em đã làm** (chứng minh tự xử)
-- **Đề xuất hướng giải quyết** (không đẩy quả bóng về sếp)
+- **Đề xuất hướng giải quyết** (không đẩy quả bóng về quản lý)
 
 Áp dụng đến khi vượt qua trial.`
   },
@@ -262,13 +262,13 @@ Mẫu báo cáo đúng:
     code: 'S5',
     type: 'S',
     title: 'Cấm AI viết thẳng + verification',
-    summary: 'Sếp hỏi 3 câu about plan để verify',
+    summary: 'Quản lý hỏi 3 câu about plan để verify',
     purpose: 'Đảm bảo người làm thực sự suy nghĩ, không phụ thuộc AI',
     content: `**Có thể dùng AI:** brainstorm ý tưởng, tìm format, sửa ngữ pháp.
 
-**KHÔNG được dùng AI:** viết plan/content rồi nộp thẳng cho sếp.
+**KHÔNG được dùng AI:** viết plan/content rồi nộp thẳng cho quản lý.
 
-**Cách sếp verify (hỏi 3 câu about plan):**
+**Cách quản lý verify (hỏi 3 câu about plan):**
 
 1. *"Vì sao em chọn cách A không chọn cách B?"* — Test khả năng suy nghĩ phản biện
 2. *"Số liệu/research này em lấy từ đâu? Em verify như thế nào?"* — Test research thật hay AI bịa
@@ -277,7 +277,7 @@ Mẫu báo cáo đúng:
 **Trả lời được trôi chảy** = hiểu thật = plan qua.
 **Ấp úng, không giải thích được** = copy AI = trả plan, làm lại.
 
-**Cảnh báo về link AI bịa:** AI hay bịa link / số liệu không có thật. Sếp click vào link → nếu không thật hoặc không khớp mô tả → trừ điểm nặng tiêu chí "Plan đạt chuẩn".
+**Cảnh báo về link AI bịa:** AI hay bịa link / số liệu không có thật. Quản lý click vào link → nếu không thật hoặc không khớp mô tả → trừ điểm nặng tiêu chí "Plan đạt chuẩn".
 
 Áp dụng đến khi vượt qua trial.`
   }
@@ -487,7 +487,7 @@ export default function App() {
     md += `---\n\n## Cam kết hai bên\n\n`;
     md += `**Quản lý cam kết:**\n\n`;
     md += `**1. Feedback cụ thể, không mơ hồ**\n\n`;
-    md += `Sếp KHÔNG được phép nói feedback kiểu:\n`;
+    md += `Quản lý KHÔNG được phép nói feedback kiểu:\n`;
     md += `- ❌ "Không ổn, làm lại"\n`;
     md += `- ❌ "Anh thấy chưa được"\n`;
     md += `- ❌ "Em xem lại đi"\n`;
@@ -495,7 +495,7 @@ export default function App() {
     md += `- ❌ "Không thực tế"\n`;
     md += `- ❌ "Anh không thích"\n\n`;
     md += `→ Đây là feedback rỗng — nhân viên không biết sai chỗ nào, sửa cái gì, sửa theo hướng nào. Lặp lại nhiều lần = nhân viên tê liệt, làm cho có vì không hiểu phải làm gì.\n\n`;
-    md += `**Sếp PHẢI nói feedback theo công thức 3 phần:**\n`;
+    md += `**Quản lý PHẢI nói feedback theo công thức 3 phần:**\n`;
     md += `> (1) Cụ thể chỗ nào + (2) Vấn đề là gì + Tại sao là vấn đề + (3) Hướng sửa\n\n`;
     md += `*Ví dụ áp dụng công thức:*\n\n`;
     md += `- ❌ "Content em viết không ổn, làm lại."\n`;
@@ -507,7 +507,7 @@ export default function App() {
     md += `**Nguyên tắc thêm:**\n`;
     md += `- **Khen cũng phải cụ thể.** Không nói "ngon đó em" mà nói "phần research em làm tốt — 3 link đều thật, mỗi case mô tả 5 câu rõ ràng. Giữ format này cho các plan sau."\n`;
     md += `- **Tách feedback khỏi cảm xúc.** Cấm các từ "anh không thích", "nó cứ sao sao". Đây là phán đoán cá nhân, không giúp nhân viên học được gì. Phải quay về vấn đề khách quan (rõ chưa, đúng chuẩn chưa, đạt mục tiêu chưa).\n`;
-    md += `- **Nếu sếp không nghĩ ra cụ thể, dừng lại, không feedback vội.** Nói: "Anh đọc qua thấy chưa ổn, để anh đọc kỹ rồi feedback chi tiết sau 1 tiếng." — sau đó quay lại với feedback theo công thức 3 phần. Tốt hơn việc bật ra câu "không ổn, làm lại" rồi để nhân viên đoán mò.\n`;
+    md += `- **Nếu quản lý không nghĩ ra cụ thể, dừng lại, không feedback vội.** Nói: "Anh đọc qua thấy chưa ổn, để anh đọc kỹ rồi feedback chi tiết sau 1 tiếng." — sau đó quay lại với feedback theo công thức 3 phần. Tốt hơn việc bật ra câu "không ổn, làm lại" rồi để nhân viên đoán mò.\n`;
     md += `- **Một feedback = một lần.** Không feedback nửa vời ("anh thấy chỗ này hơi sao sao..."), về sau khi nhân viên nộp lại lần 2 lại nói thêm 1 lỗi mới. Đọc kỹ một lần, feedback đầy đủ. Tôn trọng thời gian của nhau.\n\n`;
     md += `**2. Phản hồi brief trong 30 phút (nếu có M2/S1)**\n\n`;
     md += `**3. Duyệt plan trong 1 ngày làm việc**\n\n`;
